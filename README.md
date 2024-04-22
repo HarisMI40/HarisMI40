@@ -1,3 +1,4 @@
+![Banner Profile](banner_profile.png)
 ### Hi there 👋, I'm Haris Maulana. 
 
 - 🔭 I’m currently working on SMKS TI Muhammadiyah Cikampek
