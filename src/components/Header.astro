@@ -28,7 +28,7 @@ const links: NavLink[] = [
       </button>
       <ul
         id="nav-mobile-list"
-        class="absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50"
+        class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50"
       >
         {
           links.map((link) => (
@@ -60,10 +60,10 @@ const links: NavLink[] = [
   let navMobileListItems = navMobileList?.querySelectorAll('li')
   let navMobileButton = document.getElementById('nav-mobile-button')
   navMobileButton?.addEventListener('click', (_ev) => {
-    navMobileList?.classList.toggle('hidden')
-    let hidden = navMobileList?.classList.contains('hidden')
+    navMobileList?.classList.toggle('invisible')
+    let invisible = navMobileList?.classList.contains('invisible')
     navMobileListItems?.forEach((listItem) => {
-      listItem.setAttribute('aria-expanded', hidden ? 'false' : 'true')
+      listItem.setAttribute('aria-expanded', invisible ? 'false' : 'true')
     })
   })
 </script>
