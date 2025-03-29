@@ -1,10 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Fira Code';
+  src: url('fonts/FiraCode-VF.woff2') format('woff2-variations');
+  font-weight: 300 700;
+  font-style: normal;
+}
+
 @theme {
   --color-accent: #eec35e;
   --color-foreground: #eceae5;
   --color-background: #1a170f;
-  --default-font-family: "Monaco";
+  --default-font-family: "Fira Code";
 }
 
 /* Typography plugin */
