@@ -26,6 +26,14 @@ let posts = await getCollection('posts')
             </span>
           )}
         </div>
+        <p class="my-6 text-foreground">
+          {post.data.description ? post.data.description : ''}
+        </p>
+        <div class="text-accent">
+          <a class="" href={post.id}>
+            [Read More]
+          </a>
+        </div>
       </article>
     ))
   }
