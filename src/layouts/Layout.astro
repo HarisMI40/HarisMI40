@@ -1,5 +1,6 @@
 ---
 import './src/styles/global.css'
+import Header from '@components/Header.astro'
 ---
 
 <!doctype html>
@@ -14,48 +15,8 @@ import './src/styles/global.css'
     <div
       class="flex flex-col max-w-3xl min-h-screen border-x border-accent/10 m-auto p-5 md:p-10"
     >
-      <header class="flex flex-col">
-        <div class="flex items-stretch justify-between">
-          <div id="logo" class="flex flex-1">
-            <a
-              class="px-2.5 py-1.5 max-w-full no-underline flex-none items-center bg-accent text-background font-bold"
-            >
-              Logo
-            </a>
-          </div>
-          <nav
-            aria-label="Menu"
-            class="flex flex-col p-0 m-0 text-accent border-2 cursor-pointer"
-          >
-            <ul class="list-none h-full">
-              <li aria-expanded="false" class="relative flex flex-col justify-around h-full px-2.5">
-                Menu ▾
-                <ul
-                  class="absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-10 left-auto right-0 z-50"
-                >
-                  <li>Hiii</li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <Header />
       <slot />
     </div>
   </body>
 </html>
-
-<style lang="scss">
-  #logo::after {
-    content: ' ';
-    background: repeating-linear-gradient(
-      90deg,
-      var(--color-accent),
-      var(--color-accent) 2px,
-      transparent 0,
-      transparent 10px
-    );
-    display: block;
-    width: 100%;
-  }
-</style>
