@@ -20,6 +20,11 @@ let posts = await getCollection('posts')
         </h2>
         <div class="text-foreground/65">
           <time>{dateString(post.data.published)}</time>
+          {post.data.author && (
+            <span class="before:content-['::'] before:inline-block before:mx-2">
+              {post.data.author}
+            </span>
+          )}
         </div>
       </article>
     ))
