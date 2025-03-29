@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { getCollection, getEntry } from 'astro:content'
+import { dateString } from '@utils'
 
 let posts = await getCollection('posts')
 ---
@@ -17,6 +18,9 @@ let posts = await getCollection('posts')
         >
           <a href={post.id}>{post.data.title}</a>
         </h2>
+        <div class="text-foreground/65">
+          <time>{dateString(post.data.published)}</time>
+        </div>
       </article>
     ))
   }
