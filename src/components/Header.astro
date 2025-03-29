@@ -8,17 +8,17 @@ const links: NavLink[] = [
 ---
 
 <header class="flex flex-col">
-  <div class="flex items-stretch justify-between">
-    <div id="logo" class="flex flex-1">
+  <div class="flex flex-wrap items-stretch justify-between">
+    <div id="logo" class="flex flex-1 sm:basis-full">
       <a
         class="px-2.5 py-1.5 max-w-full no-underline flex-none items-center bg-accent text-background font-bold"
       >
         Logo
       </a>
     </div>
-    <nav id="nav-menu" aria-label="Menu" class="relative p-0 m-0 text-accent">
+    <nav id="nav-mobile" aria-label="Menu" class="relative p-0 m-0 text-accent sm:hidden">
       <button
-        id="nav-menu-button"
+        id="nav-mobile-button"
         class="px-2.5 h-full cursor-pointer border-2"
         type="button"
         aria-expanded="true"
@@ -27,12 +27,12 @@ const links: NavLink[] = [
         Menu ▾
       </button>
       <ul
-        id="nav-menu-list"
+        id="nav-mobile-list"
         class="absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-10 left-auto right-0 z-50"
       >
         {
           links.map((link) => (
-            <li aria-expanded="false">
+            <li class="sm:pr-5" aria-expanded="false">
               <a href={link.url}>{link.name}</a>
             </li>
           ))
@@ -43,13 +43,13 @@ const links: NavLink[] = [
 </header>
 
 <script>
-  let navMenuList = document.getElementById('nav-menu-list')
-  let navMenuListItems = navMenuList?.querySelectorAll('li')
-  let navMenuButton = document.getElementById('nav-menu-button')
-  navMenuButton?.addEventListener('click', (_ev) => {
-    navMenuList?.classList.toggle('hidden')
-    let hidden = navMenuList?.classList.contains('hidden')
-    navMenuListItems?.forEach((listItem) => {
+  let navMobileList = document.getElementById('nav-mobile-list')
+  let navMobileListItems = navMobileList?.querySelectorAll('li')
+  let navMobileButton = document.getElementById('nav-mobile-button')
+  navMobileButton?.addEventListener('click', (_ev) => {
+    navMobileList?.classList.toggle('hidden')
+    let hidden = navMobileList?.classList.contains('hidden')
+    navMobileListItems?.forEach((listItem) => {
       listItem.setAttribute('aria-expanded', hidden ? 'false' : 'true')
     })
   })
