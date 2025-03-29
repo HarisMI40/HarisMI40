@@ -33,7 +33,7 @@ const links: NavLink[] = [
         {
           links.map((link) => (
             <li class="p-1" aria-expanded="false">
-              <a href={link.url}>{link.name}</a>
+              <a class="underline" href={link.url}>{link.name}</a>
             </li>
           ))
         }
@@ -46,7 +46,7 @@ const links: NavLink[] = [
         {
           links.map((link) => (
             <li class="mr-5" aria-expanded="true">
-              <a href={link.url}>{link.name}</a>
+              <a class="underline" href={link.url}>{link.name}</a>
             </li>
           ))
         }
