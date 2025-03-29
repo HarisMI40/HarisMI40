@@ -17,8 +17,10 @@ import Footer from '@components/Footer.astro'
       class="flex flex-col max-w-3xl min-h-screen border-x border-accent/10 m-auto p-5 md:p-10"
     >
       <Header />
-      <slot />
-      <Footer/>
+      <div class="flex flex-col">
+        <slot />
+      </div>
+      <Footer />
     </div>
   </body>
 </html>
