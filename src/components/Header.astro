@@ -16,11 +16,9 @@ const links: NavLink[] = [
         Logo
       </a>
     </div>
-    <nav
-      aria-label="Menu"
-      class="relative p-0 m-0 text-accent"
-    >
+    <nav id="nav-menu" aria-label="Menu" class="relative p-0 m-0 text-accent">
       <button
+        id="nav-menu-button"
         class="px-2.5 h-full cursor-pointer border-2"
         type="button"
         aria-expanded="true"
@@ -44,7 +42,18 @@ const links: NavLink[] = [
   </div>
 </header>
 
-<script></script>
+<script>
+  let navMenuList = document.getElementById('nav-menu-list')
+  let navMenuListItems = navMenuList?.querySelectorAll('li')
+  let navMenuButton = document.getElementById('nav-menu-button')
+  navMenuButton?.addEventListener('click', (_ev) => {
+    navMenuList?.classList.toggle('hidden')
+    let hidden = navMenuList?.classList.contains('hidden')
+    navMenuListItems?.forEach((listItem) => {
+      listItem.setAttribute('aria-expanded', hidden ? 'false' : 'true')
+    })
+  })
+</script>
 
 <style lang="scss">
   #logo::after {
