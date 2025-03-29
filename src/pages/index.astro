@@ -4,6 +4,7 @@ import { getCollection, getEntry } from 'astro:content'
 import { dateString } from '@utils'
 
 let posts = await getCollection('posts')
+let postUrl = (post: (typeof posts)[number]) => `/posts/${post.id}`
 ---
 
 <Layout>
@@ -16,7 +17,7 @@ let posts = await getCollection('posts')
             'after:absolute after:bottom-0.5 after:block after:content-normal after:w-full after:border-b-accent after:border-b-3 after:border-dotted',
           ]}
         >
-          <a href={post.id}>{post.data.title}</a>
+          <a href={postUrl(post)}>{post.data.title}</a>
         </h2>
         <div class="text-foreground/65">
           <time>{dateString(post.data.published)}</time>
@@ -30,9 +31,7 @@ let posts = await getCollection('posts')
           {post.data.description ? post.data.description : ''}
         </p>
         <div class="text-accent">
-          <a class="" href={post.id}>
-            [Read More]
-          </a>
+          <a href={postUrl(post)}>[Read More]</a>
         </div>
       </article>
     ))
