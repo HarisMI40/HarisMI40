@@ -19,6 +19,9 @@
       ],
       "@types": [
         "src/types"
+      ],
+      "@content": [
+        "src/content.config"
       ]
     },
     "plugins": [
