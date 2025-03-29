@@ -22,6 +22,9 @@
       ],
       "@content": [
         "src/content.config"
+      ],
+      "@utils": [
+        "src/utils"
       ]
     },
     "plugins": [
