@@ -1,0 +1,53 @@
+---
+import Layout from '@layouts/Layout.astro'
+import { dateString } from '@utils'
+import { getCollection } from 'astro:content'
+
+export async function getStaticPaths() {
+  const postsContent = await getCollection('posts')
+  return postsContent.map((post) => {
+    return {
+      params: { slug: post.id },
+      props: { post },
+    }
+  })
+}
+
+const { post } = Astro.props
+const postData = post.data
+---
+
+<Layout>
+  <article class="w-full py-7.5">
+    <h1
+      class:list={[
+        'relative text-xl text-accent mb-3 pb-4 border-b-3 border-dotted border-accent',
+        'after:absolute after:bottom-0.5 after:block after:content-normal after:w-full after:border-b-accent after:border-b-3 after:border-dotted',
+      ]}
+    >
+      {postData.title}
+    </h1>
+    <div class="text-foreground/65 mb-2.5">
+      <time>{dateString(postData.published)}</time>
+      {
+        postData.author && (
+          <span class="before:content-['::'] before:inline-block before:mx-0.5">
+            {postData.author}
+          </span>
+        )
+      }
+    </div>
+    {
+      postData.tags && (
+        <div class="text-accent mb-5">
+          {postData.tags.map((tag) => (
+            <a class="underline mr-4 inline-block" href={`/tags/${tag}`}>
+              #{tag}
+            </a>
+          ))}
+        </div>
+      )
+    }
+    <div class="my-5" set:html={post.rendered?.html} />
+  </article>
+</Layout>
