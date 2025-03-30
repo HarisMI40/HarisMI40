@@ -15,7 +15,7 @@ let homeContent = await getCollection('home')
       (home) =>
         home.body && (
           <div
-            class:list={['my-2 p-5', home.data.framed && 'border-1 border-accent']}
+            class:list={['my-4 p-5', home.data.framed && 'border-1 border-accent']}
             set:html={home.rendered?.html}
           />
         ),
