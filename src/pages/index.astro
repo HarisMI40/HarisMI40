@@ -33,7 +33,7 @@ let postUrl = (post: (typeof posts)[number]) => `/posts/${post.id}`
         {post.data.tags && (
           <div class="text-accent mb-5">
             {post.data.tags.map((tag) => (
-              <a class="underline mr-4" href={`/tags/${tag}`}>
+              <a class="underline mr-4 inline-block" href={`/tags/${tag}`}>
                 #{tag}
               </a>
             ))}
