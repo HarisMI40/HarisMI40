@@ -22,7 +22,7 @@ let postUrl = (post: (typeof posts)[number]) => `/posts/${post.id}`
         <div class="text-foreground/65">
           <time>{dateString(post.data.published)}</time>
           {post.data.author && (
-            <span class="before:content-['::'] before:inline-block before:mx-2">
+            <span class="before:content-['::'] before:inline-block before:mx-0.5">
               {post.data.author}
             </span>
           )}
