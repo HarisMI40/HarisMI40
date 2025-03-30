@@ -22,7 +22,7 @@ export default defineConfig({
             type: 'element',
             tagName: 'span',
             properties: {
-              className: ['anchor-icon'],
+              className: ['anchor-icon', 'text-accent/90', 'ml-2', 'hover:underline'],
               'data-pagefind-ignore': true,
             },
             children: [
