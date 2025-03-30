@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 
 @font-face {
   font-family: 'Fira Code';
@@ -13,26 +12,4 @@
   --color-foreground: #eceae5;
   --color-background: #1a170f;
   --default-font-family: "Fira Code";
-}
-
-/* Typography plugin */
-@utility prose {
-  --tw-prose-body: var(--color-foreground);
-  --tw-prose-headings: var(--color-accent);
-  --tw-prose-bold: var(--color-accent);
-  /* --tw-prose-quote-borders: var(--color-slate-300); */
-  /* --tw-prose-quotes: var(--color-muted-foreground); */
-  /* --tw-prose-code: var(--color-primary); */
-  /**/
-  /* code { */
-  /*   &::before, */
-  /*   &::after { */
-  /*     display : none ; */
-  /*   } */
-  /*   text-wrap : nowrap ; */
-  /* } */
-  /**/
-  /* blockquote { */
-  /*   font-weight : 400 ; */
-  /* } */
 }
