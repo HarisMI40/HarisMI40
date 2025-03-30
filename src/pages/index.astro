@@ -11,12 +11,15 @@ let homeContent = await getCollection('home')
 
 <Layout>
   {
-    homeContent.map((home) => (
-      <div
-        class:list={['my-2 p-5', home.data.framed && 'border-1 border-accent']}
-        set:html={home.rendered?.html}
-      />
-    ))
+    homeContent.map(
+      (home) =>
+        home.body && (
+          <div
+            class:list={['my-2 p-5', home.data.framed && 'border-1 border-accent']}
+            set:html={home.rendered?.html}
+          />
+        ),
+    )
   }
   {
     postsContent.map((post) => (
