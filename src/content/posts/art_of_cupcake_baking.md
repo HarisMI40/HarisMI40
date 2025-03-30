@@ -2,6 +2,7 @@
 title = "The Art of Cupcake Baking: A Sweet Journey"
 published = 2025-03-01
 draft = false
+tags = ["baking", "DIY"]
 +++
 Hello, fellow baking enthusiasts! Today, I’m excited to share my latest adventure in the kitchen: baking the most delightful cupcakes that are sure to impress your friends and family. Whether you’re a seasoned baker or a complete novice, these little treats are perfect for any occasion!
 
