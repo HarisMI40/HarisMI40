@@ -4,13 +4,22 @@ import { getCollection, getEntry } from 'astro:content'
 import { dateString } from '@utils'
 import PostExcerpt from '@igor.dvlpr/astro-post-excerpt'
 
-let posts = await getCollection('posts')
-let postUrl = (post: (typeof posts)[number]) => `/posts/${post.id}`
+let postsContent = await getCollection('posts')
+let postUrl = (post: (typeof postsContent)[number]) => `/posts/${post.id}`
+let homeContent = await getCollection('home')
 ---
 
 <Layout>
   {
-    posts.map((post) => (
+    homeContent.map((home) => (
+      <div
+        class:list={['my-2 p-5', home.data.framed && 'border-1 border-accent']}
+        set:html={home.rendered?.html}
+      />
+    ))
+  }
+  {
+    postsContent.map((post) => (
       <article class="w-full py-7.5">
         <h2
           class:list={[
