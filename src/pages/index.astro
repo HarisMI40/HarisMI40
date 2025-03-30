@@ -30,6 +30,15 @@ let postUrl = (post: (typeof posts)[number]) => `/posts/${post.id}`
         <p class="my-6 text-foreground">
           {post.data.description ? post.data.description : ''}
         </p>
+        {post.data.tags && (
+          <div class="text-accent mb-5">
+            {post.data.tags.map((tag) => (
+              <a class="underline mr-4" href={`/tags/${tag}`}>
+                #{tag}
+              </a>
+            ))}
+          </div>
+        )}
         <div class="text-accent">
           <a href={postUrl(post)}>[Read More]</a>
         </div>
