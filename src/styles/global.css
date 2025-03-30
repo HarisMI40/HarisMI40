@@ -65,7 +65,7 @@
   }
 
   li {
-    @apply marker:text-accent
+    @apply pl-5 marker:text-accent marker:content-['-'] marker:-left-5
   }
 
   hr {
