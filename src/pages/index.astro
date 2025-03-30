@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import { getCollection, getEntry } from 'astro:content'
 import { dateString } from '@utils'
+import PostExcerpt from '@igor.dvlpr/astro-post-excerpt'
 
 let posts = await getCollection('posts')
 let postUrl = (post: (typeof posts)[number]) => `/posts/${post.id}`
@@ -28,7 +29,7 @@ let postUrl = (post: (typeof posts)[number]) => `/posts/${post.id}`
           )}
         </div>
         <p class="my-6 text-foreground">
-          {post.data.description ? post.data.description : ''}
+          {post.data.description ? post.data.description : <PostExcerpt post={post} />}
         </p>
         {post.data.tags && (
           <div class="text-accent mb-5">
