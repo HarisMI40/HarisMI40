@@ -29,7 +29,7 @@ let homeContent = await getCollection('home')
       <article class="w-full py-7.5">
         <h2
           class:list={[
-            'relative text-xl text-accent mb-3 pb-4 border-b-3 border-dotted border-accent',
+            'relative text-lg text-accent mb-3 pb-4 border-b-3 border-dotted border-accent font-bold',
             'after:absolute after:bottom-0.5 after:block after:content-normal after:w-full after:border-b-accent after:border-b-3 after:border-dotted',
           ]}
         >
@@ -43,7 +43,7 @@ let homeContent = await getCollection('home')
             </span>
           )}
         </div>
-        <p class="my-6 text-foreground">
+        <p class="my-4 text-foreground">
           {post.data.description ? post.data.description : <PostExcerpt post={post} />}
         </p>
         {post.data.tags && (
@@ -56,7 +56,9 @@ let homeContent = await getCollection('home')
           </div>
         )}
         <div class="text-accent">
-          <a href={postUrl(post)}>[Read More]</a>
+          <a class="inline-block border-1 border-accent/70 p-2" href={postUrl(post)}>
+            Read More
+          </a>
         </div>
       </article>
     ))
