@@ -33,20 +33,22 @@ const links: NavLink[] = [
         {
           links.map((link) => (
             <li class="p-1" aria-expanded="false">
-              <a class="underline" href={link.url}>{link.name}</a>
+              <a class="underline" href={link.url}>
+                {link.name}
+              </a>
             </li>
           ))
         }
       </ul>
     </nav>
     <nav aria-label="Menu" class="p-0 my-4 ml-0.5 text-accent hidden sm:block">
-      <ul
-        class="flex flex-row bg-background shadow text-accent mb-2.5"
-      >
+      <ul class="flex flex-row bg-background shadow text-accent mb-2.5">
         {
           links.map((link) => (
             <li class="mr-5" aria-expanded="true">
-              <a class="underline" href={link.url}>{link.name}</a>
+              <a class="underline" href={link.url}>
+                {link.name}
+              </a>
             </li>
           ))
         }
