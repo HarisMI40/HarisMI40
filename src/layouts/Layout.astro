@@ -5,7 +5,7 @@ import Footer from '@components/Footer.astro'
 import { loadShikiTheme } from 'astro-expressive-code'
 
 let theme = await loadShikiTheme('dracula')
-const font = 'Fira Code'
+const themeFont = 'Fira Code'
 const themeAccent = theme.colors['terminal.ansiBrightBlue']
 const themeForeground = theme.colors['editor.foreground']
 const themeBackground = theme.colors['editor.background']
@@ -33,10 +33,6 @@ const themeBackground = theme.colors['editor.background']
 </html>
 
 <style
-  define:vars={{
-    'color-accent': themeAccent,
-    'color-foreground': themeForeground,
-    'color-background': themeBackground,
-    'default-font-family': font,
-  }}
+  is:global
+  define:vars={{ themeAccent, themeForeground, themeBackground, themeFont }}
 ></style>
