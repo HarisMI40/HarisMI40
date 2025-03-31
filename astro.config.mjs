@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
@@ -39,5 +40,14 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [sitemap(), mdx()]
+  integrations: [
+    sitemap(),
+    expressiveCode({
+      themes: ["dracula"],
+      defaultProps: {
+        wrap: false,
+      },
+    }),
+    mdx(), // Must come after expressive-code integration
+  ]
 });
