@@ -7,13 +7,6 @@
   font-style: normal;
 }
 
-@theme {
-  --color-accent: #eec35e;
-  --color-foreground: #eceae5;
-  --color-background: #1a170f;
-  --default-font-family: "Fira Code";
-}
-
 .prose {
 
   h1 {
