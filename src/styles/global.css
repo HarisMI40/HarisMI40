@@ -92,7 +92,7 @@ button:active {
   table,
   th,
   td {
-    @apply border-2 border-foreground p-2.5;
+    @apply border-2 border-accent/80 p-2.5;
   }
 
   th {
