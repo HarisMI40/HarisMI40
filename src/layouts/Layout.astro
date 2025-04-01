@@ -3,9 +3,10 @@ import '/src/styles/global.css'
 import Header from '@components/Header.astro'
 import Footer from '@components/Footer.astro'
 import { loadShikiTheme } from 'astro-expressive-code'
+import '@fontsource-variable/jetbrains-mono'
 
 let theme = await loadShikiTheme('dracula')
-const themeFont = 'Fira Code'
+const themeFont = 'JetBrains Mono Variable'
 const themeAccent = theme.colors['terminal.ansiBrightBlue']
 const themeForeground = theme.colors['editor.foreground']
 const themeBackground = theme.colors['editor.background']
