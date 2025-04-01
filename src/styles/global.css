@@ -99,4 +99,36 @@ button:active {
     @apply uppercase text-left;
   }
 
+  fieldset {
+    @apply inline-block border-2 border-accent/80 p-2.5;
+  }
+
+  fieldset *:first-child {
+    @apply mb-0
+  }
+
+  fieldset input, fieldset select, fieldset textarea, fieldset label, fieldset button {
+    @apply mt-3 w-full;
+  }
+
+  label {
+    @apply inline-block
+  }
+
+  label input {
+    @apply mt-0
+  }
+
+  input, textarea, select {
+    @apply bg-transparent text-foreground border-1 border-foreground p-2.5;
+  }
+
+  input[type="checkbox"] {
+    @apply w-auto;
+  }
+
+  input[type="submit"] {
+    @apply border-accent cursor-pointer;
+  }
+
 }
