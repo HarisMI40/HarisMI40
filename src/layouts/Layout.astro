@@ -6,6 +6,7 @@ import { loadShikiTheme } from 'astro-expressive-code'
 import themeConfig from '../theme.config'
 
 let theme = await loadShikiTheme(themeConfig.theme)
+const theme = await loadShikiTheme(themeConfig.name)
 const themeFont = themeConfig.font
 const themeAccent = theme.colors[themeConfig.accent]
 const themeForeground = theme.colors[themeConfig.foreground]
