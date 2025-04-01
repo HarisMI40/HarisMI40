@@ -46,11 +46,11 @@
   }
 
   figure img, figure video {
-    @apply mb-0
+    @apply mb-0 border-b-0
   }
 
   figure figcaption {
-    @apply bg-accent text-background text-center
+    @apply bg-accent text-background text-center py-2
   }
 
   ul, ol {
