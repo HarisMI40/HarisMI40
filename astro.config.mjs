@@ -6,7 +6,7 @@ import mdx from '@astrojs/mdx';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import expressiveCode from "astro-expressive-code";
-import themeConfig from './src/theme.config'
+import siteConfig from './src/site.config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -44,7 +44,7 @@ export default defineConfig({
   integrations: [
     sitemap(),
     expressiveCode({
-      themes: [themeConfig.theme],
+      themes: [siteConfig.theme.name],
       defaultProps: {
         wrap: false,
       },
