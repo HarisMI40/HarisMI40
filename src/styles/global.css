@@ -34,7 +34,7 @@
   }
 
   a {
-    @apply text-accent
+    @apply text-accent underline;
   }
 
   button {
