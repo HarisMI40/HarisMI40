@@ -7,6 +7,18 @@
   --default-font-family: var(--themeFont);
 }
 
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:active,
+textarea:active,
+select:active,
+button:active {
+  @apply outline-1 outline-accent outline-offset-2
+}
+
 .prose {
 
   h1 {
