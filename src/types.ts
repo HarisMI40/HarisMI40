@@ -223,3 +223,8 @@ export interface ThemeConfig {
   foreground: VSCodeColor
   background: VSCodeColor
 }
+
+export interface SiteConfig {
+  theme: ThemeConfig
+  title: string
+}
