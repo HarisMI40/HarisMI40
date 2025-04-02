@@ -22,31 +22,57 @@ button:active {
 .prose {
 
   h1 {
-    @apply text-2xl text-[var(--themeH1)];
+    @apply text-2xl text-[var(--themeH1)] my-6.5 font-semibold;
   }
 
   h2 {
-    @apply text-xl text-[var(--themeH2)]
+    @apply text-xl text-[var(--themeH2)] my-6.5 font-semibold;
   }
 
   h3 {
-    @apply text-lg text-[var(--themeH3)]
+    @apply text-lg text-[var(--themeH3)] my-6.5 font-semibold;
   }
 
-  h4, h5, h6 {
-    @apply text-base
+  h4 {
+    @apply text-base text-[var(--themeH4)] my-6.5 font-semibold;
   }
 
-  h1, h2, h3, h4, h5, h6, p, ul, ol, img, figure, video, table {
+  h5 {
+    @apply text-base text-[var(--themeH5)] my-6.5 font-semibold;
+  }
+
+  h6 {
+    @apply text-base text-[var(--themeH6)] my-6.5 font-semibold;
+  }
+
+  span.anchor-text {
+    @apply tracking-wide;
+  }
+
+  p,
+  ul,
+  ol,
+  img,
+  figure,
+  video,
+  table {
     @apply my-6.5
   }
 
-  h1, h2, h3, h4, h5, h6, b, strong, th, button {
+  b, strong, th, button {
     @apply font-semibold
   }
 
   a {
-    @apply text-accent underline;
+    @apply text-accent underline hover:underline;
+
+    &.heading-anchor {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   button {
