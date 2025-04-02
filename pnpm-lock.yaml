@@ -29,6 +29,9 @@ importers:
       astro-expressive-code:
         specifier: ^0.40.2
         version: 0.40.2(astro@5.5.5(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.37.0)(sass-embedded@1.86.0)(typescript@5.8.2)(yaml@2.7.0))
+      hastscript:
+        specifier: ^9.0.1
+        version: 9.0.1
       rehype-autolink-headings:
         specifier: ^7.1.0
         version: 7.1.0
