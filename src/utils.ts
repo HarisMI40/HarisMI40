@@ -9,7 +9,6 @@ export function flattenThemeColors(theme: ExpressiveCodeTheme): { [key: string]:
     (acc, item) => {
       const { scope, settings } = item
       const { foreground } = settings
-      console.log(scope)
       if (scope && foreground) {
         for (const s of scope) {
           acc[`${s}.foreground`] = foreground
