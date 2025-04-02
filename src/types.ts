@@ -215,13 +215,14 @@ export type VSCodeColor =
   | 'terminal.ansiBrightMagenta'
   | 'terminal.ansiBrightCyan'
   | 'terminal.ansiBrightWhite'
+  | string
 
 export interface ThemeConfig {
   name: BundledShikiTheme
   font: string
-  accent: VSCodeColor
-  foreground: VSCodeColor
-  background: VSCodeColor
+  accent?: string
+  foreground?: string
+  background?: string
 }
 
 export interface SiteConfig {
