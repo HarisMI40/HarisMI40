@@ -4,6 +4,7 @@ import Header from '@components/Header.astro'
 import Footer from '@components/Footer.astro'
 import { loadShikiTheme } from 'astro-expressive-code'
 import siteConfig from '../site.config'
+import { flattenThemeColors, headingColor } from '@utils'
 
 interface Props {
   title?: string
@@ -12,10 +13,17 @@ interface Props {
 const { title } = Astro.props
 const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title
 const theme = await loadShikiTheme(siteConfig.theme.name)
-const themeFont = siteConfig.theme.font
-const themeAccent = theme.colors[siteConfig.theme.accent]
-const themeForeground = theme.colors[siteConfig.theme.foreground]
-const themeBackground = theme.colors[siteConfig.theme.background]
+const themeColors = flattenThemeColors(theme)
+console.log(themeColors)
+const cssVars = {
+  themeFont: siteConfig.theme.font || 'monospace',
+  themeAccent: themeColors['constant.foreground'],
+  themeForeground: siteConfig.theme.foreground || theme.fg,
+  themeBackground: siteConfig.theme.background || theme.bg,
+  themeH1: headingColor(1, themeColors) || theme.fg,
+  themeH2: headingColor(2, themeColors) || theme.fg,
+  themeH3: headingColor(3, themeColors) || theme.fg,
+}
 ---
 
 <!doctype html>
@@ -40,7 +48,4 @@ const themeBackground = theme.colors[siteConfig.theme.background]
   </body>
 </html>
 
-<style
-  is:global
-  define:vars={{ themeAccent, themeForeground, themeBackground, themeFont }}
-></style>
+<style is:global define:vars={cssVars}></style>

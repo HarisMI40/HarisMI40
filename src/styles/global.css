@@ -22,15 +22,15 @@ button:active {
 .prose {
 
   h1 {
-    @apply text-2xl
+    @apply text-2xl text-[var(--themeH1)];
   }
 
   h2 {
-    @apply text-xl
+    @apply text-xl text-[var(--themeH2)]
   }
 
   h3 {
-    @apply text-lg
+    @apply text-lg text-[var(--themeH3)]
   }
 
   h4, h5, h6 {
