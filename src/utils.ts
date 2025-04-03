@@ -5,14 +5,6 @@ export function dateString(date: Date) {
   return date.toISOString().split('T')[0];
 }
 
-export function headingColor(level: number, themeColors: { [key: string]: string }): string | undefined {
-  return (
-    themeColors[`heading.${level}.markdown entity.name`] ||
-    themeColors['markup.heading.foreground'] ||
-    undefined
-  )
-}
-
 export function resolveElementStyles(
   theme: ExpressiveCodeTheme,
   overrides?: ThemeStyles,
