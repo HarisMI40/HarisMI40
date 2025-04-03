@@ -243,3 +243,19 @@ export interface SiteConfig {
   theme: ThemeConfig
   title: string
 }
+
+export interface PostData {
+  body: string
+  title: string
+  published: Date
+  author?: string
+  description?: string
+  tags?: string[]
+  draft?: boolean
+  image?: string
+  category?: string
+  prevTitle?: string
+  prevSlug?: string
+  nextTitle?: string
+  nextSlug?: string
+}
