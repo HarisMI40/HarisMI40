@@ -4,6 +4,7 @@ import Layout from '@layouts/Layout.astro'
 import { getSortedPosts } from '@utils'
 import { getCollection } from 'astro:content'
 import PostPreview from '@components/PostPreview.astro'
+import Pagination from '@components/Pagination.astro'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
@@ -34,6 +35,7 @@ let homeContent = await getCollection('home')
       )
   }
   {page.data.map((post) => <PostPreview post={post} />)}
+  <Pagination page={page} />
 </Layout>
 
 <style is:global>
