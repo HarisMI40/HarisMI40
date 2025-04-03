@@ -9,6 +9,7 @@ import expressiveCode from "astro-expressive-code";
 import siteConfig from './src/site.config'
 import { h } from 'hastscript'
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
+import { createHeadingAnchor } from '@utils';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,15 +23,7 @@ export default defineConfig({
           properties: {
             className: ['heading-anchor', 'inline-block', 'text-accent/90', 'mr-2'],
           },
-          content: (node) => {
-            let x
-            try {
-              x = parseInt(node.tagName.charAt(1)) - 1
-            } catch (e) {
-              x = 1
-            }
-            return h('span', { class: 'anchor-text', 'data-pagefind-ignore': true }, ["#".repeat(x)])
-          }
+          content: createHeadingAnchor,
         },
       ],
     ],
