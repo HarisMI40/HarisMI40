@@ -135,3 +135,7 @@ export function createHeadingAnchor(node: Element): Element {
   }
   return h('span', { class: 'anchor-text', 'data-pagefind-ignore': true }, ["#".repeat(x)])
 }
+
+export function url(path: string) {
+  return `${import.meta.env.BASE_URL}/${path}`.replace(/\/+/g, '/')
+}
