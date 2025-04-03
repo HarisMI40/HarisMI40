@@ -1,3 +1,4 @@
+import type { ThemeStyles } from "@types";
 import type { ExpressiveCodeTheme } from "astro-expressive-code";
 
 export function dateString(date: Date) {
@@ -13,9 +14,72 @@ export function headingColor(level: number, themeColors: { [key: string]: string
 }
 
 export function resolveElementStyles(
-  elementStyles: { [key: string]: string[] },
   theme: ExpressiveCodeTheme,
+  overrides?: ThemeStyles,
 ): { [key: string]: string } {
+  const defaultStyles: ThemeStyles = {
+    foreground: ['editor.foreground'],
+    background: ['editor.background'],
+    accent: [
+      'heading.1.markdown entity.name',
+      'heading.1.markdown',
+      'markup.heading',
+      'editor.foreground',
+    ],
+    anchor: [
+      // 'punctuation.definition.heading.markdown',
+      // 'heading.1.markdown punctuation.definition.heading.markdown',
+      'inherit'
+    ],
+    h1: [
+      'heading.1.markdown entity.name',
+      'heading.1.markdown',
+      'markup.heading',
+      'editor.foreground',
+    ],
+    h2: [
+      'heading.2.markdown entity.name',
+      'heading.2.markdown',
+      'markup.heading',
+      'editor.foreground',
+    ],
+    h3: [
+      'heading.3.markdown entity.name',
+      'heading.3.markdown',
+      'markup.heading',
+      'editor.foreground',
+    ],
+    h4: [
+      'heading.4.markdown entity.name',
+      'heading.4.markdown',
+      'markup.heading',
+      'editor.foreground',
+    ],
+    h5: [
+      'heading.5.markdown entity.name',
+      'heading.5.markdown',
+      'markup.heading',
+      'editor.foreground',
+    ],
+    h6: [
+      'heading.6.markdown entity.name',
+      'heading.6.markdown',
+      'markup.heading',
+      'editor.foreground',
+    ],
+    li: [
+      'markup.list.bullet',
+      'punctuation.definition.list.begin.markdown',
+      'heading.1.markdown entity.name',
+      'heading.1.markdown',
+      'markup.heading',
+      'editor.foreground',
+    ],
+    hr: ['meta.separator.markdown'],
+    italic: ['markup.italic', 'punctuation.definition.italic.markdown'],
+    a: ['markup.link', 'string.other.link.title.markdown'],
+    // blockquote: ['markup.quote']
+  }
   let result: { [key: string]: string } = {}
   function flattenThemeColors(theme: ExpressiveCodeTheme): { [key: string]: string } {
     const scopedThemeSettings = theme.settings.reduce(
@@ -33,12 +97,13 @@ export function resolveElementStyles(
     )
     return { ...theme.colors, ...scopedThemeSettings }
   }
-  const t = flattenThemeColors(theme)
-  console.log(t)
-  Object.entries(elementStyles).forEach(([key, value]) => {
-    for (const x of value) {
-      if (t[x]) {
-        result[key] = t[x]
+  const flattenedTheme = flattenThemeColors(theme)
+  console.log(flattenedTheme)
+  Object.entries(defaultStyles).forEach(([el, groups]) => {
+    const overrideGroups = overrides ? overrides[el as keyof ThemeStyles] : []
+    for (const group of [...(overrideGroups || []), ...groups]) {
+      if (flattenedTheme[group]) {
+        result[el] = flattenedTheme[group]
         break
       }
     }

@@ -217,12 +217,27 @@ export type VSCodeColor =
   | 'terminal.ansiBrightWhite'
   | string
 
+export interface ThemeStyles {
+  foreground?: string[],
+  background?: string[],
+  accent?: string[],
+  h1?: string[],
+  h2?: string[],
+  h3?: string[],
+  h4?: string[],
+  h5?: string[],
+  h6?: string[],
+  anchor?: string[],
+  li?: string[],
+  hr?: string[],
+  italic?: string[],
+  a?: string[],
+}
+
 export interface ThemeConfig {
   name: BundledShikiTheme
   font: string
-  accent?: string
-  foreground?: string
-  background?: string
+  overrides?: ThemeStyles,
 }
 
 export interface SiteConfig {

@@ -21,8 +21,12 @@ button:active {
 
 .prose {
 
-  .expressive-code .frame {
-    @apply my-8
+  div.expressive-code {
+    @apply my-8;
+
+    figure {
+      @apply border-1 border-[var(--theme-accent)]/10
+    }
   }
 
   h1 {
@@ -92,7 +96,7 @@ button:active {
     @apply mb-0 border-b-0
   }
 
-  figure figcaption {
+  figure figcaption:not(.expressive-code figcaption) {
     @apply bg-accent text-background text-center py-2
   }
 
@@ -123,7 +127,7 @@ button:active {
   table,
   th,
   td {
-    @apply border-2 border-accent/80 p-2.5;
+    @apply border-2 border-foreground/80 p-2.5;
   }
 
   th {

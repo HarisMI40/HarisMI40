@@ -13,80 +13,19 @@ interface Props {
 const { title } = Astro.props
 const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title
 const theme = await loadShikiTheme(siteConfig.theme.name)
-const elementStyles = {
-  foreground: ['editor.foreground'],
-  background: ['editor.background'],
-  accent: [
-    'heading.1.markdown entity.name',
-    'heading.1.markdown',
-    'markup.heading',
-    'editor.foreground',
-  ],
-  anchor: [
-    'punctuation.definition.heading.markdown',
-    'heading.1.markdown punctuation.definition.heading.markdown',
-    'heading.1.markdown entity.name',
-    'heading.1.markdown',
-    'markup.heading',
-    'editor.foreground',
-  ],
-  h1: [
-    'heading.1.markdown entity.name',
-    'heading.1.markdown',
-    'markup.heading',
-    'editor.foreground',
-  ],
-  h2: [
-    'heading.2.markdown entity.name',
-    'heading.2.markdown',
-    'markup.heading',
-    'editor.foreground',
-  ],
-  h3: [
-    'heading.3.markdown entity.name',
-    'heading.3.markdown',
-    'markup.heading',
-    'editor.foreground',
-  ],
-  h4: [
-    'heading.4.markdown entity.name',
-    'heading.4.markdown',
-    'markup.heading',
-    'editor.foreground',
-  ],
-  h5: [
-    'heading.5.markdown entity.name',
-    'heading.5.markdown',
-    'markup.heading',
-    'editor.foreground',
-  ],
-  h6: [
-    'heading.6.markdown entity.name',
-    'heading.6.markdown',
-    'markup.heading',
-    'editor.foreground',
-  ],
-  'li-marker': [
-    'punctuation.definition.list.begin.markdown',
-    'heading.1.markdown entity.name',
-    'heading.1.markdown',
-    'markup.heading',
-    'editor.foreground',
-  ],
-  hr: ['meta.separator.markdown'],
-  italic: ['punctuation.definition.italic.markdown'],
-  bold: [],
-  a: ['string.other.link.title.markdown'],
-}
 const cssVars: { [key: string]: string } = {
   'theme-font': siteConfig.theme.font,
   'ec-frm-frameBoxShdCssVal': 'none',
   'ec-brdRad': '0',
   'ec-frm-edTabBrdRad': '0',
+  'ec-frm-edTabBarBrdCol': 'color-mix(in srgb, var(--theme-foreground), 10%, transparent)',
+  'ec-brdCol': 'color-mix(in srgb, var(--theme-foreground), 10%, transparent)',
 }
-Object.entries(resolveElementStyles(elementStyles, theme)).forEach(([key, value]) => {
-  cssVars[`theme-${key}`] = value
-})
+Object.entries(resolveElementStyles(theme, siteConfig.theme.overrides)).forEach(
+  ([key, value]) => {
+    cssVars[`theme-${key}`] = value
+  },
+)
 ---
 
 <!doctype html>
