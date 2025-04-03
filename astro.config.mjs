@@ -8,6 +8,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import expressiveCode from "astro-expressive-code";
 import siteConfig from './src/site.config'
 import { h } from 'hastscript'
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 
 // https://astro.build/config
 export default defineConfig({
@@ -44,6 +45,9 @@ export default defineConfig({
       defaultProps: {
         wrap: false,
       },
+      plugins: [
+        pluginLineNumbers()
+      ],
     }),
     mdx(), // Must come after expressive-code integration
   ]
