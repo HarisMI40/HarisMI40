@@ -227,7 +227,6 @@ export interface ThemeStyles {
   h4?: string[],
   h5?: string[],
   h6?: string[],
-  anchor?: string[],
   li?: string[],
   hr?: string[],
   italic?: string[],

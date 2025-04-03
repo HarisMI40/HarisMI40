@@ -26,11 +26,6 @@ export function resolveElementStyles(
       'markup.heading',
       'editor.foreground',
     ],
-    anchor: [
-      // 'punctuation.definition.heading.markdown',
-      // 'heading.1.markdown punctuation.definition.heading.markdown',
-      'inherit'
-    ],
     h1: [
       'heading.1.markdown entity.name',
       'heading.1.markdown',
@@ -75,10 +70,8 @@ export function resolveElementStyles(
       'markup.heading',
       'editor.foreground',
     ],
-    hr: ['meta.separator.markdown'],
-    italic: ['markup.italic', 'punctuation.definition.italic.markdown'],
-    a: ['markup.link', 'string.other.link.title.markdown'],
-    // blockquote: ['markup.quote']
+    italic: ['markup.italic', 'punctuation.definition.italic.markdown', 'editor.foreground'],
+    a: ['markup.link', 'string.other.link.title.markdown', 'editor.foreground'],
   }
   let result: { [key: string]: string } = {}
   function flattenThemeColors(theme: ExpressiveCodeTheme): { [key: string]: string } {
