@@ -7,10 +7,9 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import expressiveCode from "astro-expressive-code";
 import siteConfig from './src/site.config'
-import { h } from 'hastscript'
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import icon from 'astro-icon';
-import { createHeadingAnchor } from '@utils';
+import { createHeadingAnchor } from './src/settings-utils';
 
 // https://astro.build/config
 export default defineConfig({

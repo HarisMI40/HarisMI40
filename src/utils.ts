@@ -1,8 +1,6 @@
 import type { PostData, ThemeStyles } from "@types";
 import type { ExpressiveCodeTheme } from "astro-expressive-code";
-import type { Element } from "hast";
 import { getCollection } from "astro:content";
-import { h } from "hastscript";
 
 export function dateString(date: Date) {
   return date.toISOString().split('T')[0];
@@ -124,16 +122,6 @@ export async function getSortedPosts(): Promise<
   }
 
   return sorted
-}
-
-export function createHeadingAnchor(node: Element): Element {
-  let x
-  try {
-    x = parseInt(node.tagName.charAt(1)) - 1
-  } catch (e) {
-    x = 1
-  }
-  return h('span', { class: 'anchor-text', 'data-pagefind-ignore': true }, ["#".repeat(x)])
 }
 
 export function url(path: string) {
