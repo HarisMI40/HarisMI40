@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: var(--themeAccent);
-  --color-foreground: var(--themeForeground);
-  --color-background: var(--themeBackground);
-  --default-font-family: var(--themeFont);
+  --color-accent: var(--theme-accent);
+  --color-foreground: var(--theme-foreground);
+  --color-background: var(--theme-background);
+  --default-font-family: var(--theme-font);
 }
 
 input:focus-visible,
@@ -21,32 +21,36 @@ button:active {
 
 .prose {
 
+  .expressive-code .frame {
+    @apply my-8
+  }
+
   h1 {
-    @apply text-2xl text-[var(--themeH1)] my-6.5 font-semibold;
+    @apply text-2xl text-[var(--theme-h1)] my-6.5 font-semibold;
   }
 
   h2 {
-    @apply text-xl text-[var(--themeH2)] my-6.5 font-semibold;
+    @apply text-xl text-[var(--theme-h2)] my-6.5 font-semibold;
   }
 
   h3 {
-    @apply text-lg text-[var(--themeH3)] my-6.5 font-semibold;
+    @apply text-lg text-[var(--theme-h3)] my-6.5 font-semibold;
   }
 
   h4 {
-    @apply text-base text-[var(--themeH4)] my-6.5 font-semibold;
+    @apply text-base text-[var(--theme-h4)] my-6.5 font-semibold;
   }
 
   h5 {
-    @apply text-base text-[var(--themeH5)] my-6.5 font-semibold;
+    @apply text-base text-[var(--theme-h5)] my-6.5 font-semibold;
   }
 
   h6 {
-    @apply text-base text-[var(--themeH6)] my-6.5 font-semibold;
+    @apply text-base text-[var(--theme-h6)] my-6.5 font-semibold;
   }
 
   span.anchor-text {
-    @apply tracking-wide;
+    @apply tracking-wide text-[var(--theme-anchor)] opacity-80;
   }
 
   p,
@@ -64,10 +68,11 @@ button:active {
   }
 
   a {
-    @apply text-accent underline hover:underline;
+    @apply text-[var(--theme-a)] underline hover:underline;
 
     &.heading-anchor {
       text-decoration: none;
+      color: inherit;
 
       &:hover {
         text-decoration: underline;
@@ -96,11 +101,11 @@ button:active {
   }
 
   li {
-    @apply pl-5 marker:text-accent marker:content-['-'] marker:-left-5
+    @apply pl-5 marker:text-[var(--theme-li-marker)] marker:content-['-'] marker:-left-5
   }
 
   hr {
-    @apply h-0.5 text-accent
+    @apply h-0.5 my-12 text-[var(--theme-hr)]
   }
 
   blockquote {

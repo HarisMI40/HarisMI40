@@ -4,7 +4,7 @@ import Header from '@components/Header.astro'
 import Footer from '@components/Footer.astro'
 import { loadShikiTheme } from 'astro-expressive-code'
 import siteConfig from '../site.config'
-import { flattenThemeColors, headingColor } from '@utils'
+import { resolveElementStyles } from '@utils'
 
 interface Props {
   title?: string
@@ -13,20 +13,80 @@ interface Props {
 const { title } = Astro.props
 const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title
 const theme = await loadShikiTheme(siteConfig.theme.name)
-const themeColors = flattenThemeColors(theme)
-console.log(themeColors)
-const cssVars = {
-  themeFont: siteConfig.theme.font || 'monospace',
-  themeAccent: themeColors['constant.foreground'],
-  themeForeground: siteConfig.theme.foreground || theme.fg,
-  themeBackground: siteConfig.theme.background || theme.bg,
-  themeH1: headingColor(1, themeColors) || theme.fg,
-  themeH2: headingColor(2, themeColors) || theme.fg,
-  themeH3: headingColor(3, themeColors) || theme.fg,
-  themeH4: headingColor(4, themeColors) || theme.fg,
-  themeH5: headingColor(5, themeColors) || theme.fg,
-  themeH6: headingColor(6, themeColors) || theme.fg,
+const elementStyles = {
+  foreground: ['editor.foreground'],
+  background: ['editor.background'],
+  accent: [
+    'heading.1.markdown entity.name',
+    'heading.1.markdown',
+    'markup.heading',
+    'editor.foreground',
+  ],
+  anchor: [
+    'punctuation.definition.heading.markdown',
+    'heading.1.markdown punctuation.definition.heading.markdown',
+    'heading.1.markdown entity.name',
+    'heading.1.markdown',
+    'markup.heading',
+    'editor.foreground',
+  ],
+  h1: [
+    'heading.1.markdown entity.name',
+    'heading.1.markdown',
+    'markup.heading',
+    'editor.foreground',
+  ],
+  h2: [
+    'heading.2.markdown entity.name',
+    'heading.2.markdown',
+    'markup.heading',
+    'editor.foreground',
+  ],
+  h3: [
+    'heading.3.markdown entity.name',
+    'heading.3.markdown',
+    'markup.heading',
+    'editor.foreground',
+  ],
+  h4: [
+    'heading.4.markdown entity.name',
+    'heading.4.markdown',
+    'markup.heading',
+    'editor.foreground',
+  ],
+  h5: [
+    'heading.5.markdown entity.name',
+    'heading.5.markdown',
+    'markup.heading',
+    'editor.foreground',
+  ],
+  h6: [
+    'heading.6.markdown entity.name',
+    'heading.6.markdown',
+    'markup.heading',
+    'editor.foreground',
+  ],
+  'li-marker': [
+    'punctuation.definition.list.begin.markdown',
+    'heading.1.markdown entity.name',
+    'heading.1.markdown',
+    'markup.heading',
+    'editor.foreground',
+  ],
+  hr: ['meta.separator.markdown'],
+  italic: ['punctuation.definition.italic.markdown'],
+  bold: [],
+  a: ['string.other.link.title.markdown'],
 }
+const cssVars: { [key: string]: string } = {
+  'theme-font': siteConfig.theme.font,
+  'ec-frm-frameBoxShdCssVal': 'none',
+  'ec-brdRad': '0',
+  'ec-frm-edTabBrdRad': '0',
+}
+Object.entries(resolveElementStyles(elementStyles, theme)).forEach(([key, value]) => {
+  cssVars[`theme-${key}`] = value
+})
 ---
 
 <!doctype html>
