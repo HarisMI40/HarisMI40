@@ -1,11 +1,38 @@
 ---
+import { url } from '@utils'
 import type { Page } from 'astro'
+import { Icon } from 'astro-icon/components'
 
 interface Props {
   page: Page
 }
 
 const { page } = Astro.props
-
 ---
-<span>Pagination</span>
+
+<div class="my-5 flex flex-row gap-10 justify-center">
+  {
+    page.url.prev && (
+      <a
+        href={url(page.url.prev)}
+        aria-label="Previous Page"
+        class="flex whitespace-nowrap max-w-1/2 flex-row items-center justify-center text-accent p-2 pr-4 border-1 border-accent/70"
+      >
+        <Icon name="material-symbols:keyboard-double-arrow-left" class="mr-2 text-xl" />
+        Newer Posts
+      </a>
+    )
+  }
+  {
+    page.url.next && (
+      <a
+        href={url(page.url.next)}
+        aria-label="Next Page"
+        class="whitespace-nowrap flex max-w-1/2 flex-row items-center justify-around text-accent p-2 pl-4 border-1 border-accent/70"
+      >
+        Older Posts
+        <Icon name="material-symbols:keyboard-double-arrow-right" class="ml-2 text-xl" />
+      </a>
+    )
+  }
+</div>
