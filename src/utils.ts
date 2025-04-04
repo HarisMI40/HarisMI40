@@ -97,31 +97,14 @@ export function resolveElementStyles(
   return result
 }
 
-export async function getSortedPosts(): Promise<
-  { body: string; data: PostData; slug: string }[]
-> {
-  const allBlogPosts = (await getCollection('posts', ({ data }) => {
+export async function getSortedPosts() {
+  const allPosts = await getCollection('posts', ({ data }) => {
     return import.meta.env.PROD ? data.draft !== true : true
-  })) as unknown as { body: string; data: PostData; slug: string }[]
-
-  const sorted = allBlogPosts.sort(
-    (a: { data: PostData }, b: { data: PostData }) => {
-      const dateA = new Date(a.data.published)
-      const dateB = new Date(b.data.published)
-      return dateA > dateB ? -1 : 1
-    },
-  )
-
-  for (let i = 1; i < sorted.length; i++) {
-    sorted[i].data.nextSlug = sorted[i - 1].slug
-    sorted[i].data.nextTitle = sorted[i - 1].data.title
-  }
-  for (let i = 0; i < sorted.length - 1; i++) {
-    sorted[i].data.prevSlug = sorted[i + 1].slug
-    sorted[i].data.prevTitle = sorted[i + 1].data.title
-  }
-
-  return sorted
+  })
+  const sortedPosts = allPosts.sort((a, b) => {
+    return a.data.published > b.data.published ? -1 : 1
+  })
+  return sortedPosts
 }
 
 export function url(path: string) {
