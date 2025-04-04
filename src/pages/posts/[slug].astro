@@ -1,19 +1,23 @@
 ---
-import type { GetStaticPaths, Page } from 'astro'
+import type { GetStaticPaths } from 'astro'
 import Layout from '@layouts/Layout.astro'
 import { dateString, getSortedPosts } from '@utils'
 
 export const getStaticPaths = (async () => {
   const posts = await getSortedPosts()
-  return posts.map((post) => {
+  return posts.map((post, index) => {
+    const validPrev = index > 0
+    const validNext = index < posts.length - 1
+    const prev = validPrev ? posts[index - 1] : undefined
+    const next = validNext ? posts[index + 1] : undefined
     return {
       params: { slug: post.id },
-      props: { post },
+      props: { post, prev, next },
     }
   })
 }) satisfies GetStaticPaths
 
-const { post } = Astro.props
+const { post, prev, next } = Astro.props
 const postData = post.data
 ---
 
