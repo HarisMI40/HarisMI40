@@ -1,25 +1,16 @@
 ---
 import type { GetStaticPaths, Page } from 'astro'
 import Layout from '@layouts/Layout.astro'
-import { dateString } from '@utils'
-import { getCollection } from 'astro:content'
+import { dateString, getSortedPosts } from '@utils'
 
-interface Props {
-  post: Page
-}
-
-export const getStaticPaths = (async ({ paginate }) => {
-  const postsContent = await getCollection('posts')
-  const sortedPosts = postsContent.sort((x) => {
-    return x.data.published.getMilliseconds() - x.data.published.getMilliseconds()
-  })
-  const pages = sortedPosts.map((post) => {
+export const getStaticPaths = (async () => {
+  const posts = await getSortedPosts()
+  return posts.map((post) => {
     return {
       params: { slug: post.id },
       props: { post },
     }
   })
-  return paginate(pages, { pageSize: 8 })
 }) satisfies GetStaticPaths
 
 const { post } = Astro.props
