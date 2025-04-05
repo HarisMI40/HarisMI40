@@ -1,7 +1,11 @@
 ---
 import PostExcerpt from '@igor.dvlpr/astro-post-excerpt'
 import { dateString, url } from '@utils'
+import type { CollectionEntry } from 'astro:content'
 
+interface Props {
+  post: CollectionEntry<'posts'>
+}
 
 const { post } = Astro.props
 ---
