@@ -84,7 +84,7 @@ export function resolveElementStyles(
     return { ...theme.colors, ...scopedThemeSettings }
   }
   const flattenedTheme = flattenThemeColors(theme)
-  console.log(flattenedTheme)
+  // console.log(flattenedTheme)
   Object.entries(defaultStyles).forEach(([el, groups]) => {
     const overrideGroups = overrides ? overrides[el as keyof ThemeStyles] : []
     for (const group of [...(overrideGroups || []), ...groups]) {
@@ -108,5 +108,7 @@ export async function getSortedPosts() {
 }
 
 export function url(...paths: string[]) {
-  return `${import.meta.env.BASE_URL}/${paths.join('/')}`.replace(/\/+/g, '/').replace(/\/$/, '')
+  const base = import.meta.env.BASE_URL
+  const url = `${base}/${paths.join('/')}`.replace(/\/+/g, '/').replace(/\/$/, '')
+  return url === '' ? '/' : url
 }
