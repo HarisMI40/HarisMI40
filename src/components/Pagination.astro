@@ -1,36 +1,37 @@
 ---
-import { url } from '@utils'
-import type { Page } from 'astro'
 import { Icon } from 'astro-icon/components'
 
 interface Props {
-  page: Page
+  prevLink?: string
+  prevText?: string
+  nextLink?: string
+  nextText?: string
 }
 
-const { page } = Astro.props
+const { prevLink, prevText, nextLink, nextText } = Astro.props
 ---
 
 <div class="my-5 flex flex-row gap-10 justify-center">
   {
-    page.url.prev && (
+    prevLink && (
       <a
-        href={url(page.url.prev)}
+        href={prevLink}
         aria-label="Previous Page"
         class="flex whitespace-nowrap max-w-1/2 flex-row items-center justify-center text-accent p-2 pr-4 border-1 border-accent/70"
       >
         <Icon name="material-symbols:keyboard-double-arrow-left" class="mr-2 text-xl" />
-        Newer Posts
+        {prevText || 'Previous'}
       </a>
     )
   }
   {
-    page.url.next && (
+    nextLink && (
       <a
-        href={url(page.url.next)}
+        href={nextLink}
         aria-label="Next Page"
         class="whitespace-nowrap flex max-w-1/2 flex-row items-center justify-around text-accent p-2 pl-4 border-1 border-accent/70"
       >
-        Older Posts
+        {nextText || 'Next'}
         <Icon name="material-symbols:keyboard-double-arrow-right" class="ml-2 text-xl" />
       </a>
     )

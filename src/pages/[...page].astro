@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro'
 import Layout from '@layouts/Layout.astro'
-import { getSortedPosts } from '@utils'
+import { getSortedPosts, url } from '@utils'
 import { getCollection } from 'astro:content'
 import PostPreview from '@components/PostPreview.astro'
 import Pagination from '@components/Pagination.astro'
@@ -35,7 +35,12 @@ let homeContent = await getCollection('home')
       )
   }
   {page.data.map((post) => <PostPreview post={post} />)}
-  <Pagination page={page} />
+  <Pagination
+    prevLink={page.url.prev ? url(page.url.prev) : undefined}
+    prevText="Newer Posts"
+    nextLink={page.url.next ? url(page.url.next) : undefined}
+    nextText="Older Posts"
+  />
 </Layout>
 
 <style is:global>
