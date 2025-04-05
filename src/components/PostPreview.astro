@@ -1,8 +1,7 @@
 ---
 import PostExcerpt from '@igor.dvlpr/astro-post-excerpt'
-import { dateString } from '@utils'
+import { dateString, url } from '@utils'
 
-let postUrl = (post) => `/posts/${post.id}`
 
 const { post } = Astro.props
 ---
@@ -14,7 +13,7 @@ const { post } = Astro.props
       'after:absolute after:bottom-0.5 after:block after:content-normal after:w-full after:border-b-accent after:border-b-3 after:border-dotted',
     ]}
   >
-    <a href={postUrl(post)}>{post.data.title}</a>
+    <a href={url('posts', post.id)}>{post.data.title}</a>
   </h2>
   <div class="text-foreground/80">
     <time>{dateString(post.data.published)}</time>
@@ -33,7 +32,7 @@ const { post } = Astro.props
     post.data.tags && (
       <div class="text-accent mb-5">
         {post.data.tags.map((tag) => (
-          <a class="underline mr-4 inline-block" href={`/tags/${tag}`}>
+          <a class="underline mr-4 inline-block" href={url('tags', tag)}>
             #{tag}
           </a>
         ))}
@@ -41,7 +40,7 @@ const { post } = Astro.props
     )
   }
   <div class="text-accent">
-    <a class="inline-block border-1 border-accent/70 p-2" href={postUrl(post)}>
+    <a class="inline-block border-1 border-accent/70 p-2" href={url('posts', post.id)}>
       Read More
     </a>
   </div>
