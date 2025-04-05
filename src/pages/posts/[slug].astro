@@ -1,7 +1,8 @@
 ---
 import type { GetStaticPaths } from 'astro'
 import Layout from '@layouts/Layout.astro'
-import { dateString, getSortedPosts } from '@utils'
+import { dateString, getSortedPosts, url } from '@utils'
+import Pagination from '@components/Pagination.astro'
 
 export const getStaticPaths = (async () => {
   const posts = await getSortedPosts()
@@ -54,4 +55,10 @@ const postData = post.data
     }
     <div class="my-5 prose" set:html={post.rendered?.html} />
   </article>
+  <Pagination
+    prevLink={prev ? url('posts', prev.id) : undefined}
+    prevText="Previous Post"
+    nextLink={next ? url('posts', next.id) : undefined}
+    nextText="Next Post"
+  />
 </Layout>
