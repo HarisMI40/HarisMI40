@@ -1,0 +1,33 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Layout from '@layouts/Layout.astro'
+import { getSortedPosts, url } from '@utils'
+import PostPreviewsWithYear from '@components/PostPreviewsWithYear.astro'
+import Pagination from '@components/Pagination.astro'
+
+// Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
+export const getStaticPaths = (async ({ paginate }) => {
+  const sortedPosts = await getSortedPosts()
+  const allTags = new Set(sortedPosts.flatMap((post) => post.data.tags))
+  // flatMap is necessary here to lift paginate lists into top-level list
+  const pages = [...allTags].flatMap((tag) => {
+    const postsWithTag = sortedPosts.filter((post) => {
+      return new Set(post.data.tags).has(tag)
+    })
+    return paginate(postsWithTag, { params: { tag }, pageSize: 1 })
+  })
+  return pages
+}) satisfies GetStaticPaths
+
+const { page } = Astro.props
+---
+
+<Layout>
+  <PostPreviewsWithYear posts={page.data} />
+  <Pagination
+    prevLink={page.url.prev ? url(page.url.prev) : undefined}
+    prevText="Newer Posts"
+    nextLink={page.url.next ? url(page.url.next) : undefined}
+    nextText="Older Posts"
+  />
+</Layout>
