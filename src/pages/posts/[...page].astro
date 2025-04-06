@@ -1,0 +1,25 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Layout from '@layouts/Layout.astro'
+import { getSortedPosts, url } from '@utils'
+import PostPreview from '@components/PostPreview.astro'
+import Pagination from '@components/Pagination.astro'
+
+// Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
+export const getStaticPaths = (async ({ paginate }) => {
+  const sortedPosts = await getSortedPosts()
+  return paginate(sortedPosts, { pageSize: 2 })
+}) satisfies GetStaticPaths
+
+const { page } = Astro.props
+---
+
+<Layout>
+  {page.data.map((post) => <PostPreview post={post} />)}
+  <Pagination
+    prevLink={page.url.prev ? url(page.url.prev) : undefined}
+    prevText="Newer Posts"
+    nextLink={page.url.next ? url(page.url.next) : undefined}
+    nextText="Older Posts"
+  />
+</Layout>
