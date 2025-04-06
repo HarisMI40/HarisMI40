@@ -1,6 +1,6 @@
 +++
 title = "The Art of Cupcake Baking: A Sweet Journey"
-published = 2025-03-01
+published = 2023-03-01
 draft = false
 tags = ["baking", "DIY"]
 +++
