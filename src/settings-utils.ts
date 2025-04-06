@@ -4,7 +4,7 @@ import { h } from "hastscript";
 export function createHeadingAnchor(node: Element): Element {
   let x
   try {
-    x = parseInt(node.tagName.charAt(1)) - 1
+    x = parseInt(node.tagName.charAt(1))
   } catch (e) {
     x = 1
   }
