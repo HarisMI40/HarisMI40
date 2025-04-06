@@ -5,6 +5,34 @@ description = "Just gotta post"
 draft = false
 author = "Mary Shelley"
 +++
+
+Here is an example of markdown with codeblocks:
+
+# Header 1
+This is a paragraph.
+
+## Header 2
+
+
+```python
+python def hello_world(): print("Hello, world!") hello_world()
+```
+
+### Header 3
+- List item 1
+- List item 2
+
+**Bold text**
+
+*Italic text*
+
+~~Strikethrough text~~
+
+[Link](https://www.example.com)
+
+![Image alt text](https://example.com/image.jpg)
+
+
 Say some stuff!
 
 <button>test</button>
@@ -13,13 +41,17 @@ Say some stuff!
 
 > blockquote example
 
-```ts
+So I'm writing about some code stuff:
+
+```ts lines
 console.log("test")
 
 function example(x: number) {
   return x + 2
 }
 ```
+
+And you know that's a lot of codes.
 
 ___
 

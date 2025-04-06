@@ -1,7 +1,7 @@
 +++
 framed = true
 +++
-# Welcome to Sweet Pea's Bakery!
+## Welcome to Sweet Pea's Bakery!
 
 Hello, fellow baking lovers! I’m Sweet Pea, your friendly neighborhood baker. From scrumptious cupcakes to mouthwatering cookies, my kitchen is filled with love and a sprinkle of magic. Join me as I share my favorite recipes and baking tips. Let’s whip up some happiness together—one delicious bite at a time! 🍰✨
 
