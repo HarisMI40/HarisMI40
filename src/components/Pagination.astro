@@ -17,7 +17,7 @@ const { prevLink, prevText, nextLink, nextText } = Astro.props
       <a
         href={prevLink}
         aria-label="Previous Page"
-        class="flex whitespace-nowrap flex-row items-center justify-center text-accent p-2 pr-3 border-1 border-accent/70"
+        class="flex whitespace-nowrap flex-row items-center justify-center text-accent p-2 pr-3 border-1 border-accent/70 border-dashed"
       >
         <Icon name="material-symbols:keyboard-double-arrow-left" class="mr-2 text-xl" />
         {prevText || 'Previous'}
@@ -30,7 +30,7 @@ const { prevLink, prevText, nextLink, nextText } = Astro.props
         href={nextLink}
         aria-label="Next Page"
         class:list={[
-          'whitespace-nowrap flex flex-row items-center justify-around text-accent p-2 pl-3 border-1 border-accent/70',
+          'whitespace-nowrap flex flex-row items-center justify-around text-accent p-2 pl-3 border-1 border-accent/70 border-dashed',
           prevLink && 'ml-auto',
         ]}
       >
