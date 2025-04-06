@@ -49,8 +49,8 @@ const { post } = Astro.props
       </div>
     )
   }
-  <div class="text-accent">
-    <a class="inline-block border-1 border-dashed border-accent/70 p-2" href={url('posts', post.id)}>
+  <div>
+    <a class="button" href={url('posts', post.id)}>
       Read More
     </a>
   </div>

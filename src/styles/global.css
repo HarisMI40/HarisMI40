@@ -19,13 +19,17 @@ button:active {
   @apply outline-1 outline-accent outline-offset-2
 }
 
+a.button {
+  @apply inline-flex text-accent border-3 border-accent/80 p-2 whitespace-nowrap;
+}
+
 .prose {
 
   div.expressive-code {
     @apply my-8;
 
     figure {
-      @apply border-1 border-[var(--theme-accent)]/10
+      @apply border-1 border-[var(--theme-accent)]/10;
     }
   }
 
