@@ -1,0 +1,43 @@
+---
+import Layout from '@layouts/Layout.astro'
+import { getSortedPosts, url } from '@utils'
+import { getCollection } from 'astro:content'
+import PostPreview from '@components/PostPreview.astro'
+import { Icon } from 'astro-icon/components'
+
+const homeContent = await getCollection('home')
+const posts = (await getSortedPosts()).slice(0, 3)
+---
+
+<Layout>
+  {
+    homeContent.map(
+      (home) =>
+        home.body && (
+          <div
+            class:list={[
+              'my-4 p-5 max-w-full prose',
+              home.data.framed && 'border-1 border-accent',
+            ]}
+            set:html={home.rendered?.html}
+          />
+        ),
+    )
+  }
+  {posts.map((post) => <PostPreview post={post} />)}
+  <div class="flex justify-center">
+    <a
+      class="whitespace-nowrap flex flex-row items-center justify-around text-accent p-2 pl-3 border-1 border-accent/70"
+      href={url('posts')}
+    >
+      Archive
+      <Icon name="material-symbols:keyboard-double-arrow-right" class="ml-2 text-xl" />
+    </a>
+  </div>
+</Layout>
+
+<style is:global>
+  a.heading-anchor {
+    display: none !important;
+  }
+</style>
