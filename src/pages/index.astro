@@ -17,7 +17,7 @@ const posts = (await getSortedPosts()).slice(0, 3)
         home.body && (
           <div
             class:list={[
-              'my-4 py-5 max-w-full prose',
+              'my-4 max-w-full prose',
               home.data.framed && ' border-accent/10',
             ]}
             set:html={home.rendered?.html}
