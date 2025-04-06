@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from 'astro'
 import Layout from '@layouts/Layout.astro'
 import { getSortedPosts, url } from '@utils'
-import PostPreview from '@components/PostPreview.astro'
+import PostPreviewsWithYear from '@components/PostPreviewsWithYear.astro'
 import Pagination from '@components/Pagination.astro'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
@@ -12,29 +12,10 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths
 
 const { page } = Astro.props
-let currentYear = 0
 ---
 
 <Layout>
-  <div class="mt-8 mb-4">
-    {
-      page.data.map((post) => {
-        const yearPublished = post.data.published.getFullYear()
-        if (yearPublished !== currentYear) {
-          currentYear = yearPublished
-          return (
-            <>
-              <div class="text-2xl my-3 text-foreground/50 bubble-border border-foreground/50 after:border-foreground/50">
-                {yearPublished}
-              </div>
-              <PostPreview post={post} />
-            </>
-          )
-        }
-        return <PostPreview post={post} />
-      })
-    }
-  </div>
+  <PostPreviewsWithYear posts={page.data} />
   <Pagination
     prevLink={page.url.prev ? url(page.url.prev) : undefined}
     prevText="Newer Posts"
