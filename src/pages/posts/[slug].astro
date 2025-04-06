@@ -24,13 +24,8 @@ const postData = post.data
 
 <Layout>
   <article class="max-w-full py-7.5">
-    <h1
-      class:list={[
-        'relative text-xl text-accent mb-3 pb-4 border-b-3 border-dotted border-accent font-bold',
-        'after:absolute after:bottom-0.5 after:block after:content-normal after:w-full after:border-b-accent after:border-b-3 after:border-dotted',
-      ]}
-    >
-      {postData.title}
+    <h1 class="mb-3 text-2xl text-[var(--theme-h1)] font-semibold">
+      # {postData.title}
     </h1>
     <div class="text-foreground/80 mb-2.5">
       <time>{dateString(postData.published)}</time>

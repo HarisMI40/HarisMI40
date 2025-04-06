@@ -10,19 +10,8 @@ interface Props {
 const { post } = Astro.props
 ---
 
-<article
-  class:list={[
-    'w-full py-5 my-4 border-accent/10',
-    // 'border-1'
-  ]}
->
-  <h1
-    class:list={[
-      'relative mb-3 text-2xl text-[var(--theme-h1)] font-semibold',
-      // 'border-b-3 border-dotted border-accent',
-      // 'after:absolute after:bottom-0.5 after:block after:content-normal after:w-full after:border-b-accent after:border-b-3 after:border-dotted',
-    ]}
-  >
+<article class="w-full py-5 my-4 border-accent/10">
+  <h1 class="mb-3 text-2xl text-[var(--theme-h1)] font-semibold">
     <a href={url('posts', post.id)}># {post.data.title}</a>
   </h1>
   <div class="text-foreground/80">
@@ -50,8 +39,6 @@ const { post } = Astro.props
     )
   }
   <div>
-    <a class="button" href={url('posts', post.id)}>
-      Read More
-    </a>
+    <a class="button" href={url('posts', post.id)}> Read More </a>
   </div>
 </article>
