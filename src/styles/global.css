@@ -23,6 +23,14 @@ a.button {
   @apply inline-flex text-accent border-3 border-accent/80 p-2 whitespace-nowrap;
 }
 
+.bubble-border {
+  @apply relative pb-4 border-b-3 border-dotted;
+
+  &::after {
+    @apply absolute bottom-0.5 block content-normal w-full border-b-3 border-dotted content-[''];
+  }
+}
+
 .prose {
 
   div.expressive-code {
