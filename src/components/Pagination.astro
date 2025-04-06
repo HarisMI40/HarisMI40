@@ -11,13 +11,13 @@ interface Props {
 const { prevLink, prevText, nextLink, nextText } = Astro.props
 ---
 
-<div class="my-5 flex flex-row gap-10 justify-center">
+<div class="my-5 flex flex-row flex-wrap gap-3">
   {
     prevLink && (
       <a
         href={prevLink}
         aria-label="Previous Page"
-        class="flex whitespace-nowrap max-w-1/2 flex-row items-center justify-center text-accent p-2 pr-4 border-1 border-accent/70"
+        class="flex whitespace-nowrap flex-row items-center justify-center text-accent p-2 pr-4 border-1 border-accent/70"
       >
         <Icon name="material-symbols:keyboard-double-arrow-left" class="mr-2 text-xl" />
         {prevText || 'Previous'}
@@ -29,7 +29,7 @@ const { prevLink, prevText, nextLink, nextText } = Astro.props
       <a
         href={nextLink}
         aria-label="Next Page"
-        class="whitespace-nowrap flex max-w-1/2 flex-row items-center justify-around text-accent p-2 pl-4 border-1 border-accent/70"
+        class="whitespace-nowrap ml-auto flex flex-row items-center justify-around text-accent p-2 pl-4 border-1 border-accent/70"
       >
         {nextText || 'Next'}
         <Icon name="material-symbols:keyboard-double-arrow-right" class="ml-2 text-xl" />
