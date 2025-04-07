@@ -4,9 +4,10 @@ import PostPreview from './PostPreview.astro'
 
 interface Props {
   posts: CollectionEntry<'posts'>[]
+  yearMarkers?: boolean
 }
 
-const { posts } = Astro.props
+const { posts, yearMarkers } = Astro.props
 let currentYear = 0
 ---
 
@@ -14,7 +15,7 @@ let currentYear = 0
   {
     posts.map((post) => {
       const yearPublished = post.data.published.getFullYear()
-      if (yearPublished !== currentYear) {
+      if (yearMarkers && yearPublished !== currentYear) {
         currentYear = yearPublished
         return (
           <>

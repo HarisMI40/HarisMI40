@@ -24,7 +24,7 @@ a.button {
 }
 
 .bubble-border {
-  @apply relative pb-4 border-b-3 border-dotted;
+  @apply relative pb-4 border-b-4 border-dotted;
 
   &::after {
     @apply absolute bottom-0.5 block content-normal w-full border-b-3 border-dotted content-[''];
