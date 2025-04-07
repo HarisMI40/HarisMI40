@@ -3,8 +3,8 @@ import Layout from '@layouts/Layout.astro'
 import { getSortedPosts, url } from '@utils'
 import { getCollection } from 'astro:content'
 import PostPreview from '@components/PostPreview.astro'
-import { Icon } from 'astro-icon/components'
 import Pagination from '@components/Pagination.astro'
+import BlockHeader from '@components/BlockHeader.astro'
 
 const homeContent = await getCollection('home')
 const posts = (await getSortedPosts()).slice(0, 3)
@@ -25,6 +25,7 @@ const posts = (await getSortedPosts()).slice(0, 3)
         ),
     )
   }
+  <BlockHeader>Posts</BlockHeader>
   {posts.map((post) => <PostPreview post={post} />)}
   <Pagination nextLink={url('posts')} nextText="Archive" />
 </Layout>

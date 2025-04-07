@@ -4,6 +4,7 @@ import Layout from '@layouts/Layout.astro'
 import { getSortedPosts, url } from '@utils'
 import PostPreviewsWithYear from '@components/PostPreviewsWithYear.astro'
 import Pagination from '@components/Pagination.astro'
+import BlockHeader from '@components/BlockHeader.astro'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
@@ -15,6 +16,7 @@ const { page } = Astro.props
 ---
 
 <Layout>
+  <BlockHeader>Archive</BlockHeader>
   <PostPreviewsWithYear posts={page.data} />
   <Pagination
     prevLink={page.url.prev ? url(page.url.prev) : undefined}
