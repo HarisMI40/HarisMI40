@@ -29,7 +29,7 @@ const { post } = Astro.props
   </p>
   {
     post.data.tags && (
-      <div class="text-accent mb-5">
+      <div class="text-accent mb-6">
         {post.data.tags.map((tag) => (
           <a class="underline mr-4 inline-block" href={url('tags', tag)}>
             #{tag}
