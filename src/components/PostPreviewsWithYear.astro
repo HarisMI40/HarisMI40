@@ -10,7 +10,7 @@ const { posts } = Astro.props
 let currentYear = 0
 ---
 
-<div class="mt-8 mb-4">
+<div class="my-4">
   {
     posts.map((post) => {
       const yearPublished = post.data.published.getFullYear()

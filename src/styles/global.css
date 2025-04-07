@@ -20,7 +20,7 @@ button:active {
 }
 
 a.button {
-  @apply inline-flex text-accent border-3 border-accent/80 p-2 whitespace-nowrap;
+  @apply inline-flex text-accent border-3 border-accent/80 p-2 whitespace-nowrap hover:bg-accent/10;
 }
 
 .bubble-border {
