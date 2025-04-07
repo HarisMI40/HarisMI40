@@ -2,12 +2,17 @@
 import PostExcerpt from '@igor.dvlpr/astro-post-excerpt'
 import { dateString, url } from '@utils'
 import type { CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
 
 interface Props {
   post: CollectionEntry<'posts'>
 }
 
 const { post } = Astro.props
+
+const { remarkPluginFrontmatter } = await render(post)
+const { minutesRead } = remarkPluginFrontmatter
+const description = remarkPluginFrontmatter.description || post.data.description
 ---
 
 <article class="w-full py-5 my-4 border-accent/10">
@@ -23,10 +28,15 @@ const { post } = Astro.props
         </span>
       )
     }
+    {
+      minutesRead && (
+        <span class="before:content-['::'] before:inline-block before:mx-0.5">
+          {minutesRead}
+        </span>
+      )
+    }
   </div>
-  <p class="my-4 text-foreground">
-    {post.data.description ? post.data.description : <PostExcerpt post={post} />}
-  </p>
+  {description && <p class="my-4 text-foreground">{description}</p>}
   {
     post.data.tags && (
       <div class="text-accent mb-6">

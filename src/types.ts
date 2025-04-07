@@ -33,4 +33,6 @@ export interface SiteConfig {
   title: string
 }
 
+export interface RemarkPage {
+  data: { astro: { frontmatter: { [key: string]: any } } }
 }
