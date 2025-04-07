@@ -1,4 +1,4 @@
-import type { PostData, ThemeStyles } from "@types";
+import type { ThemeStyles } from "@types";
 import type { ExpressiveCodeTheme } from "astro-expressive-code";
 import { getCollection } from "astro:content";
 
