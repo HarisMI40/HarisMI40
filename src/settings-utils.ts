@@ -1,6 +1,6 @@
 import type { Element } from "hast";
 import type { Root } from "mdast"
-import type { VFile } from "vfile"
+import type { RemarkPage } from "@types"
 import { h } from "hastscript";
 import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';

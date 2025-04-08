@@ -27,11 +27,9 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "tailwindcss": "^4.0.17",
-    "typescript": "^5.8.2",
-    "vfile": "^6.0.3"
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "@igor.dvlpr/astro-post-excerpt": "^3.0.4",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1",
     "sass-embedded": "^1.86.0"

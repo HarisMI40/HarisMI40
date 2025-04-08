@@ -65,13 +65,7 @@ importers:
       typescript:
         specifier: ^5.8.2
         version: 5.8.2
-      vfile:
-        specifier: ^6.0.3
-        version: 6.0.3
     devDependencies:
-      '@igor.dvlpr/astro-post-excerpt':
-        specifier: ^3.0.4
-        version: 3.0.4(astro@5.5.5(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.37.0)(sass-embedded@1.86.0)(typescript@5.8.2)(yaml@2.7.0))
       prettier:
         specifier: 3.5.3
         version: 3.5.3
@@ -328,16 +322,6 @@ packages:
 
   '@iconify/utils@2.3.0':
     resolution: {integrity: sha512-GmQ78prtwYW6EtzXRU1rY+KwOKfz32PD7iJh6Iyqw68GiKuoZ2A6pRtzWONz5VQJbp50mEjXh/7NkumtrAgRKA==}
-
-  '@igor.dvlpr/astro-post-excerpt@3.0.4':
-    resolution: {integrity: sha512-6SAFf4ntbtmTqFfRNTyaIR+57cYNFNVb0M11b4dE+6zsLgWxzEvla4lCXbGgHl537qHeOHwmBGsPbV9u7pYqhA==}
-    engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
-    peerDependencies:
-      astro: '>=1.0.0'
-
-  '@igor.dvlpr/strip-yaml-front-matter@1.0.0':
-    resolution: {integrity: sha512-SZjJC9p3X7TPEgwjCLYYfE21JAXptcITvwMZnmcJ14vzPiUsduNPykoPGCQw8Tu04lJ0dgyg0CmSeL78b7OFEQ==}
-    engines: {node: '>=20.0'}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -2673,18 +2657,6 @@ snapshots:
       mlly: 1.7.4
     transitivePeerDependencies:
       - supports-color
-
-  '@igor.dvlpr/astro-post-excerpt@3.0.4(astro@5.5.5(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.37.0)(sass-embedded@1.86.0)(typescript@5.8.2)(yaml@2.7.0))':
-    dependencies:
-      '@igor.dvlpr/strip-yaml-front-matter': 1.0.0
-      astro: 5.5.5(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.37.0)(sass-embedded@1.86.0)(typescript@5.8.2)(yaml@2.7.0)
-      mdast-util-from-markdown: 2.0.2
-      mdast-util-mdx: 3.0.0
-      micromark-extension-mdxjs: 3.0.0
-    transitivePeerDependencies:
-      - supports-color
-
-  '@igor.dvlpr/strip-yaml-front-matter@1.0.0': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
