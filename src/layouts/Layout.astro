@@ -37,13 +37,11 @@ Object.entries(resolveElementStyles(theme, siteConfig.theme.overrides)).forEach(
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{pageTitle}</title>
-  </head>
+    <style is:global define:vars={cssVars}></style></head
+  >
   <body class="w-full h-full m-0 bg-background text-foreground">
     <div
-      class:list={[
-        'flex flex-col max-w-[812px] min-h-screen border-accent/10 m-auto py-5 px-2 sm:px-6 md:p-10',
-        // 'border-x',
-      ]}
+      class="flex flex-col max-w-[812px] min-h-screen border-accent/10 m-auto py-5 px-4 sm:px-6 md:p-10"
     >
       <Header />
       <div class="flex flex-col">
@@ -53,5 +51,3 @@ Object.entries(resolveElementStyles(theme, siteConfig.theme.overrides)).forEach(
     </div>
   </body>
 </html>
-
-<style is:global define:vars={cssVars}></style>
