@@ -15,7 +15,7 @@ import { createHeadingAnchor, remarkDescription, remarkReadingTime } from './src
 export default defineConfig({
   markdown: {
     remarkPlugins: [
-      [remarkDescription, { maxChars: 400 }],
+      [remarkDescription, { maxChars: 200 }],
       remarkReadingTime,
     ],
     rehypePlugins: [
