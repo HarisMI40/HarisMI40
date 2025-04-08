@@ -9,7 +9,7 @@ import expressiveCode from "astro-expressive-code";
 import siteConfig from './src/site.config'
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import icon from 'astro-icon';
-import { createHeadingAnchor, remarkDescription, remarkReadingTime } from './src/settings-utils';
+import { createHeadingAnchor, remarkDescription, remarkReadingTime, rehypeTitleFigure } from './src/settings-utils';
 
 // https://astro.build/config
 export default defineConfig({
@@ -30,6 +30,7 @@ export default defineConfig({
           content: createHeadingAnchor,
         },
       ],
+      rehypeTitleFigure,
     ],
   },
   vite: {

@@ -94,15 +94,21 @@ a.button {
     @apply block max-w-full border-8 border-accent p-2 overflow-hidden
   }
 
-  figure img, figure video {
-    @apply mb-0 border-b-0
+  figure:not(.expressive-code figure) {
+    @apply inline-block m-auto;
+
+    figcaption {
+      @apply bg-accent text-background text-center py-2;
+    }
+
+    img,
+    video {
+      @apply mb-0 border-b-0;
+    }
   }
 
-  figure figcaption:not(.expressive-code figcaption) {
-    @apply bg-accent text-background text-center py-2
-  }
-
-  ul, ol {
+  ul,
+  ol {
     @apply ml-9.5
   }
 
