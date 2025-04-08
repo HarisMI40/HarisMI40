@@ -5,13 +5,14 @@ import PostPreview from './PostPreview.astro'
 interface Props {
   posts: CollectionEntry<'posts'>[]
   yearMarkers?: boolean
+  class?: string
 }
 
-const { posts, yearMarkers } = Astro.props
+const { posts, yearMarkers, class: className } = Astro.props
 let currentYear = 0
 ---
 
-<div class="my-4">
+<div class={className}>
   {
     posts.map((post) => {
       const yearPublished = post.data.published.getFullYear()
