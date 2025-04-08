@@ -15,16 +15,16 @@ export function createHeadingAnchor(node: Element): Element {
 }
 
 export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number }) => {
-  const maxChars = options && options.maxChars || 400
+  const maxChars = options && options.maxChars || 200
   return function(tree, { data }) {
     const firstPara = tree.children.find((x) => x.type === "paragraph")
     if (firstPara && data.astro?.frontmatter) {
-      let paraString = toString(firstPara)
-      if (paraString.length > maxChars) {
-        const lastSpace = paraString.slice(0, maxChars).lastIndexOf(' ')
-        paraString = paraString.slice(0, lastSpace) + "…"
+      let description = toString(firstPara)
+      if (description.length > maxChars) {
+        const lastSpace = description.slice(0, maxChars).lastIndexOf(' ')
+        description = description.slice(0, lastSpace) + "…"
       }
-      data.astro.frontmatter.description = paraString;
+      data.astro.frontmatter.description = description;
     }
   }
 }
