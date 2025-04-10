@@ -3,7 +3,6 @@ import type { RehypePlugin, RemarkPlugin } from "@astrojs/markdown-remark";
 import { h } from "hastscript";
 import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
-import { visit } from 'unist-util-visit'
 
 export function createHeadingAnchor(node: hast.Element): hast.Element {
   let x
@@ -52,20 +51,15 @@ export const rehypeTitleFigure: RehypePlugin = (_options?) => {
     ])
     return figure
   }
-  function transformer(tree: hast.Root) {
-    if (!Array.isArray(tree?.children)) return tree
-    visit(tree, { tagName: 'p' }, (el, index, parent) => {
-      if (!Array.isArray(tree?.children) || parent?.type !== 'root') return
-      const isImgElement = (el: hast.ElementContent): el is hast.Element => {
-        return 'tagName' in el && el.tagName === 'img'
-      }
-      const images = el.children.filter(isImgElement).map(buildFigure)
-      if (images.length === 0) return
-      if (index) tree.children[index] = images
-    })
-    tree.children = tree.children.flat()
-
-    return tree
+  function isElement(content: hast.RootContent): content is hast.Element {
+    return content.type === "element"
   }
-  return transformer
+  return function(tree: hast.Root) {
+    tree.children.map(content => {
+      if (isElement(content) && content.tagName === "img") {
+        return buildFigure(content)
+      }
+      return content
+    })
+  }
 }

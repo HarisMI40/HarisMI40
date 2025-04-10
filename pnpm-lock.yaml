@@ -62,9 +62,6 @@ importers:
       typescript:
         specifier: ^5.8.2
         version: 5.8.2
-      unist-util-visit:
-        specifier: ^5.0.0
-        version: 5.0.0
     devDependencies:
       '@astrojs/markdown-remark':
         specifier: ^6.3.1
