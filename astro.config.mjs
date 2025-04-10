@@ -41,6 +41,7 @@ export default defineConfig({
     expressiveCode({
       themes: [siteConfig.theme.name],
       defaultProps: {
+        showLineNumbers: false,
         wrap: false,
       },
       plugins: [
