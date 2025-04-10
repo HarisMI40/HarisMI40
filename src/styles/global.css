@@ -20,7 +20,7 @@ button:active {
 }
 
 a.button {
-  @apply inline-flex text-accent border-3 border-accent/80 py-2 px-5 whitespace-nowrap hover:bg-accent/10;
+  @apply inline-flex text-accent border-3 border-accent/80 py-2 px-5 whitespace-nowrap hover:bg-accent/10 rounded-xl;
 }
 
 .prose {
@@ -31,7 +31,25 @@ a.button {
     @apply my-8;
 
     figure {
-      @apply border-1 border-[var(--theme-accent)]/10;
+      @apply border-2 border-foreground/10 !rounded-xl;
+
+      figcaption {
+        @apply !bg-none;
+        border-radius: 10px 10px 0 0 !important;
+
+        span.title {
+          @apply !text-foreground/80 !pl-5;
+          width: 100%;
+          font-family: var(--theme-font);
+          font-size: var(--ec-codeFontSize);
+          border-radius: 10px 10px 0 0 !important;
+
+        }
+      }
+
+      &>pre {
+        border-radius: 10px !important;
+      }
     }
   }
 
@@ -87,23 +105,23 @@ a.button {
   }
 
   button {
-    @apply font-bold text-center text-accent py-1 px-4.5 border-4 border-accent cursor-pointer hover:bg-accent/15 transition-colors
+    @apply font-bold text-center text-accent py-1 px-4.5 border-4 border-accent rounded-xl cursor-pointer hover:bg-accent/15 transition-colors
   }
 
   img {
-    @apply block max-w-full border-8 border-accent p-2 overflow-hidden
+    @apply block max-w-full border-8 border-accent rounded-xl p-2 overflow-hidden
   }
 
   figure:not(.expressive-code figure) {
-    @apply inline-block m-auto;
+    @apply inline-block;
 
     figcaption {
-      @apply bg-accent text-background text-center py-2;
+      @apply bg-accent text-background text-center py-2 rounded-b-xl;
     }
 
     img,
     video {
-      @apply mb-0 border-b-0;
+      @apply mb-0 border-b-0 rounded-b-none;
     }
   }
 
@@ -117,11 +135,11 @@ a.button {
   }
 
   hr {
-    @apply h-0.5 my-12 text-[var(--theme-accent)]
+    @apply h-0.5 my-16 bg-accent border-none;
   }
 
   blockquote {
-    @apply relative border-y-1 border-accent p-6 before:content-['>'] before:block before:absolute before:text-accent before:left-0;
+    @apply relative border-y-1 border-accent p-6 before:content-['>'] before:block before:absolute before:text-accent before:font-bold before:left-0;
 
     p:first-child {
       @apply mt-0
@@ -143,7 +161,7 @@ a.button {
   }
 
   fieldset {
-    @apply inline-block border-2 border-accent/80 p-2.5;
+    @apply inline-block border-2 border-accent/80 p-2.5 rounded-xl;
   }
 
   fieldset *:first-child {
@@ -163,7 +181,7 @@ a.button {
   }
 
   input, textarea, select {
-    @apply bg-transparent text-foreground border-1 border-foreground p-2.5;
+    @apply bg-transparent text-foreground border-1 border-foreground p-2.5 rounded-xl;
   }
 
   input[type="checkbox"] {

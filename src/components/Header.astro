@@ -7,20 +7,19 @@ const links: NavLink[] = [
 ]
 ---
 
-<header class="flex flex-col">
-  <div class="flex flex-wrap items-stretch justify-between">
-    <div id="logo" class="flex flex-1 sm:basis-full">
-      <a
-        href="/"
-        class="px-2.5 py-1.5 max-w-full no-underline flex-none items-center bg-accent text-background font-bold"
-      >
-        Terminal
-      </a>
-    </div>
-    <nav id="nav-mobile" aria-label="Menu" class="relative p-0 m-0 text-accent sm:hidden">
+<header>
+  <div class="flex justify-between bg-accent/10 rounded-xl">
+    <a
+      id="logo"
+      href="/"
+      class="px-4 py-1.5 max-w-full no-underline items-center bg-accent text-background font-bold rounded-xl"
+    >
+      Terminal
+    </a>
+    <nav id="nav-mobile" aria-label="Menu" class="relative p-0 text-accent sm:hidden">
       <button
         id="nav-mobile-button"
-        class="px-2.5 h-full cursor-pointer border-2"
+        class="px-4 h-full cursor-pointer border-2 rounded-xl bg-background"
         type="button"
         aria-expanded="true"
         aria-controls="nav-menu-list"
@@ -29,7 +28,7 @@ const links: NavLink[] = [
       </button>
       <ul
         id="nav-mobile-list"
-        class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50"
+        class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
       >
         {
           links.map((link) => (
@@ -42,20 +41,20 @@ const links: NavLink[] = [
         }
       </ul>
     </nav>
-    <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
-      <ul class="flex flex-row bg-background text-accent mb-2.5">
-        {
-          links.map((link) => (
-            <li class="mr-5" aria-expanded="true">
-              <a class="underline" href={link.url}>
-                {link.name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
   </div>
+  <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
+    <ul class="flex flex-row bg-background text-accent mb-2.5">
+      {
+        links.map((link) => (
+          <li class="mr-5" aria-expanded="true">
+            <a class="underline" href={link.url}>
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 </header>
 
 <script>
@@ -70,18 +69,3 @@ const links: NavLink[] = [
     })
   })
 </script>
-
-<style lang="scss">
-  #logo::after {
-    content: '';
-    background: repeating-linear-gradient(
-      90deg,
-      var(--color-accent),
-      var(--color-accent) 2px,
-      transparent 0,
-      transparent 10px
-    );
-    display: block;
-    width: 100%;
-  }
-</style>
