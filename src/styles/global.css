@@ -109,11 +109,15 @@ a.button {
   }
 
   img {
-    @apply block max-w-full border-8 border-accent rounded-xl p-2 overflow-hidden
+    @apply block max-w-full border-8 border-accent rounded-xl p-2 overflow-hidden mx-auto;
+
+    &[src$="#pixelated"] {
+      image-rendering: pixelated;
+    }
   }
 
   figure:not(.expressive-code figure) {
-    @apply inline-block;
+    @apply inline-block mx-auto;
 
     figcaption {
       @apply bg-accent text-background text-center py-2 rounded-b-xl;
