@@ -38,12 +38,12 @@ a.button {
         border-radius: 10px 10px 0 0 !important;
 
         span.title {
-          @apply !text-foreground/80 !pl-5;
+          @apply !text-foreground/80;
           width: 100%;
           font-family: var(--theme-font);
           font-size: var(--ec-codeFontSize);
           border-radius: 10px 10px 0 0 !important;
-
+          padding-inline-start: calc(var(--ecIndent, 0ch) + var(--ec-codePadInl) - var(--ecGtrBrdWd, 1.5px)) !important;
         }
       }
 
