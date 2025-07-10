@@ -65,6 +65,7 @@ export function resolveElementStyles(
     ],
     italic: ['markup.italic', 'punctuation.definition.italic.markdown', 'editor.foreground'],
     a: ['markup.link', 'string.other.link.title.markdown', 'editor.foreground'],
+    hr: ['meta.separator', 'editor.foreground'],
   }
   let result: { [key: string]: string } = {}
   function flattenThemeColors(theme: ExpressiveCodeTheme): { [key: string]: string } {
