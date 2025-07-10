@@ -33,23 +33,35 @@ a.button {
     figure {
       @apply border-2 border-foreground/10 !rounded-xl;
 
+      &.has-title, &.is-terminal {
+        --button-spacing: 30px !important;
+      }
+
       figcaption {
-        @apply !bg-none;
         border-radius: 10px 10px 0 0 !important;
+        background: transparent !important;
+        padding-block: 0 !important;
 
         span.title {
-          @apply !text-foreground/80;
+          @apply !text-foreground/90 !bg-foreground/10 text-center !border-b-2 !border-t-0 !border-r-0 !border-l-0 !border-foreground/10;
           width: 100%;
           font-family: var(--theme-font);
           font-size: var(--ec-codeFontSize);
           border-radius: 10px 10px 0 0 !important;
-          padding-inline-start: calc(var(--ecIndent, 0ch) + var(--ec-codePadInl) - var(--ecGtrBrdWd, 1.5px)) !important;
+          border-bottom-width: 0 !important;
+          padding: unset !important;
+
+
+          &:after {
+            @apply !border-none;
+          }
         }
       }
 
       &>pre {
         border-radius: 10px !important;
       }
+
     }
   }
 
