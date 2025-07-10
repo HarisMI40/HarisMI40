@@ -1,5 +1,7 @@
 ---
-import type { NavLink } from '@types'
+import type { NavLink } from '@types' 
+import { Icon } from 'astro-icon/components'
+
 
 const links: NavLink[] = [
   { name: 'Home', url: '/' },
@@ -8,23 +10,40 @@ const links: NavLink[] = [
 ---
 
 <header>
-  <div class="flex justify-between bg-accent/10 rounded-xl">
+  <div class="relative flex items-center justify-center bg-accent/10 rounded-xl">
     <a
       id="logo"
       href="/"
-      class="px-4 py-1.5 max-w-full no-underline items-center bg-accent text-background font-bold rounded-xl"
+      class="block px-4 py-1.5 max-w-full no-underline items-center bg-accent text-background font-bold rounded-xl"
     >
       Terminal
     </a>
-    <nav id="nav-mobile" aria-label="Menu" class="relative p-0 text-accent sm:hidden">
+    <button id="theme-change-button" class="block ml-auto mr-3">
+      <Icon name="palette" class="size-6 text-[var(--theme-accent)]">
+    </button>
+    <ul
+        id="theme-change-list"
+        class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
+      >
+        {
+          ["theme1", "theme2"].map((theme) => (
+            <li class="p-1" aria-expanded="false">
+              <button>
+                {theme}
+              </button>
+            </li>
+          ))
+        }
+      </ul>
+    <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
       <button
         id="nav-mobile-button"
-        class="px-4 h-full cursor-pointer border-2 rounded-xl bg-background"
+        class="px-3 py-1 h-full cursor-pointer border-2 rounded-xl bg-background"
         type="button"
-        aria-expanded="true"
+        aria-expanded="false"
         aria-controls="nav-menu-list"
       >
-        Menu ▾
+        ▾
       </button>
       <ul
         id="nav-mobile-list"
@@ -58,14 +77,51 @@ const links: NavLink[] = [
 </header>
 
 <script>
+  let navMobileButton = document.getElementById('nav-mobile-button')
   let navMobileList = document.getElementById('nav-mobile-list')
   let navMobileListItems = navMobileList?.querySelectorAll('li')
-  let navMobileButton = document.getElementById('nav-mobile-button')
-  navMobileButton?.addEventListener('click', (_ev) => {
-    navMobileList?.classList.toggle('invisible')
-    let invisible = navMobileList?.classList.contains('invisible')
+  let toggleNavMobileMenu = (action: "on" | "off" | "toggle") => {
+    let isNowOpen: boolean = false
+    if (action === 'on') {
+      isNowOpen = true
+      navMobileList?.classList.remove('invisible')
+    } else if (action === 'off') {
+      isNowOpen = false
+      navMobileList?.classList.add('invisible')
+    } else {
+      isNowOpen = !navMobileList?.classList.toggle('invisible')
+    }
+    navMobileButton?.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
     navMobileListItems?.forEach((listItem) => {
-      listItem.setAttribute('aria-expanded', invisible ? 'false' : 'true')
+      listItem.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
     })
+  }
+  let themeChangeButton = document.getElementById('theme-change-button')
+  let themeChangeList = document.getElementById('theme-change-list')
+  let themeChangeListItems = themeChangeList?.querySelectorAll('li')
+  let toggleThemeChangeMenu = (action: "on" | "off" | "toggle") => {
+    let isNowOpen: boolean = false
+    if (action === 'on') {
+      isNowOpen = true
+      themeChangeList?.classList.remove('invisible')
+    } else if (action === 'off') {
+      isNowOpen = false
+      themeChangeList?.classList.add('invisible')
+    } else {
+      isNowOpen = !themeChangeList?.classList.toggle('invisible')
+    }
+    themeChangeButton?.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
+    themeChangeListItems?.forEach((listItem) => {
+      listItem.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
+    })
+  }
+
+  navMobileButton?.addEventListener('click', (_ev) => {
+    toggleThemeChangeMenu('off') // Close theme change menu if open
+    toggleNavMobileMenu('toggle')
+  })
+  themeChangeButton?.addEventListener('click', (_ev) => {
+    toggleNavMobileMenu('off') // Close mobile menu if open
+    toggleThemeChangeMenu('toggle')
   })
 </script>
