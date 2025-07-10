@@ -1,10 +1,11 @@
 +++
 title = "How to post"
 published = 2024-04-01
-description = "Just gotta post"
 draft = false
 author = "Mary Shelley"
 +++
+
+Welcome to the exciting world of coding websites, where creativity meets technology! In today’s digital age, having a strong online presence is essential, and understanding how to build and code websites is a valuable skill. Whether you're a complete beginner eager to learn the basics or an experienced developer looking to refine your skills, this blog will guide you through the essential concepts, tools, and best practices for creating stunning and functional websites. From HTML and CSS to JavaScript and beyond, we’ll explore the building blocks of web development, share tips and tricks, and inspire you to bring your unique ideas to life on the web. Join us on this journey to unlock the potential of coding and transform your vision into reality!
 
 Here is an example of markdown with codeblocks:
 
@@ -30,7 +31,7 @@ python def hello_world(): print("Hello, world!") hello_world()
 
 [Link](https://www.example.com)
 
-![Image alt text](https://example.com/image.jpg)
+![Image alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/IBM_Thinkpad_R51.jpg/640px-IBM_Thinkpad_R51.jpg#pixelated "A cool laptop")
 
 
 Say some stuff!
@@ -43,12 +44,24 @@ Say some stuff!
 
 So I'm writing about some code stuff:
 
-```ts lines
+```ts
 console.log("test")
 
 function example(x: number) {
   return x + 2
 }
+```
+
+```js title="my-test-file.js"
+console.log('Title attribute example')
+```
+
+```bash
+echo "This terminal frame has no title"
+```
+
+```powershell title="PowerShell terminal example"
+Write-Output "This one has a title!"
 ```
 
 And you know that's a lot of codes.
