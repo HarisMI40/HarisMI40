@@ -9,7 +9,7 @@ import BlockHeader from '@components/BlockHeader.astro'
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
   const sortedPosts = await getSortedPosts()
-  return paginate(sortedPosts, { pageSize: 10 })
+  return paginate(sortedPosts, { pageSize: 1 })
 }) satisfies GetStaticPaths
 
 const { page } = Astro.props
