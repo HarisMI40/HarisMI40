@@ -40,6 +40,7 @@ export default defineConfig({
     sitemap(),
     expressiveCode({
       themes: siteConfig.themeConfigs.map(themeConfig => themeConfig.theme),
+      useDarkModeMediaQuery: false,
       defaultProps: {
         showLineNumbers: false,
         wrap: false,

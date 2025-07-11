@@ -31,6 +31,8 @@ export interface ThemeConfig {
 
 export interface SiteConfig {
   themeConfigs: ThemeConfig[]
+  themeMode: "single" | "light-dark" | "select"
+  themeDefault: string
   font: string
   title: string
 }

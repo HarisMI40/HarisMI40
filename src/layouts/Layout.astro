@@ -27,16 +27,21 @@ let defaultTheme = siteConfig.themeConfigs[0].identifier
 let resolvedThemes: { [key: string]: { [key: string]: string } } = {}
 for (const themeConfig of siteConfig.themeConfigs) {
   const loadedTheme = await loadShikiTheme(themeConfig.theme)
-  resolvedThemes[themeConfig.identifier] = resolveElementStyles(loadedTheme, themeConfig.overrides)
+  resolvedThemes[themeConfig.identifier] = resolveElementStyles(
+    loadedTheme,
+    themeConfig.overrides,
+  )
 }
 
-let generatedCss: string =  Object.entries(resolvedThemes).map(([themeName, themeStyles]) => {
-  let cssVars = Object.entries(themeStyles).map(([key, value]) => {
-    return `--theme-${key}: ${value};`
-  }).join('\n')
-  return `:root[data-theme="${themeName}"] {\n${cssVars} }`
-}).join('\n')
-
+let cssLines: string[] = []
+for (const [themeId, themeStyles] of Object.entries(resolvedThemes)) {
+  cssLines.push(`:root[data-theme="${themeId}"] {`)
+  for (const [key, value] of Object.entries(themeStyles)) {
+    cssLines.push(`--theme-${key}: ${value};`)
+  }
+  cssLines.push(`}`)
+}
+let generatedCss: string = cssLines.join('\n')
 ---
 
 <!doctype html>
@@ -49,10 +54,34 @@ let generatedCss: string =  Object.entries(resolvedThemes).map(([themeName, them
     <title>{pageTitle}</title>
     <style is:global define:vars={baseCssVars}></style>
     <style is:inline set:html={generatedCss}></style>
-    <script is:inline>
-      let storedTheme = localStorage.getItem("data-theme");
-      if (storedTheme) {
-        document.documentElement.setAttribute("data-theme", storedTheme);
+    <script is:inline define:vars={{ siteConfig }}>
+      let getStoredTheme = () => localStorage.getItem('data-theme')
+      let storedTheme = getStoredTheme()
+      console.log('Stored theme:', storedTheme)
+      if (!storedTheme) {
+        storedTheme = siteConfig.themeDefault || siteConfig.themeConfigs[0].identifier
+        localStorage.setItem('data-theme', storedTheme)
+      }
+      if (siteConfig.themeMode === 'light-dark') {
+        let lightThemeId = siteConfig.themeConfigs[0].identifier
+        let darkThemeId = siteConfig.themeConfigs[1].identifier
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+        prefersDarkScheme.addEventListener('change', (e) => {
+          if (getStoredTheme() === 'auto') {
+            const newTheme = e.matches ? lightThemeId : darkThemeId
+            document.documentElement.setAttribute('data-theme', newTheme)
+          }
+        })
+        if (storedTheme === 'auto') {
+          document.documentElement.setAttribute(
+            'data-theme',
+            prefersDarkScheme.matches ? darkThemeId : lightThemeId,
+          )
+        } else {
+          document.documentElement.setAttribute('data-theme', storedTheme)
+        }
+      } else {
+        document.documentElement.setAttribute('data-theme', storedTheme)
       }
     </script>
   </head>

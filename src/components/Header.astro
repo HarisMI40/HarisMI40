@@ -2,6 +2,7 @@
 import type { NavLink } from '@types' 
 import { Icon } from 'astro-icon/components'
 import siteConfig from '../site.config'
+import LightDarkAutoButton from './LightDarkAutoButton.astro'
 
 
 const links: NavLink[] = [
@@ -19,9 +20,15 @@ const links: NavLink[] = [
     >
       Terminal
     </a>
-    <button id="theme-change-button" class="block ml-auto mr-3">
-      <Icon name="palette" class="size-6 text-[var(--theme-accent)]">
-    </button>
+    {
+      siteConfig.themeMode === 'light-dark' && <LightDarkAutoButton />
+    }
+    {
+      siteConfig.themeMode === 'select' && (
+        <>
+        <button id="theme-change-button" class="block ml-auto mr-3">
+          <Icon name="palette" class="size-6 text-[var(--theme-accent)]">
+        </button>
     <ul
         id="theme-change-list"
         class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
@@ -36,6 +43,9 @@ const links: NavLink[] = [
           ))
         }
       </ul>
+      </>
+      )
+    }
     <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
       <button
         id="nav-mobile-button"
