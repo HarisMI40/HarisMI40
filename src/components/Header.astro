@@ -133,6 +133,7 @@ const links: NavLink[] = [
       let theme = button.getAttribute('data-theme')
       if (theme) {
         document.documentElement.setAttribute('data-theme', theme)
+        localStorage.setItem("data-theme", theme);
         toggleThemeChangeMenu('off') // Close menu after selection
       }
     })

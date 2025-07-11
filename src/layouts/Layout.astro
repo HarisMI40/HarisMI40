@@ -23,6 +23,8 @@ const baseCssVars: { [key: string]: string } = {
   'ec-brdCol': 'color-mix(in srgb, var(--theme-foreground), 10%, transparent)',
 }
 
+let defaultTheme = siteConfig.themeConfigs[0].theme
+
 let resolvedThemes: { [key: string]: { [key: string]: string } } = {}
 for (const themeConfig of siteConfig.themeConfigs) {
   const loadedTheme = await loadShikiTheme(themeConfig.theme)
@@ -39,7 +41,7 @@ let generatedCss: string =  Object.entries(resolvedThemes).map(([themeName, them
 ---
 
 <!doctype html>
-<html lang="en" data-theme="everforest-dark">
+<html lang="en" data-theme={defaultTheme}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -48,6 +50,12 @@ let generatedCss: string =  Object.entries(resolvedThemes).map(([themeName, them
     <title>{pageTitle}</title>
     <style is:global define:vars={baseCssVars}></style>
     <style is:inline set:html={generatedCss}></style>
+    <script is:inline>
+      let storedTheme = localStorage.getItem("data-theme");
+      if (storedTheme) {
+        document.documentElement.setAttribute("data-theme", storedTheme);
+      }
+    </script>
   </head>
   <body class="w-full h-full m-0 bg-background text-foreground">
     <div
