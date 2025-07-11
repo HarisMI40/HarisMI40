@@ -1,6 +1,7 @@
 ---
 import type { NavLink } from '@types' 
 import { Icon } from 'astro-icon/components'
+import siteConfig from '../site.config'
 
 
 const links: NavLink[] = [
@@ -26,10 +27,10 @@ const links: NavLink[] = [
         class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
       >
         {
-          ["theme1", "theme2"].map((theme) => (
+          siteConfig.themeConfigs.map((themeConfig) => (
             <li class="p-1" aria-expanded="false">
-              <button>
-                {theme}
+              <button data-theme={themeConfig.theme}>
+                {themeConfig.name}
               </button>
             </li>
           ))
@@ -123,5 +124,17 @@ const links: NavLink[] = [
   themeChangeButton?.addEventListener('click', (_ev) => {
     toggleNavMobileMenu('off') // Close mobile menu if open
     toggleThemeChangeMenu('toggle')
+  })
+
+  let themeChangeButtons = themeChangeList?.querySelectorAll('button')
+  themeChangeButtons?.forEach((button) => {
+    button.addEventListener('click', (ev) => {
+      ev.preventDefault()
+      let theme = button.getAttribute('data-theme')
+      if (theme) {
+        document.documentElement.setAttribute('data-theme', theme)
+        toggleThemeChangeMenu('off') // Close menu after selection
+      }
+    })
   })
 </script>
