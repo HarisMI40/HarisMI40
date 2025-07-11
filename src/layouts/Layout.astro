@@ -12,9 +12,9 @@ interface Props {
 
 const { title } = Astro.props
 const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title
-const theme = await loadShikiTheme(siteConfig.theme.name)
-const cssVars: { [key: string]: string } = {
-  'theme-font': siteConfig.theme.font,
+const theme = await loadShikiTheme(siteConfig.themeConfigs[0].theme)
+const baseCssVars: { [key: string]: string } = {
+  'theme-font': siteConfig.font,
   'ec-frm-frameBoxShdCssVal': 'none',
   // 'ec-brdRad': '0',
   'ec-frm-edTabBrdRad': '0',
@@ -22,23 +22,33 @@ const cssVars: { [key: string]: string } = {
     'color-mix(in srgb, var(--theme-foreground), 10%, transparent)',
   'ec-brdCol': 'color-mix(in srgb, var(--theme-foreground), 10%, transparent)',
 }
-Object.entries(resolveElementStyles(theme, siteConfig.theme.overrides)).forEach(
-  ([key, value]) => {
-    cssVars[`theme-${key}`] = value
-  },
-)
+
+let resolvedThemes: { [key: string]: { [key: string]: string } } = {}
+for (const themeConfig of siteConfig.themeConfigs) {
+  const loadedTheme = await loadShikiTheme(themeConfig.theme)
+  resolvedThemes[loadedTheme.name] = resolveElementStyles(loadedTheme, themeConfig.overrides)
+}
+
+let generatedCss: string =  Object.entries(resolvedThemes).map(([themeName, themeStyles]) => {
+  let cssVars = Object.entries(themeStyles).map(([key, value]) => {
+    return `--theme-${key}: ${value};`
+  }).join('\n')
+  return `:root[data-theme="${themeName}"] {\n${cssVars} }`
+}).join('\n')
+
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="everforest-dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{pageTitle}</title>
-    <style is:global define:vars={cssVars}></style></head
-  >
+    <style is:global define:vars={baseCssVars}></style>
+    <style is:inline set:html={generatedCss}></style>
+  </head>
   <body class="w-full h-full m-0 bg-background text-foreground">
     <div
       class="flex flex-col max-w-[812px] min-h-screen border-accent/10 m-auto py-5 px-4 sm:px-6 md:p-10"
