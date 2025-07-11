@@ -32,6 +32,7 @@ a.button {
 
     figure {
       @apply border-2 border-foreground/10 !rounded-xl;
+      box-shadow: none !important;
 
       &.has-title, &.is-terminal {
         --button-spacing: 30px !important;
@@ -41,6 +42,11 @@ a.button {
         border-radius: 10px 10px 0 0 !important;
         background: transparent !important;
         padding-block: 0 !important;
+        border: none !important;
+
+        &::after, &::before {
+          border: none !important;
+        }
 
         span.title {
           @apply !text-foreground/90 !bg-foreground/10 text-center !border-b-2 !border-t-0 !border-r-0 !border-l-0 !border-foreground/10;
@@ -52,14 +58,16 @@ a.button {
           padding: unset !important;
 
 
-          &:after {
-            @apply !border-none;
+          &::after, &::before {
+            border: none !important;
           }
         }
       }
 
       &>pre {
         border-radius: 10px !important;
+        border: none !important;
+        scrollbar-width: thin;
       }
 
     }
