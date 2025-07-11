@@ -23,12 +23,13 @@ export interface ThemeStyles {
 }
 
 export interface ThemeConfig {
-  name: BundledShikiTheme
-  font: string
+  name: string
+  theme: BundledShikiTheme 
   overrides?: ThemeStyles,
 }
 
 export interface SiteConfig {
-  theme: ThemeConfig
+  themeConfigs: ThemeConfig[]
+  font: string
   title: string
 }
