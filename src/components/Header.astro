@@ -29,8 +29,8 @@ const links: NavLink[] = [
         {
           siteConfig.themeConfigs.map((themeConfig) => (
             <li class="p-1" aria-expanded="false">
-              <button data-theme={themeConfig.theme}>
-                {themeConfig.name}
+              <button data-theme={themeConfig.identifier}>
+                {themeConfig.displayName}
               </button>
             </li>
           ))
@@ -130,10 +130,10 @@ const links: NavLink[] = [
   themeChangeButtons?.forEach((button) => {
     button.addEventListener('click', (ev) => {
       ev.preventDefault()
-      let theme = button.getAttribute('data-theme')
-      if (theme) {
-        document.documentElement.setAttribute('data-theme', theme)
-        localStorage.setItem("data-theme", theme);
+      let themeId = button.getAttribute('data-theme')
+      if (themeId) {
+        document.documentElement.setAttribute('data-theme', themeId)
+        localStorage.setItem("data-theme", themeId);
         toggleThemeChangeMenu('off') // Close menu after selection
       }
     })

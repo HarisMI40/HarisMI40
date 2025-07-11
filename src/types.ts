@@ -23,7 +23,8 @@ export interface ThemeStyles {
 }
 
 export interface ThemeConfig {
-  name: string
+  displayName: string
+  identifier: string
   theme: BundledShikiTheme 
   overrides?: ThemeStyles,
 }

@@ -6,11 +6,13 @@ const config: SiteConfig = {
   font: 'JetBrains Mono Variable',
   themeConfigs: [
     {
-      name: 'Everforest Dark',
+      displayName: 'Everforest Dark',
+      identifier: 'everforest-dark',
       theme: 'everforest-dark',
     },
     {
-      name: 'Kanagawa Wave',
+      displayName: 'Kanagawa Wave',
+      identifier: 'kanagawa-wave',
       theme: 'kanagawa-wave',
     }
   ]

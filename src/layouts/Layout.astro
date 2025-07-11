@@ -12,7 +12,6 @@ interface Props {
 
 const { title } = Astro.props
 const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title
-const theme = await loadShikiTheme(siteConfig.themeConfigs[0].theme)
 const baseCssVars: { [key: string]: string } = {
   'theme-font': siteConfig.font,
   'ec-frm-frameBoxShdCssVal': 'none',
@@ -23,12 +22,12 @@ const baseCssVars: { [key: string]: string } = {
   'ec-brdCol': 'color-mix(in srgb, var(--theme-foreground), 10%, transparent)',
 }
 
-let defaultTheme = siteConfig.themeConfigs[0].theme
+let defaultTheme = siteConfig.themeConfigs[0].identifier
 
 let resolvedThemes: { [key: string]: { [key: string]: string } } = {}
 for (const themeConfig of siteConfig.themeConfigs) {
   const loadedTheme = await loadShikiTheme(themeConfig.theme)
-  resolvedThemes[loadedTheme.name] = resolveElementStyles(loadedTheme, themeConfig.overrides)
+  resolvedThemes[themeConfig.identifier] = resolveElementStyles(loadedTheme, themeConfig.overrides)
 }
 
 let generatedCss: string =  Object.entries(resolvedThemes).map(([themeName, themeStyles]) => {
