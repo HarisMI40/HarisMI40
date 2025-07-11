@@ -9,6 +9,9 @@ const links: NavLink[] = [
   { name: 'Home', url: '/' },
   { name: 'Archive', url: '/posts' },
 ]
+
+const lightDarkAutoTheme = siteConfig.themeMode === 'light-dark'
+const selectTheme = siteConfig.themeMode === 'select' && siteConfig.themeConfigs.length > 1
 ---
 
 <header>
@@ -21,18 +24,18 @@ const links: NavLink[] = [
       Terminal
     </a>
     {
-      siteConfig.themeMode === 'light-dark' && <LightDarkAutoButton />
+      lightDarkAutoTheme && <LightDarkAutoButton />
     }
     {
-      siteConfig.themeMode === 'select' && (
-        <>
-        <button id="theme-change-button" class="block ml-auto mr-3">
+      selectTheme && 
+      <div class="flex items-center ml-auto mr-3">
+        <button id="theme-change-button" >
           <Icon name="palette" class="size-6 text-[var(--theme-accent)]">
         </button>
-    <ul
-        id="theme-change-list"
-        class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
-      >
+        <ul
+          id="theme-change-list"
+          class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
+        >
         {
           siteConfig.themeConfigs.map((themeConfig) => (
             <li class="p-1" aria-expanded="false">
@@ -42,9 +45,8 @@ const links: NavLink[] = [
             </li>
           ))
         }
-      </ul>
-      </>
-      )
+        </ul>
+      </div>
     }
     <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
       <button
