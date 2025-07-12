@@ -22,14 +22,26 @@ const baseCssVars: { [key: string]: string } = {
   'ec-brdCol': 'color-mix(in srgb, var(--theme-foreground), 10%, transparent)',
 }
 
-let defaultTheme = siteConfig.themeConfigs[0].identifier
+let themeMode = siteConfig.themeMode
+if (siteConfig.themes.length < 1) {
+  throw new Error('No themes defined in site.config. Please add at least one theme.')
+}
+if (themeMode === 'light-dark-auto' && siteConfig.themes.length < 2) {
+  console.warn(
+    'Theme mode "dark-light-auto" requires at least two themes. Defaulting to "single".',
+  )
+  themeMode = 'single'
+}
+let defaultTheme = siteConfig.themeDefault || siteConfig.themes[0]
+let lightTheme = themeMode === 'light-dark-auto' ? siteConfig.themes[0] : undefined
+let darkTheme = themeMode === 'light-dark-auto' ? siteConfig.themes[1] : undefined
 
 let resolvedThemes: { [key: string]: { [key: string]: string } } = {}
-for (const themeConfig of siteConfig.themeConfigs) {
-  const loadedTheme = await loadShikiTheme(themeConfig.theme)
-  resolvedThemes[themeConfig.identifier] = resolveElementStyles(
+for (const theme of siteConfig.themes) {
+  const loadedTheme = await loadShikiTheme(theme)
+  resolvedThemes[theme] = resolveElementStyles(
     loadedTheme,
-    themeConfig.overrides,
+    {}, // Pass an empty object to use default styles
   )
 }
 
@@ -45,7 +57,14 @@ let generatedCss: string = cssLines.join('\n')
 ---
 
 <!doctype html>
-<html lang="en" data-theme={defaultTheme}>
+<html
+  lang="en"
+  data-theme={defaultTheme}
+  data-default-theme={defaultTheme}
+  data-dark-theme={darkTheme}
+  data-light-theme={lightTheme}
+  data-theme-mode={themeMode}
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -54,28 +73,36 @@ let generatedCss: string = cssLines.join('\n')
     <title>{pageTitle}</title>
     <style is:global define:vars={baseCssVars}></style>
     <style is:inline set:html={generatedCss}></style>
-    <script is:inline define:vars={{ siteConfig }}>
+    <script>
+      let defaultTheme = document.documentElement.getAttribute('data-default-theme')
+      let darkTheme = document.documentElement.getAttribute('data-dark-theme')
+      let lightTheme = document.documentElement.getAttribute('data-light-theme')
+      let themeMode = document.documentElement.getAttribute('data-theme-mode')
+      if (!defaultTheme || !themeMode) {
+        throw new Error('Theme attributes are required.')
+      }
       let getStoredTheme = () => localStorage.getItem('data-theme')
       let storedTheme = getStoredTheme()
       console.log('Stored theme:', storedTheme)
       if (!storedTheme) {
-        storedTheme = siteConfig.themeDefault || siteConfig.themeConfigs[0].identifier
+        storedTheme = defaultTheme
         localStorage.setItem('data-theme', storedTheme)
       }
-      if (siteConfig.themeMode === 'light-dark') {
-        let lightThemeId = siteConfig.themeConfigs[0].identifier
-        let darkThemeId = siteConfig.themeConfigs[1].identifier
+      if (themeMode === 'light-dark-auto') {
+        if (!darkTheme || !lightTheme) {
+          throw new Error('Theme attributes are required.')
+        }
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
         prefersDarkScheme.addEventListener('change', (e) => {
           if (getStoredTheme() === 'auto') {
-            const newTheme = e.matches ? lightThemeId : darkThemeId
+            const newTheme = e.matches ? lightTheme : darkTheme
             document.documentElement.setAttribute('data-theme', newTheme)
           }
         })
         if (storedTheme === 'auto') {
           document.documentElement.setAttribute(
             'data-theme',
-            prefersDarkScheme.matches ? darkThemeId : lightThemeId,
+            prefersDarkScheme.matches ? darkTheme : lightTheme,
           )
         } else {
           document.documentElement.setAttribute('data-theme', storedTheme)

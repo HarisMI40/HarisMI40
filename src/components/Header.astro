@@ -10,8 +10,15 @@ const links: NavLink[] = [
   { name: 'Archive', url: '/posts' },
 ]
 
-const lightDarkAutoTheme = siteConfig.themeMode === 'light-dark'
-const selectTheme = siteConfig.themeMode === 'select' && siteConfig.themeConfigs.length > 1
+function kebabToTitleCase(str: string): string {
+  return str
+    .split('-') // Split the string into words
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+    .join(' '); // Join the words with a space
+}
+
+const lightDarkAutoTheme = siteConfig.themeMode === 'light-dark-auto'
+const selectTheme = siteConfig.themeMode === 'select' && siteConfig.themes.length > 1
 ---
 
 <header>
@@ -37,10 +44,10 @@ const selectTheme = siteConfig.themeMode === 'select' && siteConfig.themeConfigs
           class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
         >
         {
-          siteConfig.themeConfigs.map((themeConfig) => (
+          siteConfig.themes.map((theme) => (
             <li class="p-1" aria-expanded="false">
-              <button data-theme={themeConfig.identifier}>
-                {themeConfig.displayName}
+              <button data-theme={theme}>
+                {kebabToTitleCase(theme)}
               </button>
             </li>
           ))

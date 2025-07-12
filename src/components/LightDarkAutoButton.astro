@@ -1,15 +1,15 @@
 ---
 import { Icon } from 'astro-icon/components'
 import siteConfig from '../site.config'
-let lightThemeId = siteConfig.themeConfigs[0].identifier
-let darkThemeId = siteConfig.themeConfigs[1].identifier
+let lightTheme = siteConfig.themes[0]
+let darkTheme = siteConfig.themes[1]
 ---
 
 <button
     id="theme-change-button"
     class="block ml-auto mr-3"
-    data-light={lightThemeId}
-    data-dark={darkThemeId}
+    data-light={lightTheme}
+    data-dark={darkTheme}
 >
     <Icon name="sun" id="icon-light" class="hidden size-6 text-[var(--theme-accent)]" />
     <Icon name="moon" id="icon-dark" class="hidden size-6 text-[var(--theme-accent)]" />

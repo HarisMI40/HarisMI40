@@ -39,7 +39,7 @@ export default defineConfig({
   integrations: [
     sitemap(),
     expressiveCode({
-      themes: siteConfig.themeConfigs.map(themeConfig => themeConfig.theme),
+      themes: siteConfig.themes,
       useDarkModeMediaQuery: false,
       defaultProps: {
         showLineNumbers: false,

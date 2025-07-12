@@ -4,21 +4,12 @@ import '@fontsource-variable/jetbrains-mono'
 const config: SiteConfig = {
   title: "Terminal",
   font: 'JetBrains Mono Variable',
-  themeMode: "light-dark",
-  themeDefault: "auto", // Default theme identifier
+  themeMode: "select",
+  themeDefault: "everforest-dark", // Default theme identifier
   // https://expressive-code.com/guides/themes/#using-bundled-themes
-  themeConfigs: [
-    {
-      displayName: 'Everforest Light',
-      identifier: 'everforest-light',
-      theme: 'everforest-light',
-    },
-    {
-      displayName: 'Everforest Dark',
-      identifier: 'everforest-dark',
-      theme: 'everforest-dark',
-    }
-  ]
+  themes: [
+    'everforest-dark', 'everforest-light', 'kanagawa-wave', 'catppuccin-frappe', 'synthwave-84', 'rose-pine-dawn', 'github-light-high-contrast', 'tokyo-night', 'nord', 'one-dark-pro'
+  ],
 }
 
 // name: 'kanagawa-wave',

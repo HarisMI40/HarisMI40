@@ -30,8 +30,8 @@ export interface ThemeConfig {
 }
 
 export interface SiteConfig {
-  themeConfigs: ThemeConfig[]
-  themeMode: "single" | "light-dark" | "select"
+  themes: BundledShikiTheme[]
+  themeMode: "single" | "light-dark-auto" | "select"
   themeDefault: string
   font: string
   title: string
