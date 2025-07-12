@@ -2,6 +2,8 @@
 import '/src/styles/global.css'
 import Header from '@components/Header.astro'
 import Footer from '@components/Footer.astro'
+import LightDarkAutoThemeLoader from '@components/LightDarkAutoThemeLoader.astro'
+import SelectThemeLoader from '@components/SelectThemeLoader.astro'
 import { loadShikiTheme } from 'astro-expressive-code'
 import siteConfig from '../site.config'
 import { resolveElementStyles } from '@utils'
@@ -73,44 +75,8 @@ let generatedCss: string = cssLines.join('\n')
     <title>{pageTitle}</title>
     <style is:global define:vars={baseCssVars}></style>
     <style is:inline set:html={generatedCss}></style>
-    <script>
-      let defaultTheme = document.documentElement.getAttribute('data-default-theme')
-      let darkTheme = document.documentElement.getAttribute('data-dark-theme')
-      let lightTheme = document.documentElement.getAttribute('data-light-theme')
-      let themeMode = document.documentElement.getAttribute('data-theme-mode')
-      if (!defaultTheme || !themeMode) {
-        throw new Error('Theme attributes are required.')
-      }
-      let getStoredTheme = () => localStorage.getItem('data-theme')
-      let storedTheme = getStoredTheme()
-      console.log('Stored theme:', storedTheme)
-      if (!storedTheme) {
-        storedTheme = defaultTheme
-        localStorage.setItem('data-theme', storedTheme)
-      }
-      if (themeMode === 'light-dark-auto') {
-        if (!darkTheme || !lightTheme) {
-          throw new Error('Theme attributes are required.')
-        }
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
-        prefersDarkScheme.addEventListener('change', (e) => {
-          if (getStoredTheme() === 'auto') {
-            const newTheme = e.matches ? lightTheme : darkTheme
-            document.documentElement.setAttribute('data-theme', newTheme)
-          }
-        })
-        if (storedTheme === 'auto') {
-          document.documentElement.setAttribute(
-            'data-theme',
-            prefersDarkScheme.matches ? darkTheme : lightTheme,
-          )
-        } else {
-          document.documentElement.setAttribute('data-theme', storedTheme)
-        }
-      } else {
-        document.documentElement.setAttribute('data-theme', storedTheme)
-      }
-    </script>
+    {themeMode === 'light-dark-auto' && <LightDarkAutoThemeLoader />}
+    {themeMode === 'select' && <SelectThemeLoader />}
   </head>
   <body class="w-full h-full m-0 bg-background text-foreground">
     <div

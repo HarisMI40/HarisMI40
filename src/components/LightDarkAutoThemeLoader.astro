@@ -1,0 +1,31 @@
+---
+
+---
+
+<script is:inline>
+  ;(function loadTheme() {
+    const defaultTheme = document.documentElement.getAttribute('data-default-theme')
+    const darkTheme = document.documentElement.getAttribute('data-dark-theme')
+    const lightTheme = document.documentElement.getAttribute('data-light-theme')
+    if (!defaultTheme || !darkTheme || !lightTheme) {
+      throw new Error('Theme attributes are required.')
+    }
+    const getStoredTheme = () => localStorage.getItem('data-theme')
+    const storedTheme = getStoredTheme() || defaultTheme
+    if (storedTheme !== 'auto') {
+      document.documentElement.setAttribute('data-theme', storedTheme)
+    } else {
+      const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+      document.documentElement.setAttribute(
+        'data-theme',
+        prefersDarkScheme.matches ? darkTheme : lightTheme,
+      )
+      prefersDarkScheme.addEventListener('change', (e) => {
+        if (getStoredTheme() === 'auto') {
+          const newTheme = e.matches ? lightTheme : darkTheme
+          document.documentElement.setAttribute('data-theme', newTheme)
+        }
+      })
+    }
+  })()
+</script>
