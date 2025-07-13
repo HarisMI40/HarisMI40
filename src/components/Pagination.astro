@@ -19,7 +19,7 @@ const { prevLink, prevText, nextLink, nextText } = Astro.props
         aria-label="Previous Page"
         class="button flex-row items-center justify-center !pl-3.5 w-full sm:w-min"
       >
-        <Icon name="material-symbols:keyboard-double-arrow-left" class="mr-2 text-xl" />
+        <Icon name="chevrons-left" class="mr-2 text-xl" />
         {prevText || 'Previous'}
       </a>
     )
@@ -35,7 +35,7 @@ const { prevLink, prevText, nextLink, nextText } = Astro.props
         ]}
       >
         {nextText || 'Next'}
-        <Icon name="material-symbols:keyboard-double-arrow-right" class="ml-2 text-xl" />
+        <Icon name="chevrons-right" class="ml-2 text-xl" />
       </a>
     )
   }
