@@ -11,6 +11,7 @@ export async function GET(_context: AstroGlobal) {
   }
   const posts = await getCollection('posts');
   return rss({
+    stylesheet: '/rss.xsl',
     title: siteConfig.title,
     description: siteConfig.description,
     site: siteConfig.site,
