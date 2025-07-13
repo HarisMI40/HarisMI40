@@ -13,6 +13,8 @@ import { createHeadingAnchor, remarkDescription, remarkReadingTime, rehypeTitleF
 
 // https://astro.build/config
 export default defineConfig({
+  site: siteConfig.site,
+  trailingSlash: "never",
   markdown: {
     remarkPlugins: [
       [remarkDescription, { maxChars: 200 }],

@@ -24,7 +24,7 @@ const { post, prev, next } = Astro.props
 const postData = post.data
 ---
 
-<Layout>
+<Layout title={postData.title}>
   <article class="max-w-full py-7.5">
     <h1 class="mb-3 text-2xl text-[var(--theme-h1)] font-semibold">
       # {postData.title}

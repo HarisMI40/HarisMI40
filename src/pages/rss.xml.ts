@@ -1,0 +1,25 @@
+import rss, { pagesGlobToRssItems } from '@astrojs/rss';
+import siteConfig from '../site.config';
+import type { AstroGlobal  } from 'astro';
+import { getCollection } from 'astro:content';
+
+// https://docs.astro.build/en/recipes/rss/
+export async function GET(_context: AstroGlobal) {
+  if (!siteConfig.site) {
+    console.warn('Site URL is required for RSS feed generation. Skipping RSS feed generation.');
+    return
+  }
+  const posts = await getCollection('posts');
+  return rss({
+    title: siteConfig.title,
+    description: siteConfig.description,
+    site: siteConfig.site,
+    items: posts.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.published,
+      description: post.data.description,
+      link: `/posts/${post.id}`,
+    })),
+    trailingSlash: false,
+  });
+}
