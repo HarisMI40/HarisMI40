@@ -19,6 +19,7 @@ const config: SiteConfig = {
   themeDefault: "everforest-dark",
   // Shiki themes to bundle with the site.
   // These will be used to theme the entire site along with syntax highlighting.
+  // To use light-dark-auto mode, only include a light and a dark theme in that order.
   // https://expressive-code.com/guides/themes/#using-bundled-themes
   themes: [
     'andromeeda',
