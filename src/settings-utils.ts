@@ -1,4 +1,5 @@
 import type * as hast from "hast"
+import type * as mdast from "mdast"
 import type { RehypePlugin, RemarkPlugin } from "@astrojs/markdown-remark"
 import { h } from "hastscript"
 import getReadingTime from 'reading-time'
@@ -11,11 +12,45 @@ export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number })
       // If description is already set, do not override it
       return
     }
-    const firstPara = tree.children.find((x) => {
-      x.type === "paragraph" && x.children.length > 0 && x.children[0].type === "text"
-    })
-    if (firstPara && data.astro?.frontmatter) {
-      let description = toString(firstPara)
+    // function findFirstParagraph(node: mdast.Nodes): string | undefined {
+    //   if (node.type === "paragraph" && node.children.length > 0) {
+    //     const s = toString(node).trim()
+    //     if (s.length > 0) {
+    //       return s
+    //     }
+    //   }
+    //   if (node.type === "root" || node.type === "element" && node.children) {
+    //     for (const child of node.children) {
+    //       const result = findFirstParagraph(child)
+    //       if (result) {
+    //         return result
+    //       }
+    //     }
+    //   }
+    //   return undefined
+    // }
+    // const firstPara = findFirstParagraph(tree)
+
+    function findFirstParagraph(node: mdast.Root): string | undefined {
+      if (node.children) {
+        for (const child of node.children) {
+          if (child.type === "paragraph") {
+            const s = toString(child).trim()
+            if (s.length > 0) {
+              return s
+            }
+          } else if (child.children) {
+            const result = findFirstParagraph({type: 'root', children: child.children} as mdast.Root)
+            if (result) {
+              return result
+            }
+          }
+        }
+      }
+      return undefined
+    }
+    let description = data.astro?.frontmatter?.description || findFirstParagraph(tree)
+    if (description && data.astro?.frontmatter) {
       if (description.length > maxChars) {
         const lastSpace = description.slice(0, maxChars).lastIndexOf(' ')
         description = description.slice(0, lastSpace) + "…"
