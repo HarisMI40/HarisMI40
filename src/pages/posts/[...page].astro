@@ -5,11 +5,12 @@ import { getSortedPosts, url } from '@utils'
 import PostPreviewsWithYear from '@components/PostPreviewsWithYear.astro'
 import Pagination from '@components/Pagination.astro'
 import BlockHeader from '@components/BlockHeader.astro'
+import siteConfig from '../../site.config'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
   const sortedPosts = await getSortedPosts()
-  return paginate(sortedPosts, { pageSize: 1 })
+  return paginate(sortedPosts, { pageSize: siteConfig.pageSize })
 }) satisfies GetStaticPaths
 
 const { page } = Astro.props

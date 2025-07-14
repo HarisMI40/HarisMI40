@@ -37,4 +37,5 @@ export interface SiteConfig {
   font: string
   title: string
   description: string
+  pageSize: number
 }

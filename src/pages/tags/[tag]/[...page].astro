@@ -5,6 +5,7 @@ import { getSortedPosts, url } from '@utils'
 import PostPreviewsWithYear from '@components/PostPreviewsWithYear.astro'
 import Pagination from '@components/Pagination.astro'
 import BlockHeader from '@components/BlockHeader.astro'
+import siteConfig from '../../../site.config'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
@@ -15,7 +16,7 @@ export const getStaticPaths = (async ({ paginate }) => {
     const postsWithTag = sortedPosts.filter((post) => {
       return new Set(post.data.tags).has(tag)
     })
-    return paginate(postsWithTag, { params: { tag }, pageSize: 1 })
+    return paginate(postsWithTag, { params: { tag }, pageSize: siteConfig.pageSize })
   })
   return pages
 }) satisfies GetStaticPaths

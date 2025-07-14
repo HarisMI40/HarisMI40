@@ -6,6 +6,7 @@ const config: SiteConfig = {
   title: "Terminal",
   description: "A terminal-inspired Astro theme",
   font: 'JetBrains Mono Variable',
+  pageSize: 5,
   themeMode: "select",
   themeDefault: "everforest-dark", // Default theme identifier
   // https://expressive-code.com/guides/themes/#using-bundled-themes
