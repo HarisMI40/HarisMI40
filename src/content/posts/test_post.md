@@ -3,6 +3,7 @@ title = "How to post"
 published = 2024-04-01
 draft = false
 author = "Mary Shelley"
+tags = []
 +++
 
 Welcome to the exciting world of coding websites, where creativity meets technology! In today’s digital age, having a strong online presence is essential, and understanding how to build and code websites is a valuable skill. Whether you're a complete beginner eager to learn the basics or an experienced developer looking to refine your skills, this blog will guide you through the essential concepts, tools, and best practices for creating stunning and functional websites. From HTML and CSS to JavaScript and beyond, we’ll explore the building blocks of web development, share tips and tricks, and inspire you to bring your unique ideas to life on the web. Join us on this journey to unlock the potential of coding and transform your vision into reality!
@@ -31,7 +32,9 @@ python def hello_world(): print("Hello, world!") hello_world()
 
 [Link](https://www.example.com)
 
-![Image alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/IBM_Thinkpad_R51.jpg/640px-IBM_Thinkpad_R51.jpg#pixelated "A cool laptop")
+![yo wtf](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/IBM_Thinkpad_R51.jpg/640px-IBM_Thinkpad_R51.jpg "A cool laptop")
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/IBM_Thinkpad_R51.jpg/640px-IBM_Thinkpad_R51.jpg "A cool laptop")
 
 
 Say some stuff!
