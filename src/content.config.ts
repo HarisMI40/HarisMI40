@@ -24,7 +24,15 @@ const homeCollection = defineCollection({
   })
 })
 
+const addendumCollection = defineCollection({
+  loader: glob({ pattern: ["addendum.md", "addendum.mdx"], base: "./src/content" }),
+  schema: z.object({
+    avatar: z.string().optional()
+  })
+})
+
 export const collections = {
   posts: postsCollection,
-  home: homeCollection
+  home: homeCollection,
+  addendum: addendumCollection
 }

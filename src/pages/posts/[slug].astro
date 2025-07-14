@@ -5,6 +5,8 @@ import { dateString, getSortedPosts, url } from '@utils'
 import Pagination from '@components/Pagination.astro'
 import PostPreview from '@components/PostPreview.astro'
 import DividerText from '@components/DividerText.astro'
+import { getCollection } from 'astro:content'
+import PostAddendum from '@components/PostAddendum.astro'
 
 export const getStaticPaths = (async () => {
   const posts = await getSortedPosts()
@@ -22,6 +24,9 @@ export const getStaticPaths = (async () => {
 
 const { post, prev, next } = Astro.props
 const postData = post.data
+const addendum = await getCollection('addendum')
+const addendumHtml =
+  addendum.length > 0 && addendum[0].body ? addendum[0].rendered?.html : undefined
 ---
 
 <Layout title={postData.title}>
@@ -52,6 +57,11 @@ const postData = post.data
     }
     <div class="my-5 prose" set:html={post.rendered?.html} />
   </article>
+  {
+    addendumHtml && (
+      <PostAddendum textHtml={addendumHtml} avatarFilename={addendum[0].data.avatar} />
+    )
+  }
   <DividerText text="More Posts" />
   {prev && <PostPreview post={prev} />}
   {next && <PostPreview post={next} />}
