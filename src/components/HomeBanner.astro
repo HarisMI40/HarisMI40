@@ -5,7 +5,7 @@ import ReactGithubCalendar from './ReactGithubCalendar'
 interface Props {
     textHtml?: string
     avatarFilename?: string
-    githubCalendar?: boolean
+    githubCalendar?: string
 }
 const { textHtml, avatarFilename, githubCalendar } = Astro.props
 const avatarPath = `/src/assets/${avatarFilename}`
@@ -34,7 +34,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     {
         githubCalendar && (
             <div class="h-42">
-                <ReactGithubCalendar client:only />
+                <ReactGithubCalendar username={githubCalendar} client:only />
             </div>
         )
     }

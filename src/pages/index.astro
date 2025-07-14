@@ -9,16 +9,18 @@ import HomeBanner from '@components/HomeBanner.astro'
 import siteConfig from '../site.config'
 
 const homeContent = await getCollection('home')
+const homeEntry = homeContent.length > 0 ? homeContent[0] : undefined
 const posts = (await getSortedPosts()).slice(0, siteConfig.pageSize)
 ---
 
 <Layout>
   {
-    homeContent.map(
-      (home) =>
-        home.body && (
-          <HomeBanner textHtml={home.rendered?.html} avatarFilename={home.data.avatar} githubCalendar={home.data.githubCalendar} />
-        ),
+    homeEntry && (
+      <HomeBanner
+        textHtml={homeEntry.rendered?.html}
+        avatarFilename={homeEntry.data.avatar}
+        githubCalendar={homeEntry.data.githubCalendar}
+      />
     )
   }
   <BlockHeader>Latest Posts</BlockHeader>

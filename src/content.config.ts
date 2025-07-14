@@ -21,7 +21,7 @@ const homeCollection = defineCollection({
   loader: glob({ pattern: ["home.md", "home.mdx"], base: "./src/content" }),
   schema: z.object({
     avatar: z.string().optional(),
-    githubCalendar: z.boolean().optional().default(false)
+    githubCalendar: z.string().optional() // GitHub username for calendar
   })
 })
 
