@@ -45,8 +45,8 @@ const selectTheme = siteConfig.themeMode === 'select' && siteConfig.themes.lengt
         >
         {
           siteConfig.themes.map((theme) => (
-            <li class="p-1" aria-expanded="false">
-              <button data-theme={theme}>
+            <li aria-expanded="false">
+              <button class="w-full rounded-lg py-1 px-2" data-theme={theme}>
                 {kebabToTitleCase(theme)}
               </button>
             </li>
@@ -96,11 +96,17 @@ const selectTheme = siteConfig.themeMode === 'select' && siteConfig.themes.lengt
   </nav>
 </header>
 
+<style>
+  button.current-theme {
+    background-color: color-mix(in srgb, var(--theme-accent) 8%, transparent 92%);
+  }
+</style>
+
 <script>
-  let navMobileButton = document.getElementById('nav-mobile-button')
-  let navMobileList = document.getElementById('nav-mobile-list')
-  let navMobileListItems = navMobileList?.querySelectorAll('li')
-  let toggleNavMobileMenu = (action: "on" | "off" | "toggle") => {
+  const navMobileButton = document.getElementById('nav-mobile-button')
+  const navMobileList = document.getElementById('nav-mobile-list')
+  const navMobileListItems = navMobileList?.querySelectorAll('li')
+  const toggleNavMobileMenu = (action: "on" | "off" | "toggle") => {
     let isNowOpen: boolean = false
     if (action === 'on') {
       isNowOpen = true
@@ -116,24 +122,45 @@ const selectTheme = siteConfig.themeMode === 'select' && siteConfig.themes.lengt
       listItem.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
     })
   }
-  let themeChangeButton = document.getElementById('theme-change-button')
-  let themeChangeList = document.getElementById('theme-change-list')
-  let themeChangeListItems = themeChangeList?.querySelectorAll('li')
-  let toggleThemeChangeMenu = (action: "on" | "off" | "toggle") => {
-    let isNowOpen: boolean = false
-    if (action === 'on') {
-      isNowOpen = true
-      themeChangeList?.classList.remove('invisible')
-    } else if (action === 'off') {
-      isNowOpen = false
-      themeChangeList?.classList.add('invisible')
-    } else {
-      isNowOpen = !themeChangeList?.classList.toggle('invisible')
+  const themeChangeButton = document.getElementById('theme-change-button')
+  const themeChangeList = document.getElementById('theme-change-list')
+  const themeChangeListItems = themeChangeList?.querySelectorAll('li')
+  const highlightCurrentTheme = () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    if (!currentTheme) {
+      console.warn('No theme set in data-theme attribute.')
+      return
     }
-    themeChangeButton?.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
     themeChangeListItems?.forEach((listItem) => {
-      listItem.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
+      let button = listItem.querySelector('button')
+      if (!button) {
+        console.warn('No button found in theme change list item.')
+        return
+      }
+      if (button.getAttribute('data-theme') === currentTheme) {
+        button.classList.add('current-theme')
+      } else {
+        button.classList.remove('current-theme')
+      }
     })
+  }
+  const toggleThemeChangeMenu = (action: "on" | "off" | "toggle") => {
+    const previouslyClosed: boolean = !!themeChangeList?.classList.contains('invisible')
+    if (previouslyClosed && (action === 'on' || action === 'toggle')) {
+      // If the menu was previously closed and we want to open it, we need to highlight the current theme
+      highlightCurrentTheme()
+      themeChangeButton?.setAttribute('aria-expanded', 'true')
+      themeChangeListItems?.forEach((listItem) => {
+        listItem.setAttribute('aria-expanded', 'true')
+      })
+      themeChangeList?.classList.remove('invisible')
+    } else if (!previouslyClosed && action === 'off' || action === 'toggle') {
+      themeChangeButton?.setAttribute('aria-expanded', 'false')
+      themeChangeListItems?.forEach((listItem) => {
+        listItem.setAttribute('aria-expanded', 'false')
+      })
+      themeChangeList?.classList.add('invisible')
+    }
   }
 
   navMobileButton?.addEventListener('click', (_ev) => {
