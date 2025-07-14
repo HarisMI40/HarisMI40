@@ -83,6 +83,9 @@ a.button {
     .heading-anchor {
       @apply opacity-0 inline-block text-accent/10 ml-3 transition-opacity;
     }
+    &::before {
+      @apply self-start;
+    }
     &:hover .heading-anchor {
       @apply opacity-80!;
     }
@@ -92,7 +95,6 @@ a.button {
     @apply text-2xl text-[var(--theme-h1)] ;
     &::before {
       @apply mr-2 content-['#'];
-      align-self: start;
     }
     .heading-anchor svg {
       @apply size-5.5;
@@ -207,7 +209,15 @@ a.button {
   }
 
   li {
-    @apply pl-5 marker:text-[var(--theme-li-marker)] marker:content-['-'] marker:-left-5
+    @apply pl-2 my-4 marker:text-[var(--theme-li-marker)] marker:-left-5
+  }
+
+  ul li {
+    @apply marker:content-['-']
+  }
+
+  ol li {
+    @apply list-decimal;
   }
 
   hr {
