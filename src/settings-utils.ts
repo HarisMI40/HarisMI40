@@ -7,7 +7,13 @@ import { toString } from 'mdast-util-to-string'
 export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number }) => {
   const maxChars = options && options.maxChars || 200
   return function (tree, { data }) {
-    const firstPara = tree.children.find((x) => x.type === "paragraph")
+    if (data.astro?.frontmatter?.description) {
+      // If description is already set, do not override it
+      return
+    }
+    const firstPara = tree.children.find((x) => {
+      x.type === "paragraph" && x.children.length > 0 && x.children[0].type === "text"
+    })
     if (firstPara && data.astro?.frontmatter) {
       let description = toString(firstPara)
       if (description.length > maxChars) {
