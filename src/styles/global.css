@@ -7,6 +7,10 @@
   --default-font-family: var(--theme-font);
 }
 
+body {
+  @apply transition-colors;
+}
+
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
