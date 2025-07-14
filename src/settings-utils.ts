@@ -31,16 +31,16 @@ export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number })
     // }
     // const firstPara = findFirstParagraph(tree)
 
-    function findFirstParagraph(node: mdast.Root): string | undefined {
-      if (node.children) {
+    function findFirstParagraph(node: mdast.RootContent): string | undefined {
+      if ("children" in node && Array.isArray(node.children)) {
         for (const child of node.children) {
-          if (child.type === "paragraph") {
+          if (child.type === "paragraph" && child.children.length > 0 && child.children[0].type !== "image") {
             const s = toString(child).trim()
             if (s.length > 0) {
               return s
             }
-          } else if (child.children) {
-            const result = findFirstParagraph({type: 'root', children: child.children} as mdast.Root)
+          } else {
+            const result = findFirstParagraph(child)
             if (result) {
               return result
             }
