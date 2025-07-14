@@ -29,6 +29,15 @@ export interface ThemeConfig {
   overrides?: ThemeStyles,
 }
 
+export type SocialLinks = {
+  github?: string
+  twitter?: string
+  mastodon?: string
+  bluesky?: string
+  linkedin?: string
+  email?: string
+}
+
 export interface SiteConfig {
   site: string
   themes: BundledShikiTheme[]
@@ -38,4 +47,5 @@ export interface SiteConfig {
   title: string
   description: string
   pageSize: number
+  socialLinks?: SocialLinks
 }
