@@ -21,7 +21,7 @@ const posts = (await getSortedPosts()).slice(0, siteConfig.pageSize)
         ),
     )
   }
-  <BlockHeader>Posts</BlockHeader>
+  <BlockHeader>Latest Posts</BlockHeader>
   {posts.map((post) => <PostPreview post={post} />)}
   <Pagination nextLink={url('posts')} nextText="Archive" />
 </Layout>
