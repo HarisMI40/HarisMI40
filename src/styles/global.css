@@ -20,7 +20,7 @@ button:active {
 }
 
 a.button {
-  @apply inline-flex text-accent border-3 border-accent/80 py-2 px-5 whitespace-nowrap hover:bg-accent/10 rounded-xl;
+  @apply inline-flex text-accent border-3 border-accent/80 py-2 px-5 whitespace-nowrap hover:bg-accent/10 rounded-xl transition-colors;
 }
 
 .prose {
@@ -179,7 +179,7 @@ a.button {
   }
 
   img {
-    @apply block max-w-full border-8 border-accent rounded-xl p-2 overflow-hidden mx-auto;
+    @apply block max-w-full border-8 border-accent/30 rounded-xl overflow-hidden mx-auto;
 
     &[src$="#pixelated"] {
       image-rendering: pixelated;
@@ -187,15 +187,10 @@ a.button {
   }
 
   figure:not(.expressive-code figure) {
-    @apply inline-block mx-auto;
-
+    @apply block mx-auto rounded-xl py-2;
+    
     figcaption {
-      @apply bg-accent text-background text-center py-2 rounded-b-xl;
-    }
-
-    img,
-    video {
-      @apply mb-0 border-b-0 rounded-b-none;
+      @apply text-center italic;
     }
   }
 
