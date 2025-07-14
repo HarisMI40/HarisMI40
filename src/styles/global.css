@@ -27,6 +27,10 @@ a.button {
 
   @apply text-base/7;
 
+  code:not(.expressive-code code) {
+    @apply text-sm font-mono text-foreground/90 bg-foreground/5 px-2.5 py-1 rounded-lg;
+  }
+
   div.expressive-code {
     @apply my-8;
 
@@ -68,6 +72,7 @@ a.button {
         border-radius: 10px !important;
         border: none !important;
         scrollbar-width: thin;
+        background: transparent !important;
       }
 
     }
@@ -153,7 +158,8 @@ a.button {
   img,
   figure,
   video,
-  table {
+  table,
+  blockquote {
     @apply my-6.5
   }
 
