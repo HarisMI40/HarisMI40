@@ -20,3 +20,7 @@ for number in count_up_to(5):
 ```
 
 Generators are memory-efficient and allow you to work with large datasets without loading them entirely into memory.
+
+```shell title="Running Python Generators"
+python -c "def count_up_to(n):\n    count = 1\n    while count <= n:\n        yield count\n        count += 1\nfor number in count_up_to(5):\n    print(number)"
+```

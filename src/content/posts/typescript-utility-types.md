@@ -29,3 +29,7 @@ const userWithoutEmail: Omit<User, 'email'> = { id: 1, name: "John" };
 ```
 
 Utility types are a great way to work with complex types in TypeScript.
+
+```shell title="Exploring TypeScript Utility Types"
+echo "Using Partial, Readonly, Pick, and Omit in TypeScript"
+```

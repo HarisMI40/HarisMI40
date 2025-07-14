@@ -26,3 +26,7 @@ Timeout
 ```
 
 The event loop ensures that the call stack is empty before executing tasks from the callback queue. This mechanism allows JavaScript to handle asynchronous operations efficiently.
+
+```shell title="Understanding the Event Loop"
+node -e "console.log('Start'); setTimeout(() => { console.log('Timeout'); }, 0); console.log('End');"
+```

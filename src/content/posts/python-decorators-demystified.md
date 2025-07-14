@@ -41,3 +41,7 @@ greet()
 ```
 
 Decorators are widely used in Python for logging, access control, and more.
+
+```shell title="Running Python Decorators"
+python -c "@decorator_function\ndef say_hello():\n    print(\"Hello!\")\nsay_hello()"
+```

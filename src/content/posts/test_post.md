@@ -126,3 +126,7 @@ ___
 
 <input type="submit" value="Submit">
 </form>
+
+```shell title="Testing Markdown Post"
+echo "This is a test post for markdown formatting"
+```

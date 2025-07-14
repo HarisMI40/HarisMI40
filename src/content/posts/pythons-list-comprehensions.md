@@ -23,3 +23,7 @@ print(matrix)
 ```
 
 List comprehensions are a powerful feature for creating and transforming lists in Python.
+
+```shell title="Running Python List Comprehensions"
+python -c "print([x**2 for x in range(10)])"
+```

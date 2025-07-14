@@ -23,3 +23,7 @@ fetchData();
 ```
 
 Async/await is built on top of Promises and makes the code more readable and maintainable.
+
+```shell title="Running Async/Await Example"
+node -e "(async () => { const response = await fetch('https://api.example.com/data'); console.log(await response.json()); })()"
+```

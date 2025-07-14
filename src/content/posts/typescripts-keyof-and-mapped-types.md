@@ -32,3 +32,7 @@ const user: ReadonlyUser = {
 ```
 
 These features make TypeScript a powerful tool for creating robust and type-safe applications.
+
+```shell title="Exploring keyof and Mapped Types"
+echo "Using keyof and mapped types in TypeScript"
+```

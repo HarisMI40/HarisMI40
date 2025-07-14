@@ -57,3 +57,7 @@ func main() {
 ```
 
 Go's concurrency model is simple yet powerful, making it a great choice for concurrent programming.
+
+```shell title="Running Go Concurrency Example"
+go run concurrency_example.go
+```

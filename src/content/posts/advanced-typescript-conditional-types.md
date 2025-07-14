@@ -6,6 +6,10 @@ description: "Dive into conditional types in TypeScript and how they can enhance
 tags: ["typescript"]
 ---
 
+```shell
+echo "Exploring advanced TypeScript features like conditional types"
+```
+
 Conditional types in TypeScript allow you to create types based on conditions. Here's an example:
 
 ```typescript

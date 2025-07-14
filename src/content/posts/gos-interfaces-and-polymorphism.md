@@ -47,3 +47,7 @@ func main() {
 ```
 
 Interfaces in Go are a powerful way to write flexible and reusable code.
+
+```shell title="Running Go Interfaces Example"
+go run interfaces_example.go
+```

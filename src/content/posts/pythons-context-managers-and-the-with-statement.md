@@ -29,3 +29,7 @@ with custom_context():
 ```
 
 Context managers ensure that resources are properly cleaned up, making your code more reliable and maintainable.
+
+```shell title="Using Python Context Managers"
+python -c "with open('example.txt', 'w') as file: file.write('Hello, world!')"
+```

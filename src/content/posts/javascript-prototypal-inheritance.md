@@ -20,3 +20,7 @@ child.greet(); // Hello from parent!
 ```
 
 Prototypal inheritance is a flexible way to share behavior between objects without using classes.
+
+```shell title="Testing Prototypal Inheritance"
+node -e "const parent = { greet() { console.log('Hello from parent!'); } }; const child = Object.create(parent); child.greet();"
+```

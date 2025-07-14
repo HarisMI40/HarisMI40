@@ -8,7 +8,7 @@ tags: ["go"]
 
 Go uses a simple and explicit approach to error handling. Here's an example:
 
-```go
+```go title="error_handling.go"
 package main
 
 import (
@@ -34,3 +34,7 @@ func main() {
 ```
 
 Error handling in Go is straightforward and encourages developers to handle errors explicitly.
+
+```shell title="Running Go Error Handling Example"
+go run error_handling.go
+```
