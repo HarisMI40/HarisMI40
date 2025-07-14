@@ -73,28 +73,78 @@ a.button {
     }
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    @apply flex items-center my-6.5 font-semibold;
+    .heading-anchor {
+      @apply opacity-0 inline-block text-accent/10 ml-3 transition-opacity;
+    }
+    &:hover .heading-anchor {
+      @apply opacity-80!;
+    }
+  }
+
   h1 {
-    @apply text-2xl text-[var(--theme-h1)] my-6.5 font-semibold;
+    @apply text-2xl text-[var(--theme-h1)] ;
+    &::before {
+      @apply mr-2 content-['#'];
+    }
+    .heading-anchor svg {
+      @apply size-5.5;
+    }
   }
 
   h2 {
-    @apply text-2xl text-[var(--theme-h2)] my-6.5 font-semibold;
+    @apply text-2xl text-[var(--theme-h2)];
+    &::before {
+      @apply mr-2 content-['##'];
+    }
+    .heading-anchor svg {
+      @apply size-5.5;
+    }
   }
 
   h3 {
-    @apply text-xl text-[var(--theme-h3)] my-6.5 font-semibold;
+    @apply text-xl text-[var(--theme-h3)];
+    &::before {
+      @apply mr-2 content-['###'];
+    }
+
+    .heading-anchor svg {
+      @apply size-5;
+    }
+   
   }
 
   h4 {
-    @apply text-xl text-[var(--theme-h4)] my-6.5 font-semibold;
+    @apply text-xl text-[var(--theme-h4)];
+    &::before {
+      @apply mr-2 content-['####'];
+    }
+
+    .heading-anchor svg {
+      @apply size-5;
+    }
   }
 
   h5 {
-    @apply text-lg text-[var(--theme-h5)] my-6.5 font-semibold;
+    @apply text-lg text-[var(--theme-h5)];
+    &::before {
+      @apply mr-2 content-['#####'];
+    }
+
+    .heading-anchor svg {
+      @apply size-4.5;
+    }
   }
 
   h6 {
-    @apply text-lg text-[var(--theme-h6)] my-6.5 font-semibold;
+    @apply text-lg text-[var(--theme-h6)];
+    &::before {
+      @apply mr-2 content-['######'];
+    }
+    .heading-anchor svg {
+      @apply size-4.5;
+    }
   }
 
   p,
