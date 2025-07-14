@@ -17,7 +17,7 @@ const posts = (await getSortedPosts()).slice(0, siteConfig.pageSize)
     homeContent.map(
       (home) =>
         home.body && (
-          <HomeBanner textHtml={home.rendered?.html} avatarFilename={home.data.avatar} />
+          <HomeBanner textHtml={home.rendered?.html} avatarFilename={home.data.avatar} githubCalendar={home.data.githubCalendar} />
         ),
     )
   }

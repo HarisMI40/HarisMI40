@@ -12,6 +12,8 @@ import icon from 'astro-icon';
 import { remarkDescription, remarkReadingTime, rehypeTitleFigure } from './src/settings-utils';
 import {fromHtmlIsomorphic} from 'hast-util-from-html-isomorphic'
 
+import react from '@astrojs/react';
+
 // https://astro.build/config
 export default defineConfig({
   site: siteConfig.site,
@@ -44,20 +46,16 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [
-    sitemap(),
-    expressiveCode({
-      themes: siteConfig.themes,
-      useDarkModeMediaQuery: false,
-      defaultProps: {
-        showLineNumbers: false,
-        wrap: false,
-      },
-      plugins: [
-        pluginLineNumbers()
-      ],
-    }),
-    mdx(), // Must come after expressive-code integration
-    icon()
-  ]
+  integrations: [sitemap(), expressiveCode({
+    themes: siteConfig.themes,
+    useDarkModeMediaQuery: false,
+    defaultProps: {
+      showLineNumbers: false,
+      wrap: false,
+    },
+    plugins: [
+      pluginLineNumbers()
+    ],
+  }), // Must come after expressive-code integration
+  mdx(), icon(), react()]
 });

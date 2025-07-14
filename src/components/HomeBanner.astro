@@ -1,28 +1,48 @@
 ---
 import Image from 'astro/components/Image.astro'
+import ReactGithubCalendar from './ReactGithubCalendar'
 
 interface Props {
     textHtml?: string
     avatarFilename?: string
+    githubCalendar?: boolean
 }
-const { textHtml, avatarFilename } = Astro.props
+const { textHtml, avatarFilename, githubCalendar } = Astro.props
 const avatarPath = `/src/assets/${avatarFilename}`
 const images = import.meta.glob<{ default: ImageMetadata }>(
     '/src/assets/*.{webp,jpeg,jpg,png,gif}',
 )
 ---
 
-<div class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full my-6">
+<div>
+    <div
+        class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full my-6"
+    >
+        {
+            images[avatarPath] && (
+                <Image
+                    src={images[avatarPath]()}
+                    alt="Avatar"
+                    class="rounded-full size-40 border-8 border-accent/15"
+                />
+            )
+        }
+        <div>
+            <div class:list={['m-4 max-w-full prose']} set:html={textHtml} />
+        </div>
+    </div>
     {
-        images[avatarPath] && (
-            <Image
-                src={images[avatarPath]()}
-                alt="Avatar"
-                class="rounded-full size-40 border-8 border-accent/15"
-            />
+        githubCalendar && (
+            <div class="h-42">
+                <ReactGithubCalendar client:only />
+            </div>
         )
     }
-    <div>
-        <div class:list={['m-4 max-w-full prose']} set:html={textHtml} />
-    </div>
 </div>
+
+<style is:global>
+    .github-calendar rect {
+        stroke: var(--theme-foreground) !important;
+        stroke-opacity: 0.1 !important;
+    }
+</style>
