@@ -3,7 +3,6 @@ title: "Mastering Async/Await in JavaScript"
 published: 2025-07-05
 draft: false
 description: "Learn how to handle asynchronous operations in JavaScript using async/await."
-author: "Stel"
 tags: ["javascript"]
 ---
 

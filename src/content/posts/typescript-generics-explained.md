@@ -3,7 +3,6 @@ title: "TypeScript Generics Explained"
 published: 2025-07-02
 draft: false
 description: "Learn how to use generics in TypeScript to create reusable and type-safe code."
-author: "Stel"
 tags: ["typescript"]
 ---
 

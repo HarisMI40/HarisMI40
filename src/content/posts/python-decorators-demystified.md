@@ -3,7 +3,6 @@ title: "Python Decorators Demystified"
 published: 2025-07-03
 draft: false
 description: "An introduction to Python decorators and how to use them effectively."
-author: "Stel"
 tags: ["python"]
 ---
 

@@ -3,9 +3,10 @@ title: "Understanding Closures in JavaScript"
 published: 2025-07-01
 draft: false
 description: "A deep dive into closures and their applications in JavaScript."
-author: "Stel"
 tags: ["javascript"]
 ---
+
+![javascript code](https://upload.wikimedia.org/wikipedia/commons/e/ef/Programming_code.jpg)
 
 Closures are a fundamental concept in JavaScript that allow functions to access variables from their outer scope. Here's an example:
 
