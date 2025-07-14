@@ -2,8 +2,8 @@ import type { SiteConfig } from '@types'
 import '@fontsource-variable/jetbrains-mono'
 
 const config: SiteConfig = {
-  site: 'https://astro-terminal-theme.com',
-  title: "Terminal",
+  site: 'https://github.io/stelcodes/sweetterm',
+  title: "SweetTerm",
   description: "A terminal-inspired Astro theme",
   font: 'JetBrains Mono Variable',
   pageSize: 5,
