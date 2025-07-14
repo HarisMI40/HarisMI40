@@ -20,7 +20,7 @@ button:active {
 }
 
 a.button {
-  @apply inline-flex text-accent border-3 border-accent/30 border-double py-2 px-5 whitespace-nowrap hover:bg-accent/10 rounded-xl transition-colors;
+  @apply inline-flex text-accent border-3 border-accent/30 border-double py-1.5 px-3 whitespace-nowrap hover:bg-accent/10 rounded-xl transition-colors;
 }
 
 .prose {
