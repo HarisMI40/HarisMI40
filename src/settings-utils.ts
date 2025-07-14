@@ -31,7 +31,7 @@ export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number })
     // }
     // const firstPara = findFirstParagraph(tree)
 
-    function findFirstParagraph(node: mdast.RootContent): string | undefined {
+    function findFirstParagraph(node: mdast.Root | mdast.RootContent): string | undefined {
       if ("children" in node && Array.isArray(node.children)) {
         for (const child of node.children) {
           if (child.type === "paragraph" && child.children.length > 0 && child.children[0].type !== "image") {
