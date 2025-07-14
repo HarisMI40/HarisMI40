@@ -92,6 +92,7 @@ a.button {
     @apply text-2xl text-[var(--theme-h1)] ;
     &::before {
       @apply mr-2 content-['#'];
+      align-self: start;
     }
     .heading-anchor svg {
       @apply size-5.5;

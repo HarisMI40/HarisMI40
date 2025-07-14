@@ -20,7 +20,7 @@ const postsCollection = defineCollection({
 const homeCollection = defineCollection({
   loader: glob({ pattern: ["home.md", "home.mdx"], base: "./src/content" }),
   schema: z.object({
-    framed: z.boolean().optional().default(false)
+    avatar: z.string().optional()
   })
 })
 

@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content'
 import PostPreview from '@components/PostPreview.astro'
 import Pagination from '@components/Pagination.astro'
 import BlockHeader from '@components/BlockHeader.astro'
+import HomeBanner from '@components/HomeBanner.astro'
 
 const homeContent = await getCollection('home')
 const posts = (await getSortedPosts()).slice(0, 3)
@@ -15,13 +16,7 @@ const posts = (await getSortedPosts()).slice(0, 3)
     homeContent.map(
       (home) =>
         home.body && (
-          <div
-            class:list={[
-              'my-4 max-w-full prose',
-              home.data.framed && ' border-accent/10',
-            ]}
-            set:html={home.rendered?.html}
-          />
+          <HomeBanner textHtml={home.rendered?.html} avatarFilename={home.data.avatar} />
         ),
     )
   }
