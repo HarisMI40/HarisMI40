@@ -21,9 +21,37 @@ const config: SiteConfig = {
   // These will be used to theme the entire site along with syntax highlighting.
   // https://expressive-code.com/guides/themes/#using-bundled-themes
   themes: [
-    'everforest-dark', 'everforest-light', 'kanagawa-wave', 'catppuccin-frappe', 'synthwave-84', 'rose-pine-dawn', 'github-light-high-contrast', 'tokyo-night', 'nord', 'one-dark-pro', 'andromeeda', 'vesper'
+    'andromeeda', 
+    'catppuccin-frappe', 
+    'catppuccin-latte', 
+    'catppuccin-macchiato', 
+    'catppuccin-mocha', 
+    'dracula', 
+    'everforest-dark', 
+    'everforest-light', 
+    'github-dark', 
+    'github-dark-dimmed', 
+    'github-light', 
+    'github-light-high-contrast', 
+    // 'gruvbox-dark', 
+    // 'gruvbox-light', 
+    'kanagawa-dragon', 
+    'kanagawa-wave', 
+    'monokai', 
+    'nord', 
+    'one-dark-pro', 
+    'rose-pine', 
+    'rose-pine-dawn', 
+    'rose-pine-moon', 
+    'solarized-dark', 
+    'solarized-light', 
+    'synthwave-84', 
+    'tokyo-night', 
+    // 'tokyo-night-storm', 
+    // 'tokyo-night-day', 
+    'vesper'
   ],
-  // Social links to display in the footer.
+   // Social links to display in the footer.
   socialLinks: {
     github: 'https://github.com/stelcodes/sweetterm',
     mastodon: 'https://github.com/stelcodes/sweetterm',
