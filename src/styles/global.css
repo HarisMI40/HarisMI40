@@ -78,23 +78,23 @@ a.button {
   }
 
   h2 {
-    @apply text-xl text-[var(--theme-h2)] my-6.5 font-semibold;
+    @apply text-2xl text-[var(--theme-h2)] my-6.5 font-semibold;
   }
 
   h3 {
-    @apply text-lg text-[var(--theme-h3)] my-6.5 font-semibold;
+    @apply text-xl text-[var(--theme-h3)] my-6.5 font-semibold;
   }
 
   h4 {
-    @apply text-base text-[var(--theme-h4)] my-6.5 font-semibold;
+    @apply text-xl text-[var(--theme-h4)] my-6.5 font-semibold;
   }
 
   h5 {
-    @apply text-base text-[var(--theme-h5)] my-6.5 font-semibold;
+    @apply text-lg text-[var(--theme-h5)] my-6.5 font-semibold;
   }
 
   h6 {
-    @apply text-base text-[var(--theme-h6)] my-6.5 font-semibold;
+    @apply text-lg text-[var(--theme-h6)] my-6.5 font-semibold;
   }
 
   p,
