@@ -27,6 +27,14 @@ a.button {
   @apply inline-flex text-accent border-3 border-accent/30 border-double py-1.5 px-3 whitespace-nowrap hover:bg-accent/10 rounded-xl transition-colors;
 }
 
+article img {
+  @apply block max-w-full border-8 border-accent/30 rounded-xl overflow-hidden mx-auto;
+
+  &[src$="#pixelated"] {
+    image-rendering: pixelated;
+  }
+}
+
 .prose {
 
   @apply text-base/7;
@@ -42,7 +50,8 @@ a.button {
       @apply border-2 border-foreground/8 !rounded-xl;
       box-shadow: none !important;
 
-      &.has-title, &.is-terminal {
+      &.has-title,
+      &.is-terminal {
         --button-spacing: 30px !important;
       }
 
@@ -52,7 +61,8 @@ a.button {
         padding-block: 0 !important;
         border: none !important;
 
-        &::after, &::before {
+        &::after,
+        &::before {
           border: none !important;
         }
 
@@ -66,7 +76,8 @@ a.button {
           padding: unset !important;
 
 
-          &::after, &::before {
+          &::after,
+          &::before {
             border: none !important;
           }
         }
@@ -82,24 +93,34 @@ a.button {
     }
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply flex items-center my-6.5 font-semibold;
+
     .heading-anchor {
       @apply opacity-0 inline-block text-accent/10 ml-3 transition-opacity;
     }
+
     &::before {
       @apply self-start;
     }
+
     &:hover .heading-anchor {
-      @apply opacity-80!;
+      @apply !opacity-80;
     }
   }
 
   h1 {
-    @apply text-2xl text-[var(--theme-h1)] ;
+    @apply text-2xl text-[var(--theme-h1)];
+
     &::before {
       @apply mr-2 content-['#'];
     }
+
     .heading-anchor svg {
       @apply size-5.5;
     }
@@ -107,9 +128,11 @@ a.button {
 
   h2 {
     @apply text-2xl text-[var(--theme-h2)];
+
     &::before {
       @apply mr-2 content-['##'];
     }
+
     .heading-anchor svg {
       @apply size-5.5;
     }
@@ -117,6 +140,7 @@ a.button {
 
   h3 {
     @apply text-xl text-[var(--theme-h3)];
+
     &::before {
       @apply mr-2 content-['###'];
     }
@@ -124,11 +148,12 @@ a.button {
     .heading-anchor svg {
       @apply size-5;
     }
-   
+
   }
 
   h4 {
     @apply text-xl text-[var(--theme-h4)];
+
     &::before {
       @apply mr-2 content-['####'];
     }
@@ -140,6 +165,7 @@ a.button {
 
   h5 {
     @apply text-lg text-[var(--theme-h5)];
+
     &::before {
       @apply mr-2 content-['#####'];
     }
@@ -151,9 +177,11 @@ a.button {
 
   h6 {
     @apply text-lg text-[var(--theme-h6)];
+
     &::before {
       @apply mr-2 content-['######'];
     }
+
     .heading-anchor svg {
       @apply size-4.5;
     }
@@ -191,17 +219,11 @@ a.button {
     @apply font-bold text-center text-accent py-1 px-4.5 border-4 border-accent rounded-xl cursor-pointer hover:bg-accent/15 transition-colors
   }
 
-  img {
-    @apply block max-w-full border-8 border-accent/30 rounded-xl overflow-hidden mx-auto;
 
-    &[src$="#pixelated"] {
-      image-rendering: pixelated;
-    }
-  }
 
   figure:not(.expressive-code figure) {
     @apply block mx-auto rounded-xl py-2;
-    
+
     figcaption {
       @apply text-center italic;
     }

@@ -7,6 +7,7 @@ import PostPreview from '@components/PostPreview.astro'
 import DividerText from '@components/DividerText.astro'
 import { getCollection } from 'astro:content'
 import PostAddendum from '@components/PostAddendum.astro'
+import { getImage, Image } from "astro:assets";
 
 export const getStaticPaths = (async () => {
   const posts = await getSortedPosts()
@@ -27,10 +28,21 @@ const postData = post.data
 const addendum = await getCollection('addendum')
 const addendumHtml =
   addendum.length > 0 && addendum[0].body ? addendum[0].rendered?.html : undefined
+// const coverImage = postData.coverImage ? { src: postData.coverImage.src.src, alt: postData.coverImage.alt } : undefined
+const coverImage = postData.coverImage ? (await getImage(postData.coverImage)).src : undefined
 ---
 
-<Layout title={postData.title} description={postData.description} tags={postData.tags}>
+<Layout title={postData.title} description={postData.description} tags={postData.tags} coverImage={coverImage}>
   <article class="max-w-full py-7.5" data-pagefind-body>
+    {
+      postData.coverImage && coverImage && (
+        <img
+          src={coverImage}
+          alt={postData.coverImage.alt}
+          class="w-full rounded-xl mb-5"
+        />
+      )
+    }
     <h1 class="mb-3 text-2xl text-[var(--theme-h1)] font-semibold">
       # {postData.title}
     </h1>

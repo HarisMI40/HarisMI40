@@ -12,16 +12,17 @@ interface Props {
   title?: string
   description?: string
   tags?: string[]
+  coverImage?: string // Relative path to the cover image
 }
 
-const { title, description, tags } = Astro.props
+const { title, description, tags, coverImage } = Astro.props
 const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title
 const pageDescription = description || siteConfig.description
+const pageImage = coverImage ? `${siteConfig.site}${coverImage}` : undefined
 const pageKeywords = siteConfig.tags.concat(tags || []).join(', ')
 const baseCssVars: { [key: string]: string } = {
   'theme-font': siteConfig.font,
   'ec-frm-frameBoxShdCssVal': 'none',
-  // 'ec-brdRad': '0',
   'ec-frm-edTabBrdRad': '0',
   'ec-frm-edTabBarBrdCol':
     'color-mix(in srgb, var(--theme-foreground), 10%, transparent)',
@@ -80,11 +81,19 @@ let generatedCss: string = cssLines.join('\n')
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={siteConfig.site} />
     <meta property="og:type" content="website" />
-    <!-- <meta property="og:image" content={`${siteConfig.site}/social-image.png`} /> -->
+    {
+      pageImage && (
+        <meta property="og:image" content={pageImage} />
+      )
+    }
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
-    <!-- <meta name="twitter:image" content={`${siteConfig.site}/social-image.png`} /> -->
+    {
+      pageImage && (
+        <meta name="twitter:image" content={pageImage} />
+      ) 
+    }
     <meta name="keywords" content={pageKeywords} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link
