@@ -11,6 +11,7 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import icon from 'astro-icon';
 import { remarkDescription, remarkReadingTime, rehypeTitleFigure } from './src/settings-utils';
 import {fromHtmlIsomorphic} from 'hast-util-from-html-isomorphic'
+import rehypeExternalLinks from "rehype-external-links";
 
 import react from '@astrojs/react';
 
@@ -41,6 +42,13 @@ export default defineConfig({
         },
       ],
       rehypeTitleFigure,
+      [
+				rehypeExternalLinks,
+				{
+					rel: ["noreferrer", "noopener"],
+					target: "_blank",
+				},
+			],
     ],
   },
   vite: {
