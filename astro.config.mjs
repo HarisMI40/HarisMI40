@@ -13,6 +13,7 @@ import { remarkDescription, remarkReadingTime, rehypeTitleFigure } from './src/s
 import {fromHtmlIsomorphic} from 'hast-util-from-html-isomorphic'
 import rehypeExternalLinks from "rehype-external-links";
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
+import rehypeUnwrapImages from "rehype-unwrap-images";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
 import react from '@astrojs/react';
 
@@ -52,6 +53,7 @@ export default defineConfig({
 					target: "_blank",
 				},
 			],
+      rehypeUnwrapImages,
     ],
   },
   vite: {
