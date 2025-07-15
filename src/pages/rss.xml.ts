@@ -1,7 +1,10 @@
-import rss, { pagesGlobToRssItems } from '@astrojs/rss';
+import rss from '@astrojs/rss';
 import siteConfig from '../site.config';
-import type { AstroGlobal  } from 'astro';
+import type { AstroGlobal } from 'astro';
 import { getCollection } from 'astro:content';
+import sanitizeHtml from 'sanitize-html';
+import MarkdownIt from 'markdown-it';
+const parser = new MarkdownIt();
 
 // https://docs.astro.build/en/recipes/rss/
 export async function GET(_context: AstroGlobal) {
@@ -20,6 +23,9 @@ export async function GET(_context: AstroGlobal) {
       pubDate: post.data.published,
       description: post.data.description,
       link: `/posts/${post.id}`,
+      content: sanitizeHtml(parser.render(post.body || ""), {
+        allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
+      }),
     })),
     trailingSlash: false,
   });
