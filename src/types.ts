@@ -46,6 +46,7 @@ export interface SiteConfig {
   font: string
   title: string
   description: string
+  tags: string[]
   pageSize: number
   socialLinks?: SocialLinks
 }

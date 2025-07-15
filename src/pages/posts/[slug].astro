@@ -29,7 +29,7 @@ const addendumHtml =
   addendum.length > 0 && addendum[0].body ? addendum[0].rendered?.html : undefined
 ---
 
-<Layout title={postData.title}>
+<Layout title={postData.title} description={postData.description} tags={postData.tags}>
   <article class="max-w-full py-7.5">
     <h1 class="mb-3 text-2xl text-[var(--theme-h1)] font-semibold">
       # {postData.title}

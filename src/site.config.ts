@@ -8,6 +8,8 @@ const config: SiteConfig = {
   title: "SweetTerm",
   // The description of your site, used for SEO and RSS feed.
   description: "A terminal-inspired Astro theme",
+  // Keywords for SEO, used in the meta tags.
+  tags: ["Astro", "Terminal", "Theme", "SweetTerm", "stelcodes"],
   // Font imported from @fontsource or elsewhere, used for the entire site.
   font: 'JetBrains Mono Variable',
   // For pagination, the number of posts to display per page.
