@@ -27,6 +27,16 @@ a.button {
   @apply inline-flex text-accent border-3 border-accent/30 border-double py-1.5 px-3 whitespace-nowrap hover:bg-accent/10 rounded-xl transition-colors;
 }
 
+button,
+input {
+  @apply !outline-none;
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+
 article img {
   @apply block max-w-full border-8 border-accent/30 rounded-xl overflow-hidden mx-auto;
 

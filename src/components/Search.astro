@@ -1,7 +1,5 @@
 ---
-// Heavy inspiration taken from Astro Starlight -> https://github.com/withastro/starlight/blob/main/packages/starlight/components/Search.astro
-
-import '../styles/search.css'
+import "@pagefind/default-ui/css/ui.css";
 import { Icon } from 'astro-icon/components'
 ---
 
@@ -19,7 +17,7 @@ import { Icon } from 'astro-icon/components'
         aria-label="search"
         class="text-foreground! bg-background h-full max-h-full w-full max-w-full border-double! border-4 border-accent/30 shadow-sm backdrop:backdrop-blur-sm open:flex sm:mx-auto sm:mt-16 sm:mb-auto sm:h-max sm:max-h-[calc(100%-8rem)] sm:min-h-[15rem] sm:w-5/6 sm:max-w-[48rem] sm:rounded-md"
     >
-        <div class="dialog-frame flex grow flex-col gap-4 p-6 pt-12 sm:pt-6">
+        <div class="dialog-frame flex grow flex-col gap-4 p-6 pt-12 sm:pt-6 max-w-full">
             <button
                 class="ms-auto cursor-pointer rounded-md bg-background border-3 border-accent/30 p-2 font-semibold"
                 data-close-modal>Close</button
@@ -34,7 +32,7 @@ import { Icon } from 'astro-icon/components'
                     </div>
                 ) : (
                     <div class="search-container">
-                        <div id="cactus__search" />
+                        <div id="pagefind-search" class="max-w-full" />
                     </div>
                 )
             }
@@ -50,6 +48,33 @@ import { Icon } from 'astro-icon/components'
         --pagefind-ui-background: var(--theme-background);
         --pagefind-ui-border: var(--theme-accent);
         --pagefind-ui-border-width: 2px;
+    }
+
+    .pagefind-ui__results-area {
+        margin: 16px 0;
+    }
+    .pagefind-ui__result {
+        overflow-x: scroll !important;
+    }
+
+    .pagefind-ui__result-inner {
+        max-width: 100% !important;
+    }
+
+    .pagefind-ui__result-inner mark {
+        background-color: var(--theme-accent) !important;
+        color: var(--theme-background) !important;
+        font-weight: 600 !important;
+        padding: 0 3px !important;
+        border-radius: 6px !important;
+    }
+
+    .pagefind-ui__result-nested .pagefind-ui__result-link:before {
+        content: ">" !important;
+        left: -16px !important;
+        right: unset !important;
+        color: var(--theme-accent) !important;
+        font-weight: 600 !important;
     }
 </style>
 
@@ -104,7 +129,7 @@ import { Icon } from 'astro-icon/components'
                     baseUrl: import.meta.env.BASE_URL,
                     bundlePath:
                         import.meta.env.BASE_URL.replace(/\/$/, '') + '/pagefind/',
-                    element: '#cactus__search',
+                    element: '#pagefind-search',
                     showImages: false,
                     showSubResults: true,
                 })
