@@ -12,7 +12,8 @@ import icon from 'astro-icon';
 import { remarkDescription, remarkReadingTime, rehypeTitleFigure } from './src/settings-utils';
 import {fromHtmlIsomorphic} from 'hast-util-from-html-isomorphic'
 import rehypeExternalLinks from "rehype-external-links";
-
+import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
+import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
 import react from '@astrojs/react';
 
 // https://astro.build/config
@@ -23,6 +24,8 @@ export default defineConfig({
     remarkPlugins: [
       [remarkDescription, { maxChars: 200 }],
       remarkReadingTime,
+      remarkDirective,
+      remarkAdmonitions
     ],
     rehypePlugins: [
       rehypeSlug,

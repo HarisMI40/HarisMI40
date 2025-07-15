@@ -90,6 +90,28 @@ I've also added a special tag for pixel art that adds the correct CSS to render 
 ![Pixel art of a tree](https://upload.wikimedia.org/wikipedia/commons/9/90/PixelatedGreenTreeSide.png#pixelated "But adding #pixelated fixes this")
 ```
 
+## Admonitions
+
+:::note
+testing123
+:::
+
+:::tip
+testing123
+:::
+
+:::important
+testing123
+:::
+
+:::caution
+testing123
+:::
+
+:::warning
+testing123
+:::
+
 ## HTML Elements
 
 <button>A Button</button>

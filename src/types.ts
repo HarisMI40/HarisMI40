@@ -6,6 +6,8 @@ export type NavLink = {
   external?: boolean
 }
 
+export type AdmonitionType = "tip" | "note" | "important" | "caution" | "warning";
+
 export interface ThemeStyles {
   foreground?: string[],
   background?: string[],
