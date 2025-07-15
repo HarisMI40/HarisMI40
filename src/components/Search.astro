@@ -1,5 +1,5 @@
 ---
-import "@pagefind/default-ui/css/ui.css";
+import '@pagefind/default-ui/css/ui.css'
 import { Icon } from 'astro-icon/components'
 ---
 
@@ -15,13 +15,14 @@ import { Icon } from 'astro-icon/components'
     </button>
     <dialog
         aria-label="search"
-        class="text-foreground! bg-background h-full max-h-full w-full max-w-full border-double! border-4 border-accent/30 shadow-sm backdrop:backdrop-blur-sm open:flex sm:mx-auto sm:mt-16 sm:mb-auto sm:h-max sm:max-h-[calc(100%-8rem)] sm:min-h-[15rem] sm:w-5/6 sm:max-w-[48rem] sm:rounded-md"
-    >
-        <div class="dialog-frame flex grow flex-col gap-4 p-6 pt-12 sm:pt-6 max-w-full">
+        class="text-foreground! bg-background max-h-5/6 min-h-48 w-5/6 border-double! border-4 border-accent/30 shadow-sm backdrop:backdrop-blur-sm open:flex mx-auto mt-16 mb-auto rounded-xl"    >
+        <div class="dialog-frame flex grow flex-col items-center justify-center gap-4 p-6 pt-12 sm:pt-6 max-w-full">
             <button
-                class="ms-auto cursor-pointer rounded-md bg-background border-3 border-accent/30 p-2 font-semibold"
-                data-close-modal>Close</button
+                class="cursor-pointer fixed top-2 right-2 rounded-full"
+                data-close-modal
             >
+                <Icon name="circle-x" class="size-6 text-accent/50" />
+            </button>
             {
                 import.meta.env.DEV ? (
                     <div class="mx-auto text-center">
@@ -70,7 +71,7 @@ import { Icon } from 'astro-icon/components'
     }
 
     .pagefind-ui__result-nested .pagefind-ui__result-link:before {
-        content: ">" !important;
+        content: '>' !important;
         left: -16px !important;
         right: unset !important;
         color: var(--theme-accent) !important;

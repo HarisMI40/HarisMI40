@@ -1,25 +1,18 @@
 ---
-import type { NavLink } from '@types' 
-import { Icon } from 'astro-icon/components'
+import type { NavLink } from '@types'
 import siteConfig from '../site.config'
 import LightDarkAutoButton from './LightDarkAutoButton.astro'
 import Search from './Search.astro'
-
+import SelectTheme from './SelectTheme.astro'
 
 const links: NavLink[] = [
   { name: 'Home', url: '/' },
   { name: 'Archive', url: '/posts' },
 ]
 
-function kebabToTitleCase(str: string): string {
-  return str
-    .split('-') // Split the string into words
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-    .join(' '); // Join the words with a space
-}
-
 const lightDarkAutoTheme = siteConfig.themes.mode === 'light-dark-auto'
-const selectTheme = siteConfig.themes.mode === 'select' && siteConfig.themes.include.length > 1
+const selectTheme =
+  siteConfig.themes.mode === 'select' && siteConfig.themes.include.length > 1
 ---
 
 <header>
@@ -32,58 +25,35 @@ const selectTheme = siteConfig.themes.mode === 'select' && siteConfig.themes.inc
       {siteConfig.title}
     </a>
     <div class="flex items-center gap-3 sm:mr-3">
-    <Search />
-    {
-      lightDarkAutoTheme && <LightDarkAutoButton />
-    }
-    {
-      selectTheme && 
-      <div class="flex items-center justify-center">
-        <button id="theme-change-button" >
-          <Icon name="palette" class="size-6 text-[var(--theme-accent)]">
+      <Search />
+      {lightDarkAutoTheme && <LightDarkAutoButton />}
+      {selectTheme && <SelectTheme />}
+      <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
+        <button
+          id="nav-mobile-button"
+          class="px-3 py-1 h-full cursor-pointer border-2 rounded-xl bg-background"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu-list"
+        >
+          ▾
         </button>
         <ul
-          id="theme-change-list"
+          id="nav-mobile-list"
           class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
         >
-        {
-          siteConfig.themes.include.map((theme) => (
-            <li aria-expanded="false">
-              <button class="w-full rounded-lg py-1 px-2" data-theme={theme}>
-                {kebabToTitleCase(theme)}
-              </button>
-            </li>
-          ))
-        }
+          {
+            links.map((link) => (
+              <li class="p-1" aria-expanded="false">
+                <a class="underline" href={link.url}>
+                  {link.name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
-      </div>
-    }
-    <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
-      <button
-        id="nav-mobile-button"
-        class="px-3 py-1 h-full cursor-pointer border-2 rounded-xl bg-background"
-        type="button"
-        aria-expanded="false"
-        aria-controls="nav-menu-list"
-      >
-        ▾
-      </button>
-      <ul
-        id="nav-mobile-list"
-        class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
-      >
-        {
-          links.map((link) => (
-            <li class="p-1" aria-expanded="false">
-              <a class="underline" href={link.url}>
-                {link.name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
-  </div>
+      </nav>
+    </div>
   </div>
   <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
     <ul class="flex flex-row text-accent mb-2.5">
@@ -100,17 +70,11 @@ const selectTheme = siteConfig.themes.mode === 'select' && siteConfig.themes.inc
   </nav>
 </header>
 
-<style>
-  button.current-theme {
-    background-color: color-mix(in srgb, var(--theme-accent) 8%, transparent 92%);
-  }
-</style>
-
 <script>
   const navMobileButton = document.getElementById('nav-mobile-button')
   const navMobileList = document.getElementById('nav-mobile-list')
   const navMobileListItems = navMobileList?.querySelectorAll('li')
-  const toggleNavMobileMenu = (action: "on" | "off" | "toggle") => {
+  const toggleNavMobileMenu = (action: 'on' | 'off' | 'toggle') => {
     let isNowOpen: boolean = false
     if (action === 'on') {
       isNowOpen = true
@@ -126,66 +90,7 @@ const selectTheme = siteConfig.themes.mode === 'select' && siteConfig.themes.inc
       listItem.setAttribute('aria-expanded', isNowOpen ? 'true' : 'false')
     })
   }
-  const themeChangeButton = document.getElementById('theme-change-button')
-  const themeChangeList = document.getElementById('theme-change-list')
-  const themeChangeListItems = themeChangeList?.querySelectorAll('li')
-  const highlightCurrentTheme = () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme')
-    if (!currentTheme) {
-      console.warn('No theme set in data-theme attribute.')
-      return
-    }
-    themeChangeListItems?.forEach((listItem) => {
-      let button = listItem.querySelector('button')
-      if (!button) {
-        console.warn('No button found in theme change list item.')
-        return
-      }
-      if (button.getAttribute('data-theme') === currentTheme) {
-        button.classList.add('current-theme')
-      } else {
-        button.classList.remove('current-theme')
-      }
-    })
-  }
-  const toggleThemeChangeMenu = (action: "on" | "off" | "toggle") => {
-    const previouslyClosed: boolean = !!themeChangeList?.classList.contains('invisible')
-    if (previouslyClosed && (action === 'on' || action === 'toggle')) {
-      // If the menu was previously closed and we want to open it, we need to highlight the current theme
-      highlightCurrentTheme()
-      themeChangeButton?.setAttribute('aria-expanded', 'true')
-      themeChangeListItems?.forEach((listItem) => {
-        listItem.setAttribute('aria-expanded', 'true')
-      })
-      themeChangeList?.classList.remove('invisible')
-    } else if (!previouslyClosed && action === 'off' || action === 'toggle') {
-      themeChangeButton?.setAttribute('aria-expanded', 'false')
-      themeChangeListItems?.forEach((listItem) => {
-        listItem.setAttribute('aria-expanded', 'false')
-      })
-      themeChangeList?.classList.add('invisible')
-    }
-  }
-
   navMobileButton?.addEventListener('click', (_ev) => {
-    toggleThemeChangeMenu('off') // Close theme change menu if open
     toggleNavMobileMenu('toggle')
-  })
-  themeChangeButton?.addEventListener('click', (_ev) => {
-    toggleNavMobileMenu('off') // Close mobile menu if open
-    toggleThemeChangeMenu('toggle')
-  })
-
-  let themeChangeButtons = themeChangeList?.querySelectorAll('button')
-  themeChangeButtons?.forEach((button) => {
-    button.addEventListener('click', (ev) => {
-      ev.preventDefault()
-      let themeId = button.getAttribute('data-theme')
-      if (themeId) {
-        document.documentElement.setAttribute('data-theme', themeId)
-        localStorage.setItem("data-theme", themeId);
-        toggleThemeChangeMenu('off') // Close menu after selection
-      }
-    })
   })
 </script>
