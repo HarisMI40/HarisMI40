@@ -149,6 +149,9 @@ import { Icon } from 'astro-icon/components'
         return
       }
 
+      const body = document.querySelector('body')
+      body?.classList.add('overflow-hidden')
+
       this.#dialog.showModal()
       this.querySelector('input')?.focus()
       event?.stopPropagation()
@@ -157,7 +160,11 @@ import { Icon } from 'astro-icon/components'
       })
     }
 
-    closeModal = () => this.#dialog?.close()
+    closeModal = () => {
+      const body = document.querySelector('body')
+      body?.classList.remove('overflow-hidden')
+      this.#dialog?.close()
+    }
 
     onWindowClick = (event: MouseEvent) => {
       // check if it's a link

@@ -122,7 +122,8 @@ function kebabToTitleCase(str: string): string {
         return
       }
       this.highlightCurrentTheme()
-
+      const body = document.querySelector('body')
+      body?.classList.add('overflow-hidden')
       this.#dialog.showModal()
       event?.stopPropagation()
       window.addEventListener('click', this.onWindowClick, {
@@ -130,7 +131,11 @@ function kebabToTitleCase(str: string): string {
       })
     }
 
-    closeModal = () => this.#dialog?.close()
+    closeModal = () => {
+      const body = document.querySelector('body')
+      body?.classList.remove('overflow-hidden')
+      this.#dialog?.close()
+    }
 
     onWindowClick = (event: MouseEvent) => {
       // check if it's a link
