@@ -1,23 +1,19 @@
 ---
-import { Image } from 'astro:assets'
+import type { GetImageResult } from 'astro'
 
 interface Props {
     textHtml?: string
-    avatarFilename?: string
+    avatarImage?: GetImageResult
 }
-const { textHtml, avatarFilename } = Astro.props
-const avatarPath = `/src/assets/${avatarFilename}`
-const images = import.meta.glob<{ default: ImageMetadata }>(
-    '/src/assets/*.{webp,jpeg,jpg,png,gif}',
-)
+const { textHtml, avatarImage } = Astro.props
 ---
 
 <div class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full mb-6 py-10 bg-accent/8 p-4 rounded-xl">
     {
-        images[avatarPath] && (
-            <Image
-                src={images[avatarPath]()}
-                alt="Avatar"
+        avatarImage && (
+            <img
+                src={avatarImage.src}
+                alt={avatarImage.attributes.alt}
                 class="rounded-full size-40 border-8 border-accent/15"
             />
         )

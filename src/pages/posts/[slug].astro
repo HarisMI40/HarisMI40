@@ -2,12 +2,11 @@
 import type { GetStaticPaths } from 'astro'
 import Layout from '@layouts/Layout.astro'
 import { dateString, getSortedPosts, url } from '@utils'
-import Pagination from '@components/Pagination.astro'
 import PostPreview from '@components/PostPreview.astro'
 import DividerText from '@components/DividerText.astro'
 import { getCollection } from 'astro:content'
 import PostAddendum from '@components/PostAddendum.astro'
-import { getImage, Image } from "astro:assets";
+import { getImage } from "astro:assets";
 
 export const getStaticPaths = (async () => {
   const posts = await getSortedPosts()
@@ -26,9 +25,9 @@ export const getStaticPaths = (async () => {
 const { post, prev, next } = Astro.props
 const postData = post.data
 const addendum = await getCollection('addendum')
-const addendumHtml =
-  addendum.length > 0 && addendum[0].body ? addendum[0].rendered?.html : undefined
-// const coverImage = postData.coverImage ? { src: postData.coverImage.src.src, alt: postData.coverImage.alt } : undefined
+const addendumEntry = addendum.length > 0 ? addendum[0] : undefined
+const addendumHtml = addendumEntry?.rendered?.html
+const addendumAvatarImage = addendumEntry?.data.avatarImage ? (await getImage(addendumEntry?.data.avatarImage)) : undefined
 const coverImage = postData.coverImage ? (await getImage(postData.coverImage)).src : undefined
 ---
 
@@ -71,7 +70,7 @@ const coverImage = postData.coverImage ? (await getImage(postData.coverImage)).s
   </article>
   {
     addendumHtml && (
-      <PostAddendum textHtml={addendumHtml} avatarFilename={addendum[0].data.avatar} />
+      <PostAddendum textHtml={addendumHtml} avatarImage={addendumAvatarImage} />
     )
   }
   <DividerText text="More Posts" />
