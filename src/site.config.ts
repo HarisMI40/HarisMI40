@@ -3,13 +3,13 @@ import '@fontsource-variable/jetbrains-mono'
 
 const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
-  site: 'https://github.io/stelcodes/sweetterm',
+  site: 'https://github.io/stelcodes/multiterm-astro',
   // The name of your site, used in the title and for SEO.
-  title: "SweetTerm",
+  title: "MultiTerm",
   // The description of your site, used for SEO and RSS feed.
   description: "A terminal-inspired Astro theme",
   // Keywords for SEO, used in the meta tags.
-  tags: ["Astro", "Terminal", "Theme", "SweetTerm", "stelcodes"],
+  tags: ["Astro", "Terminal", "Theme", "MultiTerm", "stelcodes"],
   // Font imported from @fontsource or elsewhere, used for the entire site.
   font: 'JetBrains Mono Variable',
   // For pagination, the number of posts to display per page.
@@ -20,11 +20,15 @@ const config: SiteConfig = {
     mode: "select",
     // The default theme identifier, used when themeMode is "select" or "light-dark-auto".
     // Make sure this is one of the themes listed in `themes` or "auto" for "light-dark-auto" mode.
-    default: "everforest-dark",
+    default: "ayu-dark",
     // Shiki themes to bundle with the site.
+    // https://expressive-code.com/guides/themes/#using-bundled-themes
     // These will be used to theme the entire site along with syntax highlighting.
     // To use light-dark-auto mode, only include a light and a dark theme in that order.
-    // https://expressive-code.com/guides/themes/#using-bundled-themes
+    // include: [
+    //   'github-light',
+    //   'github-dark',
+    // ]
     include: [
       'andromeeda',
       'aurora-x',
@@ -90,12 +94,12 @@ const config: SiteConfig = {
   },
   // Social links to display in the footer.
   socialLinks: {
-    github: 'https://github.com/stelcodes/sweetterm',
-    mastodon: 'https://github.com/stelcodes/sweetterm',
-    email: 'https://github.com/stelcodes/sweetterm',
-    linkedin: 'https://github.com/stelcodes/sweetterm',
-    bluesky: 'https://github.com/stelcodes/sweetterm',
-    twitter: 'https://github.com/stelcodes/sweetterm',
+    github: 'https://github.com/stelcodes/multiterm-astro',
+    mastodon: 'https://github.com/stelcodes/multiterm-astro',
+    email: 'https://github.com/stelcodes/multiterm-astro',
+    linkedin: 'https://github.com/stelcodes/multiterm-astro',
+    bluesky: 'https://github.com/stelcodes/multiterm-astro',
+    twitter: 'https://github.com/stelcodes/multiterm-astro',
   }
 }
 

@@ -1,8 +1,8 @@
-# 🌟 SweetTerm
+# 🌟 MultiTerm Astro
 
-**SweetTerm** is an Astro blog theme/template designed for coders who love their color schemes. Theme your whole website with your favorite color scheme from Shiki and have your prose rendered with a nod to the aesthetics of raw markdown.
+**MultiTerm** is an Astro portfolio/blog template designed for coders who love their color schemes. Easily theme your whole website with your favorite color schemes from Shiki and have your prose rendered with a nod to the aesthetics of raw markdown.
 
-![SweetTerm Example Website](https://i.imgur.com/nmE2HPM.png)
+<!-- ![SweetTerm Example Website](https://i.imgur.com/nmE2HPM.png) -->
 
 ## ✨ Features
 
@@ -10,6 +10,7 @@
 - **Dark/Light/Auto Theme Mode**: Choose any two Shiki themes and use the standard light/dark/auto model for automatically adapting to your reader's theme preferences with a toggle button in the site header.
 - **Multiple Theme Mode**: Choose three (or ten!) Shiki themes and allow your reader to choose their favorite from a button in the site header. Every element changes color interactively, including all of the code snippets of course.
 - **GitHub Activity Widget**: Optionally include a GitHub activity React component that matches the active color scheme perfectly.
+- **Markdown Extensions**: Admonitions, mdx support, 
 - **RSS Feed and Sitemap**: Built-in support for RSS feeds and sitemap with no extra configuration.
 - **Social Links**: Easily include links to common developer social platforms.
 - **Responsive Design**: Optimized for all devices, from desktops to mobile phones.
@@ -23,7 +24,7 @@ Follow these steps to clone the repo and make it your own:
 
 1. **Clone the Repository**:
     ```bash
-    git clone --bare https://github.com/your-username/sweetterm.git my-new-blog
+    git clone --bare https://github.com/your-username/multiterm-astro.git my-new-blog
     cd my-new-blog
     ```
 
