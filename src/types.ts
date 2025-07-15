@@ -22,6 +22,12 @@ export interface ThemeStyles {
   hr?: string[],
   italic?: string[],
   a?: string[],
+  blue?: string[],
+  green?: string[],
+  red?: string[],
+  yellow?: string[],
+  magenta?: string[],
+  cyan?: string[],
 }
 
 export interface ThemesConfig {

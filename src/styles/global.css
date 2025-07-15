@@ -4,6 +4,12 @@
   --color-accent: var(--theme-accent);
   --color-foreground: var(--theme-foreground);
   --color-background: var(--theme-background);
+  --color-blue: var(--theme-blue);
+  --color-green: var(--theme-green);
+  --color-red: var(--theme-red);
+  --color-yellow: var(--theme-yellow);
+  --color-magenta: var(--theme-magenta);
+  --color-cyan: var(--theme-cyan);
   --default-font-family: var(--theme-font);
 }
 
@@ -38,7 +44,7 @@ button {
 
 
 article img {
-  @apply block max-w-full border-8 border-accent/30 rounded-xl overflow-hidden mx-auto;
+  @apply block max-w-full border-8 border-foreground/10 rounded-xl overflow-hidden mx-auto;
 
   &[src$="#pixelated"] {
     image-rendering: pixelated;
@@ -262,7 +268,7 @@ article img {
   }
 
   blockquote {
-    @apply relative bg-foreground/8 rounded-xl py-6 px-8 before:content-['>'] before:block before:absolute before:text-accent before:font-bold before:left-3;
+    @apply relative bg-foreground/6 rounded-xl py-6 px-8 before:content-['>'] before:block before:absolute before:text-accent before:font-bold before:left-3;
 
     p:first-child {
       @apply mt-0;
@@ -294,42 +300,42 @@ article img {
     }
 
     &[data-admonition-type="note"] {
-      @apply bg-blue-500/8;
+      @apply bg-blue/8;
 
       p.admonition-title {
-        @apply text-blue-500;
+        @apply text-blue;
       }
     }
 
     &[data-admonition-type="tip"] {
-      @apply bg-green-500/8;
+      @apply bg-green/8;
 
       p.admonition-title {
-        @apply text-green-500;
+        @apply text-green;
       }
     }
 
     &[data-admonition-type="important"] {
-      @apply bg-purple-500/8;
+      @apply bg-magenta/8;
 
       p.admonition-title {
-        @apply text-purple-500;
+        @apply text-magenta;
       }
     }
 
     &[data-admonition-type="caution"] {
-      @apply bg-yellow-500/8;
+      @apply bg-yellow/8;
 
       p.admonition-title {
-        @apply text-yellow-500;
+        @apply text-yellow;
       }
     }
 
     &[data-admonition-type="warning"] {
-      @apply bg-red-500/8;
+      @apply bg-red/8;
 
       p.admonition-title {
-        @apply text-red-500;
+        @apply text-red;
       }
     }
   }

@@ -66,6 +66,12 @@ export function resolveElementStyles(
     italic: ['markup.italic', 'punctuation.definition.italic.markdown', 'editor.foreground'],
     a: ['markup.link', 'string.other.link.title.markdown', 'editor.foreground'],
     hr: ['meta.separator', 'editor.foreground'],
+    blue: ['terminal.ansiBlue', 'terminal.ansiBrightBlue'],
+    green: ['terminal.ansiGreen', 'terminal.ansiBrightGreen'],
+    red: ['terminal.ansiRed', 'terminal.ansiBrightRed'],
+    yellow: ['terminal.ansiYellow', 'terminal.ansiBrightYellow'],
+    magenta: ['terminal.ansiMagenta', 'terminal.ansiBrightMagenta'],
+    cyan: ['terminal.ansiCyan', 'terminal.ansiBrightCyan'],
   }
   let result: { [key: string]: string } = {}
   function flattenThemeColors(theme: ExpressiveCodeTheme): { [key: string]: string } {
