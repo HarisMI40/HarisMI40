@@ -41,17 +41,13 @@ Follow these steps to clone the repo and make it your own:
 
 ## 🛠️ Configuration
 
-The core of SweetTerm lies in the `src/site.config.ts` file. This is where you can tailor your website to match your vision. Here's a quick overview:
-
-### `src/site.config.ts`
-
-- **`siteName`**: Set the name of your website.
-- **`description`**: Add a short description for RSS purposes.
-- **`themes`**: The highlight of SweetTerm! 🎨 Choose your favorite [Shiki themes](https://expressive-code.com/guides/themes/#available-themes).
-- **`socialLinks`**: Add links to your social media profiles.
+The core of SweetTerm lies in the `src/site.config.ts` file. This is where you can tailor your website to match your vision. 
 
 Please take a look at the `src/site.config.ts` file for more information.
 
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## 🩷 Sponsor
+Considering [sponsoring me]() so I can keep on open source projects like this one!

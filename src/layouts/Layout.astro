@@ -28,22 +28,22 @@ const baseCssVars: { [key: string]: string } = {
   'ec-brdCol': 'color-mix(in srgb, var(--theme-foreground), 10%, transparent)',
 }
 
-let themeMode = siteConfig.themeMode
-if (siteConfig.themes.length < 1) {
+let themeMode = siteConfig.themes.mode
+if (siteConfig.themes.include.length < 1) {
   throw new Error('No themes defined in site.config. Please add at least one theme.')
 }
-if (themeMode === 'light-dark-auto' && siteConfig.themes.length < 2) {
+if (themeMode === 'light-dark-auto' && siteConfig.themes.include.length < 2) {
   console.warn(
     'Theme mode "dark-light-auto" requires at least two themes. Defaulting to "single".',
   )
   themeMode = 'single'
 }
-let defaultTheme = siteConfig.themeDefault || siteConfig.themes[0]
-let lightTheme = themeMode === 'light-dark-auto' ? siteConfig.themes[0] : undefined
-let darkTheme = themeMode === 'light-dark-auto' ? siteConfig.themes[1] : undefined
+let defaultTheme = siteConfig.themes.default || siteConfig.themes.include[0]
+let lightTheme = themeMode === 'light-dark-auto' ? siteConfig.themes.include[0] : undefined
+let darkTheme = themeMode === 'light-dark-auto' ? siteConfig.themes.include[1] : undefined
 
 let resolvedThemes: { [key: string]: { [key: string]: string } } = {}
-for (const theme of siteConfig.themes) {
+for (const theme of siteConfig.themes.include) {
   const loadedTheme = await loadShikiTheme(theme)
   resolvedThemes[theme] = resolveElementStyles(
     loadedTheme,

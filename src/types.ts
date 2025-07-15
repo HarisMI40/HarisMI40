@@ -22,11 +22,10 @@ export interface ThemeStyles {
   a?: string[],
 }
 
-export interface ThemeConfig {
-  displayName: string
-  identifier: string
-  theme: BundledShikiTheme 
-  overrides?: ThemeStyles,
+export interface ThemesConfig {
+  default: string
+  mode: "single" | "light-dark-auto" | "select"
+  include: BundledShikiTheme[]
 }
 
 export type SocialLinks = {
@@ -40,13 +39,11 @@ export type SocialLinks = {
 
 export interface SiteConfig {
   site: string
-  themes: BundledShikiTheme[]
-  themeMode: "single" | "light-dark-auto" | "select"
-  themeDefault: string
   font: string
   title: string
   description: string
   tags: string[]
   pageSize: number
+  themes: ThemesConfig
   socialLinks?: SocialLinks
 }

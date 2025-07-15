@@ -47,7 +47,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   integrations: [sitemap(), expressiveCode({
-    themes: siteConfig.themes,
+    themes: siteConfig.themes.include,
     useDarkModeMediaQuery: false,
     defaultProps: {
       showLineNumbers: false,

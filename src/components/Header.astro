@@ -17,8 +17,8 @@ function kebabToTitleCase(str: string): string {
     .join(' '); // Join the words with a space
 }
 
-const lightDarkAutoTheme = siteConfig.themeMode === 'light-dark-auto'
-const selectTheme = siteConfig.themeMode === 'select' && siteConfig.themes.length > 1
+const lightDarkAutoTheme = siteConfig.themes.mode === 'light-dark-auto'
+const selectTheme = siteConfig.themes.mode === 'select' && siteConfig.themes.include.length > 1
 ---
 
 <header>
@@ -44,7 +44,7 @@ const selectTheme = siteConfig.themeMode === 'select' && siteConfig.themes.lengt
           class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
         >
         {
-          siteConfig.themes.map((theme) => (
+          siteConfig.themes.include.map((theme) => (
             <li aria-expanded="false">
               <button class="w-full rounded-lg py-1 px-2" data-theme={theme}>
                 {kebabToTitleCase(theme)}
