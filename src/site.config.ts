@@ -3,7 +3,7 @@ import '@fontsource-variable/jetbrains-mono'
 
 const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
-  site: 'https://github.io/stelcodes/multiterm-astro',
+  site: 'https://multiterm.stelclementine.com',
   // The name of your site, used in the title and for SEO.
   title: "MultiTerm",
   // The description of your site, used for SEO and RSS feed.
@@ -94,12 +94,12 @@ const config: SiteConfig = {
   },
   // Social links to display in the footer.
   socialLinks: {
-    github: 'https://github.com/stelcodes/multiterm-astro',
-    mastodon: 'https://github.com/stelcodes/multiterm-astro',
-    email: 'https://github.com/stelcodes/multiterm-astro',
-    linkedin: 'https://github.com/stelcodes/multiterm-astro',
-    bluesky: 'https://github.com/stelcodes/multiterm-astro',
-    twitter: 'https://github.com/stelcodes/multiterm-astro',
+    github: 'https://github.com/stelcodes/multiterm',
+    mastodon: 'https://github.com/stelcodes/multiterm',
+    email: 'https://github.com/stelcodes/multiterm',
+    linkedin: 'https://github.com/stelcodes/multiterm',
+    bluesky: 'https://github.com/stelcodes/multiterm',
+    twitter: 'https://github.com/stelcodes/multiterm',
   }
 }
 
