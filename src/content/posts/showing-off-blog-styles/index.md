@@ -92,6 +92,12 @@ I've also added a special tag for pixel art that adds the correct CSS to render 
 
 ## Admonitions
 
+```md title="Admonition example in markdown"
+:::note
+testing123
+:::
+```
+
 :::note
 testing123
 :::
