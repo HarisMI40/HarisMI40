@@ -3,6 +3,7 @@ import type { NavLink } from '@types'
 import { Icon } from 'astro-icon/components'
 import siteConfig from '../site.config'
 import LightDarkAutoButton from './LightDarkAutoButton.astro'
+import Search from './Search.astro'
 
 
 const links: NavLink[] = [
@@ -22,7 +23,7 @@ const selectTheme = siteConfig.themes.mode === 'select' && siteConfig.themes.inc
 ---
 
 <header>
-  <div class="relative flex items-center justify-center bg-accent/10 rounded-xl">
+  <div class="relative flex items-center justify-between bg-accent/10 rounded-xl">
     <a
       id="logo"
       href="/"
@@ -30,12 +31,14 @@ const selectTheme = siteConfig.themes.mode === 'select' && siteConfig.themes.inc
     >
       {siteConfig.title}
     </a>
+    <div class="flex items-center gap-3 sm:mr-3">
+    <Search />
     {
       lightDarkAutoTheme && <LightDarkAutoButton />
     }
     {
       selectTheme && 
-      <div class="flex items-center ml-auto mr-3">
+      <div class="flex items-center justify-center">
         <button id="theme-change-button" >
           <Icon name="palette" class="size-6 text-[var(--theme-accent)]">
         </button>
@@ -80,6 +83,7 @@ const selectTheme = siteConfig.themes.mode === 'select' && siteConfig.themes.inc
         }
       </ul>
     </nav>
+  </div>
   </div>
   <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
     <ul class="flex flex-row text-accent mb-2.5">
