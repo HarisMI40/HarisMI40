@@ -7,7 +7,7 @@ const config: SiteConfig = {
   // The name of your site, used in the title and for SEO.
   title: 'MultiTerm',
   // The description of your site, used for SEO and RSS feed.
-  description: 'A terminal-inspired Astro theme',
+  description: 'A coder-ready Astro blog theme with 59 of your favorite color schemes to choose from',
   // The author of the site, used in the footer, SEO, and RSS feed.
   author: 'Katy Kookaburra',
   // Keywords for SEO, used in the meta tags.
