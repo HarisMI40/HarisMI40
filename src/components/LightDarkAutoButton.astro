@@ -7,7 +7,7 @@ let darkTheme = siteConfig.themes.include[1]
 
 <button
   id="theme-change-button"
-  class="block ml-auto mr-3"
+  class="block ml-auto"
   data-light={lightTheme}
   data-dark={darkTheme}
 >
@@ -38,8 +38,8 @@ let darkTheme = siteConfig.themes.include[1]
       sunMoonIcon?.classList.remove('hidden')
     }
   }
-  let initialTheme = localStorage.getItem('data-theme') || 'auto'
-  updateIcons(initialTheme)
+  let currentTheme = localStorage.getItem('data-theme') || 'auto'
+  updateIcons(currentTheme)
   themeButton?.addEventListener('click', () => {
     // Toggle between light, dark, and auto themes
     // Only need to update localStorage because there should be a listener in Layout.astro

@@ -7,6 +7,7 @@ import SelectThemeLoader from '@components/SelectThemeLoader.astro'
 import { loadShikiTheme } from 'astro-expressive-code'
 import siteConfig from '../site.config'
 import { resolveElementStyles } from '@utils'
+import crypto from 'crypto'
 
 interface Props {
   title?: string
@@ -46,9 +47,23 @@ if (themeMode === 'light-dark-auto' && siteConfig.themes.include.length < 2) {
   themeMode = 'single'
 }
 let defaultTheme = siteConfig.themes.default || siteConfig.themes.include[0]
+let includedThemes = siteConfig.themes.include as string[]
+if (!includedThemes.includes(defaultTheme)) {
+  console.warn(
+    `Default theme "${defaultTheme}" not found in themes. Using first theme: "${siteConfig.themes.include[0]}".`,
+  )
+  defaultTheme = siteConfig.themes.include[0]
+}
 let lightTheme =
-  themeMode === 'light-dark-auto' ? siteConfig.themes.include[0] : undefined
-let darkTheme = themeMode === 'light-dark-auto' ? siteConfig.themes.include[1] : undefined
+  themeMode === 'light-dark-auto' ? includedThemes[0] : undefined
+let darkTheme = themeMode === 'light-dark-auto' ? includedThemes[1] : undefined
+
+// Generate a hash to use for cache busting the theme settings in localStorage.
+const themeHash = crypto
+  .createHash('md5')
+  .update(themeMode + defaultTheme + includedThemes.join(''))
+  .digest('hex')
+  .slice(0, 8) // Truncate to the first 8 characters
 
 let resolvedThemes: { [key: string]: { [key: string]: string } } = {}
 for (const theme of siteConfig.themes.include) {
@@ -74,10 +89,10 @@ let generatedCss: string = cssLines.join('\n')
 <html
   lang="en"
   data-theme={defaultTheme}
-  data-default-theme={defaultTheme}
   data-dark-theme={darkTheme}
   data-light-theme={lightTheme}
   data-theme-mode={themeMode}
+  data-theme-hash={themeHash}
 >
   <head>
     <meta charset="UTF-8" />
