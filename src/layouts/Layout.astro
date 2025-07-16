@@ -13,13 +13,19 @@ interface Props {
   description?: string
   tags?: string[]
   coverImage?: string // Relative path to the cover image
+  author?: string
 }
 
-const { title, description, tags, coverImage } = Astro.props
+const { title, description, tags, coverImage, author } = Astro.props
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, '') // Remove trailing slash for consistency
+const pageType = Astro.url.pathname.startsWith('/posts') ? 'article' : 'website'
 const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title
 const pageDescription = description || siteConfig.description
+const pageAuthor = author || siteConfig.author
 const pageImage = coverImage ? `${siteConfig.site}${coverImage}` : undefined
-const pageKeywords = siteConfig.tags.concat(tags || []).join(', ')
+const pageKeywords = [
+  ...new Set(siteConfig.tags.concat(tags || []).map((word) => word.toLowerCase())),
+].join(', ')
 const baseCssVars: { [key: string]: string } = {
   'theme-font': siteConfig.font,
   'ec-frm-frameBoxShdCssVal': 'none',
@@ -75,19 +81,22 @@ let generatedCss: string = cssLines.join('\n')
 >
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="title" content={pageTitle} />
     <meta name="description" content={pageDescription} />
+    <meta name="author" content={pageAuthor} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:url" content={siteConfig.site} />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:type" content={pageType} />
     {pageImage && <meta property="og:image" content={pageImage} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     {pageImage && <meta name="twitter:image" content={pageImage} />}
     <meta name="keywords" content={pageKeywords} />
+    <link rel="canonical" href={pageUrl} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link
