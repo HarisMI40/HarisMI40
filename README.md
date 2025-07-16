@@ -1,54 +1,64 @@
-# 🌟 MultiTerm
+# 🎨 MultiTerm 🎨 
 
-**MultiTerm** is an Astro portfolio/blog template designed for coders who love their color schemes. Easily theme your whole website with your favorite color schemes from Shiki and have your prose rendered with a nod to the aesthetics of raw markdown.
+**MultiTerm** is an Astro portfolio/blog template designed for coders who love their color schemes. Easily theme your whole website with your favorite color schemes and have your prose rendered with a nod to the aesthetics of raw markdown.
 
-<!-- ![SweetTerm Example Website](https://i.imgur.com/nmE2HPM.png) -->
+![Example website screenshot](https://i.imgur.com/cnipzzi.png)
+![Example website screenshot](https://i.imgur.com/NPnMB8S.png)
+![Example website screenshot](https://i.imgur.com/snuQqoY.png)
+![Example website screenshot](https://i.imgur.com/fWU561J.png)
+![Example website screenshot](https://i.imgur.com/3lE9Q3w.png)
+![Example website screenshot](https://i.imgur.com/wl5b4ll.png)
+![Example website screenshot](https://i.imgur.com/dParrHs.png)
 
 ## ✨ Features
 
-- **Amazing Theme Selection**: Personalize your blog's appearance with your favorite editor color scheme. Pick one (or more!) [Shiki Themes](https://expressive-code.com/guides/themes/#available-themes) bundled by the Expressive Code project.
-- **Dark/Light/Auto Theme Mode**: Choose any two Shiki themes and use the standard light/dark/auto model for automatically adapting to your reader's theme preferences with a toggle button in the site header.
-- **Multiple Theme Mode**: Choose three (or ten!) Shiki themes and allow your reader to choose their favorite from a button in the site header. Every element changes color interactively, including all of the code snippets of course.
-- **GitHub Activity Widget**: Optionally include a GitHub activity React component that matches the active color scheme perfectly.
+- **Amazing Theme Selection**: Personalize your blog's appearance with your favorite editor color scheme. Pick your favorite [Shiki themes](https://expressive-code.com/guides/themes/#available-themes) bundled with Expressive Code.
+- **Dark/Light/Auto Theme Mode**: Choose any two Shiki themes and use the standard light/dark/auto model for automatically adapting to your reader's theme preferences with button in the site header.
+- **Multiple Theme Mode**: Choose three (or all 59!) Shiki themes and allow your reader to choose their favorite from a dialog menu opened from a button in the header. Every element seemlessly changes color interactively using the magic of CSS variables.
+- **GitHub Activity Widget**: Optionally include a GitHub activity React component on the homepage that (of course) matches the active color scheme perfectly.
 - **Markdown Extensions**: Admonitions, table of contents, MDX
 - **RSS Feed and Sitemap**: Built-in support for RSS feeds and sitemap with no extra configuration.
-- **Social Links**: Easily include links to common developer social platforms.
+- **Social Links**: Easily include links to common developer platforms including GitHub, Mastodon, Twitter, LinkedIn and E-mail.
 - **Responsive Design**: Optimized for all devices, from desktops to mobile phones.
-- **Customizable Content**: Easily update your site's content and structure.
-- **SEO Optimized**: Boost your site's visibility with built-in SEO best practices.
-- **Customizable Build**: Powered by [Astro](https://astro.build/), render as a static site or generate content dynamically.
+- **SEO Optimized**: Boost your site's visibility with built-in SEO best practices and automatic social card images from blog post that specify a `coverImage` in the frontmatter.
+- **Customizable Build**: Powered by [Astro](https://astro.build/), render as a static site (the default) or generate content dynamically.
 
 ## 🚀 Getting Started
 
-Follow these steps to clone the repo and make it your own:
+**Clone the Repository**:
+```bash
+git clone --bare https://github.com/stelcodes/multiterm.git my-new-blog
+cd my-new-blog
+```
 
-1. **Clone the Repository**:
-    ```bash
-    git clone --bare https://github.com/your-username/multiterm.git my-new-blog
-    cd my-new-blog
-    ```
+**Install Dependencies**:
+```bash
+npm install
+```
 
-2. **Install Dependencies**:
-    ```bash
-    npm install
-    ```
+**Start the Development Server**:
+```bash
+npm run dev
+```
 
-3. **Start the Development Server**:
-    ```bash
-    npm run dev
-    ```
-
-4. Open your browser and navigate to `http://localhost:4322` to see your site in action!
+**Build Your Site**:
+```bash
+npm run build && npx serve dist
+```
 
 ## 🛠️ Configuration
 
-The core of SweetTerm lies in the `src/site.config.ts` file. This is where you can tailor your website to match your vision. 
+MultiTerm aims for simplicity. All configration is done from a single file: `src/site.config.ts`. This is where you can tailor your website to match your vision. 
 
-Please take a look at the `src/site.config.ts` file for more information.
+Please take a look at `src/site.config.ts` for more information about the configuration options.
 
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Inspiration
+- https://github.com/panr/hugo-theme-terminal
+- https://github.com/chrismwilliams/astro-theme-cactus
 
 ## 🩷 Sponsor
 Considering [sponsoring me]() so I can keep on open source projects like this one!
