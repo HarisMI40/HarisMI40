@@ -16,7 +16,7 @@
 - **Dark/Light/Auto Theme Mode**: Choose any two Shiki themes and use the standard light/dark/auto model for automatically adapting to your reader's theme preferences with button in the site header.
 - **Multiple Theme Mode**: Choose three (or all 59!) Shiki themes and allow your reader to choose their favorite from a dialog menu opened from a button in the header. Every element seamlessly changes color interactively using the magic of CSS variables.
 - **GitHub Activity Widget**: Optionally include a GitHub activity React component on the homepage that (of course) matches the active color scheme perfectly.
-- **Markdown Extensions**: Admonitions, Table of Contents, MDX, and auto-generated reading time estimates.
+- **Markdown Extensions**: Admonitions, table of contents, MDX, and auto-generated reading time estimates.
 - **RSS Feed and Sitemap**: Built-in support for RSS feeds and sitemap with no extra configuration.
 - **Social Links**: Easily include links to common developer platforms including GitHub, Mastodon, Twitter, LinkedIn and E-mail.
 - **Responsive Design**: Optimized for all devices, from desktops to mobile phones.
