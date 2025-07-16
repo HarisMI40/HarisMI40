@@ -8,29 +8,6 @@ import { toString } from 'mdast-util-to-string'
 export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number }) => {
   const maxChars = (options && options.maxChars) || 200
   return function (tree, { data }) {
-    if (data.astro?.frontmatter?.description) {
-      // If description is already set, do not override it
-      return
-    }
-    // function findFirstParagraph(node: mdast.Nodes): string | undefined {
-    //   if (node.type === "paragraph" && node.children.length > 0) {
-    //     const s = toString(node).trim()
-    //     if (s.length > 0) {
-    //       return s
-    //     }
-    //   }
-    //   if (node.type === "root" || node.type === "element" && node.children) {
-    //     for (const child of node.children) {
-    //       const result = findFirstParagraph(child)
-    //       if (result) {
-    //         return result
-    //       }
-    //     }
-    //   }
-    //   return undefined
-    // }
-    // const firstPara = findFirstParagraph(tree)
-
     function findFirstParagraph(
       node: mdast.Root | mdast.RootContent,
     ): string | undefined {

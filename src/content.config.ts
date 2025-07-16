@@ -1,6 +1,5 @@
 import { defineCollection, z } from 'astro:content'
-import { glob, file } from 'astro/loaders'
-import { s } from 'hastscript'
+import { glob } from 'astro/loaders'
 
 const postsCollection = defineCollection({
   loader: glob({ pattern: ['**/*.md', '**/*.mdx'], base: './src/content/posts' }),
@@ -27,7 +26,7 @@ const homeCollection = defineCollection({
   schema: ({ image }) =>
     z.object({
       avatarImage: z
-        .strictObject({
+        .object({
           src: image(),
           alt: z.string().optional().default('My avatar'),
         })
@@ -41,7 +40,7 @@ const addendumCollection = defineCollection({
   schema: ({ image }) =>
     z.object({
       avatarImage: z
-        .strictObject({
+        .object({
           src: image(),
           alt: z.string().optional().default('My avatar'),
         })

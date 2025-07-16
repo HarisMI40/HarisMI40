@@ -95,7 +95,6 @@ export function resolveElementStyles(
     return { ...theme.colors, ...scopedThemeSettings }
   }
   const flattenedTheme = flattenThemeColors(theme)
-  // console.log(flattenedTheme)
   Object.entries(defaultStyles).forEach(([el, groups]) => {
     const overrideGroups = overrides ? overrides[el as keyof ThemeStyles] : []
     for (const group of [...(overrideGroups || []), ...groups]) {
