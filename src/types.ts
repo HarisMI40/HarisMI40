@@ -6,33 +6,33 @@ export type NavLink = {
   external?: boolean
 }
 
-export type AdmonitionType = "tip" | "note" | "important" | "caution" | "warning";
+export type AdmonitionType = 'tip' | 'note' | 'important' | 'caution' | 'warning'
 
 export interface ThemeStyles {
-  foreground?: string[],
-  background?: string[],
-  accent?: string[],
-  h1?: string[],
-  h2?: string[],
-  h3?: string[],
-  h4?: string[],
-  h5?: string[],
-  h6?: string[],
-  li?: string[],
-  hr?: string[],
-  italic?: string[],
-  a?: string[],
-  blue?: string[],
-  green?: string[],
-  red?: string[],
-  yellow?: string[],
-  magenta?: string[],
-  cyan?: string[],
+  foreground?: string[]
+  background?: string[]
+  accent?: string[]
+  h1?: string[]
+  h2?: string[]
+  h3?: string[]
+  h4?: string[]
+  h5?: string[]
+  h6?: string[]
+  li?: string[]
+  hr?: string[]
+  italic?: string[]
+  a?: string[]
+  blue?: string[]
+  green?: string[]
+  red?: string[]
+  yellow?: string[]
+  magenta?: string[]
+  cyan?: string[]
 }
 
 export interface ThemesConfig {
   default: string
-  mode: "single" | "light-dark-auto" | "select"
+  mode: 'single' | 'light-dark-auto' | 'select'
   include: BundledShikiTheme[]
 }
 

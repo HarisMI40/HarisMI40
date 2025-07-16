@@ -1,12 +1,12 @@
-import type * as hast from "hast"
-import type * as mdast from "mdast"
-import type { RehypePlugin, RemarkPlugin } from "@astrojs/markdown-remark"
-import { h } from "hastscript"
+import type * as hast from 'hast'
+import type * as mdast from 'mdast'
+import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark'
+import { h } from 'hastscript'
 import getReadingTime from 'reading-time'
 import { toString } from 'mdast-util-to-string'
 
 export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number }) => {
-  const maxChars = options && options.maxChars || 200
+  const maxChars = (options && options.maxChars) || 200
   return function (tree, { data }) {
     if (data.astro?.frontmatter?.description) {
       // If description is already set, do not override it
@@ -31,10 +31,16 @@ export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number })
     // }
     // const firstPara = findFirstParagraph(tree)
 
-    function findFirstParagraph(node: mdast.Root | mdast.RootContent): string | undefined {
-      if ("children" in node && Array.isArray(node.children)) {
+    function findFirstParagraph(
+      node: mdast.Root | mdast.RootContent,
+    ): string | undefined {
+      if ('children' in node && Array.isArray(node.children)) {
         for (const child of node.children) {
-          if (child.type === "paragraph" && child.children.length > 0 && child.children[0].type !== "image") {
+          if (
+            child.type === 'paragraph' &&
+            child.children.length > 0 &&
+            child.children[0].type !== 'image'
+          ) {
             const s = toString(child).trim()
             if (s.length > 0) {
               return s
@@ -53,7 +59,7 @@ export const remarkDescription: RemarkPlugin = (options?: { maxChars?: number })
     if (description && data.astro?.frontmatter) {
       if (description.length > maxChars) {
         const lastSpace = description.slice(0, maxChars).lastIndexOf(' ')
-        description = description.slice(0, lastSpace) + "…"
+        description = description.slice(0, lastSpace) + '…'
       }
       data.astro.frontmatter.description = description
     }
@@ -76,20 +82,17 @@ export const rehypeTitleFigure: RehypePlugin = (_options?) => {
   function buildFigure(el: hast.Element) {
     const title = `${el.properties?.title || ''}`
     if (!title) return el
-    const figure = h('figure', [
-      h('img', { ...el.properties }),
-      h('figcaption', title),
-    ])
+    const figure = h('figure', [h('img', { ...el.properties }), h('figcaption', title)])
     return figure
   }
   function isElement(content: hast.RootContent): content is hast.Element {
-    return content.type === "element"
+    return content.type === 'element'
   }
   function transformTree(node: hast.Root | hast.Element) {
     if (node.children) {
       node.children = node.children.map((child) => {
         if (isElement(child)) {
-          if (child.tagName === "img") {
+          if (child.tagName === 'img') {
             return buildFigure(child)
           } else {
             transformTree(child) // Recursively process child nodes

@@ -3,42 +3,42 @@ import ReactGithubCalendar from './ReactGithubCalendar'
 import type { GetImageResult } from 'astro'
 
 interface Props {
-    textHtml?: string
-    avatarImage?: GetImageResult
-    githubCalendar?: string
+  textHtml?: string
+  avatarImage?: GetImageResult
+  githubCalendar?: string
 }
 const { textHtml, avatarImage, githubCalendar } = Astro.props
 ---
 
 <div class="my-6">
-    <div
-        class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full mb-6"
-    >
-        {
-            avatarImage && (
-                <img
-                    src={avatarImage.src}
-                    alt={avatarImage.attributes.alt}
-                    class="rounded-full size-40 border-8 border-accent/15"
-                />
-            )
-        }
-        <div>
-            <div class:list={['m-4 max-w-full prose']} set:html={textHtml} />
-        </div>
-    </div>
+  <div
+    class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full mb-6"
+  >
     {
-        githubCalendar && (
-            <div class="h-42">
-                <ReactGithubCalendar username={githubCalendar} client:only />
-            </div>
-        )
+      avatarImage && (
+        <img
+          src={avatarImage.src}
+          alt={avatarImage.attributes.alt}
+          class="rounded-full size-40 border-8 border-accent/15"
+        />
+      )
     }
+    <div>
+      <div class:list={['m-4 max-w-full prose']} set:html={textHtml} />
+    </div>
+  </div>
+  {
+    githubCalendar && (
+      <div class="h-42">
+        <ReactGithubCalendar username={githubCalendar} client:only />
+      </div>
+    )
+  }
 </div>
 
 <style is:global>
-    .github-calendar rect {
-        stroke: var(--theme-foreground) !important;
-        stroke-opacity: 0.1 !important;
-    }
+  .github-calendar rect {
+    stroke: var(--theme-foreground) !important;
+    stroke-opacity: 0.1 !important;
+  }
 </style>

@@ -40,7 +40,8 @@ if (themeMode === 'light-dark-auto' && siteConfig.themes.include.length < 2) {
   themeMode = 'single'
 }
 let defaultTheme = siteConfig.themes.default || siteConfig.themes.include[0]
-let lightTheme = themeMode === 'light-dark-auto' ? siteConfig.themes.include[0] : undefined
+let lightTheme =
+  themeMode === 'light-dark-auto' ? siteConfig.themes.include[0] : undefined
 let darkTheme = themeMode === 'light-dark-auto' ? siteConfig.themes.include[1] : undefined
 
 let resolvedThemes: { [key: string]: { [key: string]: string } } = {}
@@ -81,19 +82,11 @@ let generatedCss: string = cssLines.join('\n')
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={siteConfig.site} />
     <meta property="og:type" content="website" />
-    {
-      pageImage && (
-        <meta property="og:image" content={pageImage} />
-      )
-    }
+    {pageImage && <meta property="og:image" content={pageImage} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
-    {
-      pageImage && (
-        <meta name="twitter:image" content={pageImage} />
-      ) 
-    }
+    {pageImage && <meta name="twitter:image" content={pageImage} />}
     <meta name="keywords" content={pageKeywords} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

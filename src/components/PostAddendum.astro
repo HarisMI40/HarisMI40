@@ -2,23 +2,25 @@
 import type { GetImageResult } from 'astro'
 
 interface Props {
-    textHtml?: string
-    avatarImage?: GetImageResult
+  textHtml?: string
+  avatarImage?: GetImageResult
 }
 const { textHtml, avatarImage } = Astro.props
 ---
 
-<div class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full mb-6 py-10 bg-accent/8 p-4 rounded-xl">
-    {
-        avatarImage && (
-            <img
-                src={avatarImage.src}
-                alt={avatarImage.attributes.alt}
-                class="rounded-full size-40 border-8 border-accent/15"
-            />
-        )
-    }
-    <div>
-        <div class:list={['m-4 max-w-full prose']} set:html={textHtml} />
-    </div>
+<div
+  class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full mb-6 py-10 bg-accent/8 p-4 rounded-xl"
+>
+  {
+    avatarImage && (
+      <img
+        src={avatarImage.src}
+        alt={avatarImage.attributes.alt}
+        class="rounded-full size-40 border-8 border-accent/15"
+      />
+    )
+  }
+  <div>
+    <div class:list={['m-4 max-w-full prose']} set:html={textHtml} />
+  </div>
 </div>

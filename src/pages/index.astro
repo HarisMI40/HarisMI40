@@ -11,7 +11,9 @@ import { getImage } from 'astro:assets'
 
 const homeContent = await getCollection('home')
 const homeEntry = homeContent.length > 0 ? homeContent[0] : undefined
-const avatarImage = homeEntry?.data.avatarImage ? (await getImage(homeEntry?.data.avatarImage)) : undefined
+const avatarImage = homeEntry?.data.avatarImage
+  ? await getImage(homeEntry?.data.avatarImage)
+  : undefined
 const posts = (await getSortedPosts()).slice(0, siteConfig.pageSize)
 ---
 

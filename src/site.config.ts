@@ -5,11 +5,11 @@ const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
   site: 'https://multiterm.stelclementine.com',
   // The name of your site, used in the title and for SEO.
-  title: "MultiTerm",
+  title: 'MultiTerm',
   // The description of your site, used for SEO and RSS feed.
-  description: "A terminal-inspired Astro theme",
+  description: 'A terminal-inspired Astro theme',
   // Keywords for SEO, used in the meta tags.
-  tags: ["Astro", "Terminal", "Theme", "MultiTerm", "stelcodes"],
+  tags: ['Astro', 'Terminal', 'Theme', 'MultiTerm', 'stelcodes'],
   // Font imported from @fontsource or elsewhere, used for the entire site.
   font: 'JetBrains Mono Variable',
   // For pagination, the number of posts to display per page.
@@ -17,10 +17,10 @@ const config: SiteConfig = {
   // The theming configuration for the site.
   themes: {
     // The theming mode. One of "single" | "select" | "light-dark-auto".
-    mode: "select",
+    mode: 'select',
     // The default theme identifier, used when themeMode is "select" or "light-dark-auto".
     // Make sure this is one of the themes listed in `themes` or "auto" for "light-dark-auto" mode.
-    default: "ayu-dark",
+    default: 'ayu-dark',
     // Shiki themes to bundle with the site.
     // https://expressive-code.com/guides/themes/#using-bundled-themes
     // These will be used to theme the entire site along with syntax highlighting.
@@ -90,7 +90,7 @@ const config: SiteConfig = {
       'vitesse-black',
       'vitesse-dark',
       'vitesse-light',
-    ]
+    ],
   },
   // Social links to display in the footer.
   socialLinks: {
@@ -100,7 +100,7 @@ const config: SiteConfig = {
     linkedin: 'https://github.com/stelcodes/multiterm',
     bluesky: 'https://github.com/stelcodes/multiterm',
     twitter: 'https://github.com/stelcodes/multiterm',
-  }
+  },
 }
 
 export default config

@@ -1,9 +1,9 @@
-import type { ThemeStyles } from "@types";
-import type { ExpressiveCodeTheme } from "astro-expressive-code";
-import { getCollection } from "astro:content";
+import type { ThemeStyles } from '@types'
+import type { ExpressiveCodeTheme } from 'astro-expressive-code'
+import { getCollection } from 'astro:content'
 
 export function dateString(date: Date) {
-  return date.toISOString().split('T')[0];
+  return date.toISOString().split('T')[0]
 }
 
 export function resolveElementStyles(
@@ -63,7 +63,11 @@ export function resolveElementStyles(
       'markup.heading',
       'editor.foreground',
     ],
-    italic: ['markup.italic', 'punctuation.definition.italic.markdown', 'editor.foreground'],
+    italic: [
+      'markup.italic',
+      'punctuation.definition.italic.markdown',
+      'editor.foreground',
+    ],
     a: ['markup.link', 'string.other.link.title.markdown', 'editor.foreground'],
     hr: ['meta.separator', 'editor.foreground'],
     blue: ['terminal.ansiBlue', 'terminal.ansiBrightBlue'],
@@ -100,7 +104,7 @@ export function resolveElementStyles(
         break
       }
     }
-  });
+  })
   return result
 }
 

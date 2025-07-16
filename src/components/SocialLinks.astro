@@ -3,77 +3,83 @@ import type { SocialLinks } from '@types'
 import { Icon } from 'astro-icon/components'
 
 interface Props {
-    socialLinks: SocialLinks
+  socialLinks: SocialLinks
 }
 
 const { socialLinks } = Astro.props
 ---
 
 <div class="flex w-full max-w-md items-center justify-between">
-    {
-        socialLinks.github && (
-            <a
-                href={socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link"
-            >
-                <Icon name="github" class="size-7" />
-            </a>
-        )
-    }
-    {
-        socialLinks.mastodon && (
-            <a
-                href={socialLinks.mastodon}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link"
-            >
-                <Icon name="mastodon" class="size-7" />
-            </a>
-        )
-    }
-    { socialLinks.twitter && (
-        <a
-            href={socialLinks.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-link"
-        >
-            <Icon name="twitter" class="size-7" />
-        </a>
-    )}
-    {
-        socialLinks.linkedin && (
-            <a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-link"
-            >
-                <Icon name="linkedin" class="size-7" />
-            </a>
-        )
-    }
-    { socialLinks.bluesky && (
-        <a
-            href={socialLinks.bluesky}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-link"
-        >
-            <Icon name="bluesky" class="size-7" />
-        </a>
-    )}
-    { socialLinks.email && (
-        <a
-            href={`mailto:${socialLinks.email}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="social-link"
-        >
-            <Icon name="email" class="size-7" />
-        </a>
-    )}
+  {
+    socialLinks.github && (
+      <a
+        href={socialLinks.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <Icon name="github" class="size-7" />
+      </a>
+    )
+  }
+  {
+    socialLinks.mastodon && (
+      <a
+        href={socialLinks.mastodon}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <Icon name="mastodon" class="size-7" />
+      </a>
+    )
+  }
+  {
+    socialLinks.twitter && (
+      <a
+        href={socialLinks.twitter}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <Icon name="twitter" class="size-7" />
+      </a>
+    )
+  }
+  {
+    socialLinks.linkedin && (
+      <a
+        href={socialLinks.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <Icon name="linkedin" class="size-7" />
+      </a>
+    )
+  }
+  {
+    socialLinks.bluesky && (
+      <a
+        href={socialLinks.bluesky}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <Icon name="bluesky" class="size-7" />
+      </a>
+    )
+  }
+  {
+    socialLinks.email && (
+      <a
+        href={`mailto:${socialLinks.email}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <Icon name="email" class="size-7" />
+      </a>
+    )
+  }
 </div>
