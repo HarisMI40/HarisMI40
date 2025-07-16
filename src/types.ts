@@ -1,4 +1,14 @@
+import type { MarkdownHeading } from 'astro'
 import type { BundledShikiTheme } from 'astro-expressive-code'
+
+export interface TocItem extends MarkdownHeading {
+  children: TocItem[]
+}
+
+export interface TocOpts {
+  maxHeadingLevel?: number | undefined
+  minHeadingLevel?: number | undefined
+}
 
 export type NavLink = {
   name: string

@@ -1,0 +1,60 @@
+---
+import type { MarkdownHeading } from 'astro'
+import TOCHeading from './TableOfContentsHeading.astro'
+import type { TocItem, TocOpts } from '@types'
+
+/** Inject a ToC entry as deep in the tree as its `depth` property requires. */
+function injectChild(items: TocItem[], item: TocItem): void {
+  const lastItem = items.at(-1)
+  if (!lastItem || lastItem.depth >= item.depth) {
+    items.push(item)
+  } else {
+    injectChild(lastItem.children, item)
+    return
+  }
+}
+
+function generateToc(
+  headings: ReadonlyArray<MarkdownHeading>,
+  { maxHeadingLevel = 4, minHeadingLevel = 2 }: TocOpts = {},
+) {
+  // by default this ignores/filters out h1 and h5 heading(s)
+  const bodyHeadings = headings.filter(
+    ({ depth }) => depth >= minHeadingLevel && depth <= maxHeadingLevel,
+  )
+  const toc: Array<TocItem> = []
+
+  for (const heading of bodyHeadings) injectChild(toc, { ...heading, children: [] })
+
+  return toc
+}
+
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+
+const toc = generateToc(headings)
+console.log('Generated ToC:', toc)
+---
+
+<details
+  open
+  class="relative bg-foreground/6 px-8 py-6 w-full rounded-xl border-3 border-accent/10"
+>
+  <summary class="title marker:content-[''] before:content-['>'] before:text-accent before:font-semibold before:absolute before:left-3 cursor-pointer"
+    >Table of Contents</summary
+  >
+  <nav class="w-full">
+    <ol class="mt-4 flex flex-col max-w-full">
+      {toc.map((heading) => <TOCHeading heading={heading} />)}
+    </ol>
+  </nav>
+</details>
+
+<style>
+  details[open] summary:before {
+    transform: rotate(90deg);
+  }
+</style>

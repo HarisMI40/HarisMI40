@@ -1,0 +1,49 @@
+---
+import type { TocItem } from '@types'
+
+interface Props {
+  heading: TocItem
+}
+
+const {
+  heading: { children, depth, slug, text },
+} = Astro.props
+
+const prefix = '#'.repeat(depth)
+---
+
+<>
+  <li class="flex items-center border-foreground/40">
+    <div class="flex">
+      {
+        Array.from({ length: depth - 1 }, (_v, _k) => (
+          <div class="toc-lines flex flex-col items-center">
+            <span class="top-box w-5 h-4 border-b-1 border-foreground/40" />
+            <span class="bottom-box w-5 h-4 border-t-1 border-foreground/40" />
+          </div>
+        ))
+      }
+    </div>
+    <a class="inline-block line-clamp-2 ml-3 hover:text-accent" href={`#${slug}`}
+      ><span aria-hidden="true" class="me-1.5">{prefix}</span>{text}</a
+    >
+  </li>
+  {
+    !!children.length && (
+      <li>
+        {children.map((subheading) => (
+          <Astro.self heading={subheading} />
+        ))}
+      </li>
+    )
+  }
+</>
+
+<style>
+  .toc-lines:first-child span {
+    border-left-width: 2px;
+  }
+  li:last-child .toc-lines:first-child span.bottom-box {
+    border-left-width: 0 !important;
+  }
+</style>
