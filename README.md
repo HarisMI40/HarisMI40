@@ -1,4 +1,4 @@
-# 🎨 MultiTerm 🎨 
+# 🎨 MultiTerm Astro 🎨 
 
 **MultiTerm** is an Astro portfolio/blog template designed for coders who love their color schemes. Easily theme your whole website with your favorite color schemes and have your prose rendered with a nod to the aesthetics of raw markdown.
 
@@ -14,7 +14,7 @@
 
 - **Amazing Theme Selection**: Personalize your blog's appearance with your favorite editor color scheme. Pick your favorite [Shiki themes](https://expressive-code.com/guides/themes/#available-themes) bundled with Expressive Code.
 - **Dark/Light/Auto Theme Mode**: Choose any two Shiki themes and use the standard light/dark/auto model for automatically adapting to your reader's theme preferences with button in the site header.
-- **Multiple Theme Mode**: Choose three (or all 59!) Shiki themes and allow your reader to choose their favorite from a dialog menu opened from a button in the header. Every element seemlessly changes color interactively using the magic of CSS variables.
+- **Multiple Theme Mode**: Choose three (or all 59!) Shiki themes and allow your reader to choose their favorite from a dialog menu opened from a button in the header. Every element seamlessly changes color interactively using the magic of CSS variables.
 - **GitHub Activity Widget**: Optionally include a GitHub activity React component on the homepage that (of course) matches the active color scheme perfectly.
 - **Markdown Extensions**: Admonitions, table of contents, MDX
 - **RSS Feed and Sitemap**: Built-in support for RSS feeds and sitemap with no extra configuration.
@@ -27,7 +27,7 @@
 
 **Clone the Repository**:
 ```bash
-git clone --bare https://github.com/stelcodes/multiterm.git my-new-blog
+git clone --bare https://github.com/stelcodes/multiterm-astro.git my-new-blog
 cd my-new-blog
 ```
 
@@ -48,7 +48,7 @@ npm run build && npx serve dist
 
 ## 🛠️ Configuration
 
-MultiTerm aims for simplicity. All configration is done from a single file: `src/site.config.ts`. This is where you can tailor your website to match your vision. 
+MultiTerm aims for simplicity. All configuration is done from a single file: `src/site.config.ts`. This is where you can tailor your website to match your vision. 
 
 Please take a look at `src/site.config.ts` for more information about the configuration options.
 
@@ -61,4 +61,4 @@ This project is licensed under the [MIT License](LICENSE).
 - https://github.com/chrismwilliams/astro-theme-cactus
 
 ## 🩷 Sponsor
-Considering [sponsoring me]() so I can keep on open source projects like this one!
+Consider [buying me a coffee]() to keep me caffeinated while I work on open source projects like this one!

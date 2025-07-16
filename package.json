@@ -1,5 +1,5 @@
 {
-  "name": "multiterm-astro-theme",
+  "name": "multiterm-astro",
   "description": "A terminal-inspired coding blog built with Astro.",
   "type": "module",
   "version": "1.0.0",
