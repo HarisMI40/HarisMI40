@@ -70,5 +70,8 @@ export default defineConfig({
       pluginLineNumbers()
     ],
   }), // Must come after expressive-code integration
-  mdx(), icon(), react()]
+  mdx(), icon(), react()],
+  experimental: {
+    contentIntellisense: true
+  }
 });
