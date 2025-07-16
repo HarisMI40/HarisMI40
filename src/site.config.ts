@@ -8,6 +8,8 @@ const config: SiteConfig = {
   title: 'MultiTerm',
   // The description of your site, used for SEO and RSS feed.
   description: 'A terminal-inspired Astro theme',
+  // The author of the site, used in the footer, SEO, and RSS feed.
+  author: 'Katy Kookaburra',
   // Keywords for SEO, used in the meta tags.
   tags: ['Astro', 'Terminal', 'Theme', 'MultiTerm', 'stelcodes'],
   // Font imported from @fontsource or elsewhere, used for the entire site.

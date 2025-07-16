@@ -50,6 +50,7 @@ export interface SiteConfig {
   font: string
   title: string
   description: string
+  author: string
   tags: string[]
   pageSize: number
   themes: ThemesConfig
