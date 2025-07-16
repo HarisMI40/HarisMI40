@@ -10,12 +10,18 @@ import type { ReactNode } from 'react'
 import { loadShikiTheme } from 'astro-expressive-code'
 
 // Load the font file as binary data
-const fontPath = path.resolve('./node_modules/@expo-google-fonts/jetbrains-mono/400Regular/JetBrainsMono_400Regular.ttf')
+const fontPath = path.resolve(
+  './node_modules/@expo-google-fonts/jetbrains-mono/400Regular/JetBrainsMono_400Regular.ttf',
+)
 const fontData = fs.readFileSync(fontPath) // Reads the file as a Buffer
 
 const avatarPath = path.resolve('./src/content/avatar.jpg')
-const avatarData = fs.readFileSync(avatarPath)
-const avatarBase64 = `data:image/jpeg;base64,${avatarData.toString('base64')}`;
+let avatarData: Buffer | undefined
+let avatarBase64: string | undefined
+if (fs.existsSync(avatarPath)) {
+  avatarData = fs.readFileSync(avatarPath)
+  avatarBase64 = `data:image/jpeg;base64,${avatarData.toString('base64')}`
+}
 
 const defaultShikiTheme = await loadShikiTheme(
   siteConfig.themes.default === 'auto'
@@ -45,14 +51,15 @@ const ogOptions: SatoriOptions = {
 const markup = (title: string, pubDate: string | undefined, author: string) =>
   html(`<div tw="flex flex-col max-w-full justify-center h-full bg-[${bg}] text-[${fg}] p-12">
     <div style="border-width: 12px; border-radius: 80px;" tw="flex items-center max-w-full p-8 border-[${accent}]/30">
-      <div tw="flex flex-col justify-center items-center w-1/3 h-100">
-          <img src="${avatarBase64}" tw="flex w-full rounded-full border-[${accent}]/30" />
+      ${avatarBase64 ?
+        `<div tw="flex flex-col justify-center items-center w-1/3 h-100">
+            <img src="${avatarBase64}" tw="flex w-full rounded-full border-[${accent}]/30" />
+        </div>` : ''}
+      <div tw="flex flex-1 flex-col max-w-full justify-center items-center">
+        ${pubDate ? `<p tw="text-3xl max-w-full text-[${accent}]">${pubDate}</p>` : ''}
+        <h1 tw="text-6xl my-14 text-center leading-snug">${title}</h1>
+        ${author !== title ? `<p tw="text-4xl text-[${accent}]">${author}</p>` : ''}
       </div>
-    <div tw="flex flex-1 flex-col max-w-full justify-center items-center">
-      ${pubDate ? `<p tw="text-3xl max-w-full text-[${accent}]">${pubDate}</p>` : ''}
-      <h1 tw="text-6xl my-14 text-center">${title}</h1>
-      ${author !== title ? `<p tw="text-4xl text-[${accent}]">${author}</p>` : ''}
-    </div>
     </div>
   </div>`)
 
@@ -73,7 +80,6 @@ export async function GET(context: APIContext) {
 export async function getStaticPaths() {
   const posts = await getSortedPosts()
   return posts
-    .filter(({ data }) => !data.coverImage)
     .map((post) => ({
       params: { slug: post.id },
       props: {

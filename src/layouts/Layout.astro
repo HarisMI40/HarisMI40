@@ -25,12 +25,10 @@ const pageDescription = description || siteConfig.description
 const pageAuthor = author || siteConfig.author
 const pageImage =
   pageType === 'article'
-    ? coverImage
-      ? `${siteConfig.site}${coverImage}`
-      : Astro.url.origin +
-        Astro.url.pathname.replace(/\/posts\//, '/social-cards/') +
-        '.png'
-    : `${siteConfig.site}/social-cards/__default.png`
+    ? Astro.url.origin +
+      Astro.url.pathname.replace(/\/posts\//, '/social-cards/') +
+      '.png'
+    : `${Astro.url.origin}/social-cards/__default.png`
 const pageKeywords = [
   ...new Set(siteConfig.tags.concat(tags || []).map((word) => word.toLowerCase())),
 ].join(', ')
