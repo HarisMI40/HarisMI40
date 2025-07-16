@@ -27,7 +27,7 @@
 
 **Clone the Repository**:
 ```bash
-git clone --bare https://github.com/stelcodes/multiterm-astro.git my-new-blog
+git clone --depth 1 https://github.com/stelcodes/multiterm-astro.git my-new-blog
 cd my-new-blog
 ```
 
