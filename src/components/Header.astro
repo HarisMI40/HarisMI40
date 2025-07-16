@@ -1,14 +1,9 @@
 ---
-import type { NavLink } from '@types'
 import siteConfig from '../site.config'
 import LightDarkAutoButton from './LightDarkAutoButton.astro'
 import Search from './Search.astro'
 import SelectTheme from './SelectTheme.astro'
-
-const links: NavLink[] = [
-  { name: 'Home', url: '/' },
-  { name: 'Archive', url: '/posts' },
-]
+import NavLink from './NavLink.astro'
 
 const lightDarkAutoTheme = siteConfig.themes.mode === 'light-dark-auto'
 const selectTheme =
@@ -43,11 +38,9 @@ const selectTheme =
           class="invisible absolute flex flex-col bg-background shadow text-accent border-2 m-0 p-2.5 top-11.5 left-auto right-0 z-50 rounded-xl"
         >
           {
-            links.map((link) => (
+            siteConfig.navLinks.map((link) => (
               <li class="p-1" aria-expanded="false">
-                <a class="underline" href={link.url}>
-                  {link.name}
-                </a>
+                <NavLink link={link} />
               </li>
             ))
           }
@@ -58,11 +51,9 @@ const selectTheme =
   <nav aria-label="Menu" class="p-0 mt-4 ml-0.5 text-accent hidden sm:block">
     <ul class="flex flex-row text-accent mb-2.5">
       {
-        links.map((link) => (
+        siteConfig.navLinks.map((link) => (
           <li class="mr-5" aria-expanded="true">
-            <a class="underline" href={link.url}>
-              {link.name}
-            </a>
+            <NavLink link={link} />
           </li>
         ))
       }

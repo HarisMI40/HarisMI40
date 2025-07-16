@@ -41,7 +41,7 @@ export interface ThemeStyles {
 }
 
 export interface ThemesConfig {
-  default: string
+  default: BundledShikiTheme | 'auto'
   mode: 'single' | 'light-dark-auto' | 'select'
   include: BundledShikiTheme[]
 }
@@ -64,5 +64,6 @@ export interface SiteConfig {
   tags: string[]
   pageSize: number
   themes: ThemesConfig
-  socialLinks?: SocialLinks
+  socialLinks: SocialLinks
+  navLinks: NavLink[]
 }
