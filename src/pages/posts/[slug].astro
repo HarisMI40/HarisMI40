@@ -26,7 +26,6 @@ export const getStaticPaths = (async () => {
 const { post, prev, next } = Astro.props
 const postData = post.data
 const { headings } = await render(post)
-console.log('Post headings:', headings)
 const addendum = await getCollection('addendum')
 const addendumEntry = addendum.length > 0 ? addendum[0] : undefined
 const addendumHtml = addendumEntry?.rendered?.html
