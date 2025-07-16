@@ -23,7 +23,14 @@ const pageType = Astro.url.pathname.startsWith('/posts') ? 'article' : 'website'
 const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title
 const pageDescription = description || siteConfig.description
 const pageAuthor = author || siteConfig.author
-const pageImage = coverImage ? `${siteConfig.site}${coverImage}` : undefined
+const pageImage =
+  pageType === 'article'
+    ? coverImage
+      ? `${siteConfig.site}${coverImage}`
+      : Astro.url.origin +
+        Astro.url.pathname.replace(/\/posts\//, '/social-cards/') +
+        '.png'
+    : `${siteConfig.site}/social-cards/__default.png`
 const pageKeywords = [
   ...new Set(siteConfig.tags.concat(tags || []).map((word) => word.toLowerCase())),
 ].join(', ')
@@ -54,8 +61,7 @@ if (!includedThemes.includes(defaultTheme)) {
   )
   defaultTheme = siteConfig.themes.include[0]
 }
-let lightTheme =
-  themeMode === 'light-dark-auto' ? includedThemes[0] : undefined
+let lightTheme = themeMode === 'light-dark-auto' ? includedThemes[0] : undefined
 let darkTheme = themeMode === 'light-dark-auto' ? includedThemes[1] : undefined
 
 // Generate a hash to use for cache busting the theme settings in localStorage.
