@@ -35,10 +35,6 @@ header {
   navigation: auto;
 }
 
-::view-transition-group(header) {
-  animation: none
-}
-
 body {
   @apply transition-colors;
 }
