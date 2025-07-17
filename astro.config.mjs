@@ -16,7 +16,6 @@ import remarkDirective from "remark-directive"; /* Handle ::: directives as node
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
 import react from '@astrojs/react';
-import playformInline from '@playform/inline';
 
 // https://astro.build/config
 export default defineConfig({
@@ -71,7 +70,7 @@ export default defineConfig({
       pluginLineNumbers()
     ],
   }), // Must come after expressive-code integration
-  mdx(), icon(), react(), playformInline()],
+  mdx(), icon(), react()],
   experimental: {
     contentIntellisense: true
   }
