@@ -21,6 +21,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: siteConfig.site,
   trailingSlash: "never",
+  prefetch: true,
   markdown: {
     remarkPlugins: [
       [remarkDescription, { maxChars: 200 }],
