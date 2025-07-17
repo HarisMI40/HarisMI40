@@ -1,5 +1,4 @@
 import type { SiteConfig } from '@types'
-import '@fontsource-variable/jetbrains-mono'
 
 const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
@@ -13,6 +12,7 @@ const config: SiteConfig = {
   // Keywords for SEO, used in the meta tags.
   tags: ['Astro', 'Terminal', 'Theme', 'MultiTerm', 'stelcodes'],
   // Font imported from @fontsource or elsewhere, used for the entire site.
+  // To change this see src/styles/global.css and import a different font.
   font: 'JetBrains Mono Variable',
   // For pagination, the number of posts to display per page.
   pageSize: 5,
