@@ -24,7 +24,7 @@
 - **SEO Optimized**: Boost your site's visibility with built-in SEO best practices and automatically generated social card images for every page via [Satori](https://github.com/vercel/satori).
 - **Customizable Build**: Powered by [Astro](https://astro.build/), render as a static site (the default) or generate content dynamically.
 
-> Check out the example site [PageSpeed scores](https://pagespeed.web.dev/analysis/https-multiterm-stelclementine-com) and [OpenGraph analysis](https://www.opengraph.xyz/url/https%3A%2F%2Fmultiterm.stelclementine.com)
+Check out the example site [PageSpeed scores](https://pagespeed.web.dev/analysis/https-multiterm-stelclementine-com/qhnp521yci?form_factor=mobile) and [OpenGraph analysis](https://www.opengraph.xyz/url/https%3A%2F%2Fmultiterm.stelclementine.com)
 
 ## 🚀 Getting Started
 
