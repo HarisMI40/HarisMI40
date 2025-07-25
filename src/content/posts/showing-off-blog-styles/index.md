@@ -82,12 +82,12 @@ Images can include a title string after the URL to render as a `<figure>` with a
 ![Pixel art of a tree](./PixelatedGreenTreeSide.png "Pixel art renders poorly without proper CSS")
 ```
 
-I've also added a special tag for pixel art that adds the correct CSS to render properly. Just add `#pixelated` to the URL.
+I've also added a special tag for pixel art that adds the correct CSS to render properly. Just add `#pixelated` to the very end of the alt string.
 
-![Pixel art of a tree](./PixelatedGreenTreeSide.png#pixelated "But adding #pixelated fixes this")
+![Pixel art of a tree #pixelated](./PixelatedGreenTreeSide.png "But adding #pixelated to the end of the alt string fixes this")
 
 ```md title="Pixel art markdown with #pixelated" wrap
-![Pixel art of a tree](./PixelatedGreenTreeSide.png#pixelated "But adding #pixelated fixes this")
+![Pixel art of a tree #pixelated](./PixelatedGreenTreeSide.png "But adding #pixelated to the end of the alt string fixes this")
 ```
 
 ## Admonitions

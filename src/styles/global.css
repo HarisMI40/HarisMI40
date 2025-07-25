@@ -67,7 +67,7 @@ button {
 article img {
   @apply block max-w-full border-8 border-foreground/10 rounded-xl overflow-hidden mx-auto;
 
-  &[src$='#pixelated'] {
+  &[pixelated='true'] {
     image-rendering: pixelated;
   }
 }

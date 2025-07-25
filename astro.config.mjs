@@ -15,6 +15,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
 import rehypeUnwrapImages from "rehype-unwrap-images";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
+import rehypePixelated from "./src/plugins/rehype-pixelated"; /* Custom plugin to handle pixelated images */  
 import react from '@astrojs/react';
 
 // https://astro.build/config
@@ -55,6 +56,8 @@ export default defineConfig({
 				},
 			],
       rehypeUnwrapImages,
+      rehypeImageToolkit,
+      rehypePixelated
     ],
   },
   vite: {
