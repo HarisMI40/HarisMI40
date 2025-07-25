@@ -25,12 +25,16 @@ export const getStaticPaths = (async () => {
 
 const { post, prev, next } = Astro.props
 const postData = post.data
-const { headings } = await render(post)
+const { headings, Content: PostContent } = await render(post)
 const addendum = await getCollection('addendum')
-const addendumEntry = addendum.length > 0 ? addendum[0] : undefined
-const addendumHtml = addendumEntry?.rendered?.html
-const addendumAvatarImage = addendumEntry?.data.avatarImage
-
+let AddendumContent
+let addendumAvatarImage
+if (addendum.length > 0) {
+  const addendumEntry = addendum[0]
+  const { Content } = await render(addendumEntry)
+  AddendumContent = Content
+  addendumAvatarImage = addendumEntry.data.avatarImage
+}
 ---
 
 <Layout
@@ -74,11 +78,15 @@ const addendumAvatarImage = addendumEntry?.data.avatarImage
       )
     }
     {headings.length > 0 && <TableOfContents headings={headings} />}
-    <div class="my-5 prose" set:html={post.rendered?.html} />
+    <div class="my-5 prose">
+      <PostContent />
+    </div>
   </article>
   {
-    addendumHtml && (
-      <PostAddendum textHtml={addendumHtml} avatarImage={addendumAvatarImage} />
+    AddendumContent && (
+      <PostAddendum avatarImage={addendumAvatarImage}>
+        <AddendumContent />
+      </PostAddendum>
     )
   }
   <DividerText text="More Posts" />

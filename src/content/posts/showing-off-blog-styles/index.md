@@ -76,18 +76,18 @@ ___
 
 Images can include a title string after the URL to render as a `<figure>` with a `<figcaption>`.
 
-![Pixel art of a tree](https://upload.wikimedia.org/wikipedia/commons/9/90/PixelatedGreenTreeSide.png "Pixel art renders poorly without proper CSS")
+![Pixel art of a tree](./PixelatedGreenTreeSide.png "Pixel art renders poorly without proper CSS")
 
 ```md title="Pixel art markdown" wrap
-![Pixel art of a tree](https://upload.wikimedia.org/wikipedia/commons/9/90/PixelatedGreenTreeSide.png "Pixel art renders poorly without proper CSS")
+![Pixel art of a tree](./PixelatedGreenTreeSide.png "Pixel art renders poorly without proper CSS")
 ```
 
 I've also added a special tag for pixel art that adds the correct CSS to render properly. Just add `#pixelated` to the URL.
 
-![Pixel art of a tree](https://upload.wikimedia.org/wikipedia/commons/9/90/PixelatedGreenTreeSide.png#pixelated "But adding #pixelated fixes this")
+![Pixel art of a tree](./PixelatedGreenTreeSide.png#pixelated "But adding #pixelated fixes this")
 
 ```md title="Pixel art markdown with #pixelated" wrap
-![Pixel art of a tree](https://upload.wikimedia.org/wikipedia/commons/9/90/PixelatedGreenTreeSide.png#pixelated "But adding #pixelated fixes this")
+![Pixel art of a tree](./PixelatedGreenTreeSide.png#pixelated "But adding #pixelated fixes this")
 ```
 
 ## Admonitions

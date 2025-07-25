@@ -3,10 +3,9 @@ import type { FrontmatterImage } from '@types'
 import { Image } from 'astro:assets'
 
 interface Props {
-  textHtml?: string
   avatarImage?: FrontmatterImage
 }
-const { textHtml, avatarImage } = Astro.props
+const { avatarImage } = Astro.props
 ---
 
 <div
@@ -22,6 +21,8 @@ const { textHtml, avatarImage } = Astro.props
     )
   }
   <div>
-    <div class:list={['m-4 max-w-full prose']} set:html={textHtml} />
+    <div class:list={['m-4 max-w-full prose']}>
+      <slot />
+    </div>
   </div>
 </div>
