@@ -10,6 +10,16 @@ export interface TocOpts {
   minHeadingLevel?: number | undefined
 }
 
+export interface FrontmatterImage {
+  alt: string
+  src: {
+    height: number
+    src: string
+    width: number
+    format: 'avif' | 'png' | 'webp' | 'jpeg' | 'jpg' | 'svg' | 'tiff' | 'gif'
+  }
+}
+
 export type NavLink = {
   name: string
   url: string
