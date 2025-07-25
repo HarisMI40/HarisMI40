@@ -56,7 +56,6 @@ export default defineConfig({
 				},
 			],
       rehypeUnwrapImages,
-      rehypeImageToolkit,
       rehypePixelated
     ],
   },
