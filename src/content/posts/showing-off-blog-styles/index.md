@@ -165,3 +165,15 @@ testing123
     <input type="checkbox" name="terms" value="agree">
     I agree to the terms and conditions
 </label><br>
+
+
+## Latex math support
+You can also display inline math $ \frac{a}{b} \cdot b = a $ like so `$ \frac{a}{b} \cdot b = a $ `
+
+
+
+## Shortcode emoji support
+Emojis can be displayed using shortcodes as well with remark-gemoji! 
+<br>
+:smile: `:smile:`
+ 
