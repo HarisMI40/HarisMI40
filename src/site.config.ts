@@ -11,6 +11,10 @@ const config: SiteConfig = {
   author: 'Katy Kookaburra',
   // Keywords for SEO, used in the meta tags.
   tags: ['Astro', 'Terminal', 'Theme', 'MultiTerm', 'stelcodes'],
+  // Path to the image used for generating social media previews.
+  // Needs to be a square JPEG file due to limitations of the social card generator.
+  // Try https://squoosh.app/ to easily convert images to JPEG.
+  socialCardAvatarImage: './src/content/avatar.jpg',
   // Font imported from @fontsource or elsewhere, used for the entire site.
   // To change this see src/styles/global.css and import a different font.
   font: 'JetBrains Mono Variable',
