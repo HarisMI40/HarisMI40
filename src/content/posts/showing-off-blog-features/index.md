@@ -120,7 +120,7 @@ testing123
 
 ## Emoji :star_struck:
 
-Emojis can be added in markdown by including the a literal emoji character or a GitHub shortcode. You can browse an unofficial database [here](https://emojibase.dev/emojis?shortcodePresets=github).
+Emojis can be added in markdown by including a literal emoji character or a GitHub shortcode. You can browse an unofficial database [here](https://emojibase.dev/emojis?shortcodePresets=github).
 
 ```md title="Example markdown with GitHub emoji shortcodes"
 Good morning! :sleeping: :coffee: :pancakes:
