@@ -7,6 +7,7 @@ import Pagination from '@components/Pagination.astro'
 import BlockHeader from '@components/BlockHeader.astro'
 import HomeBanner from '@components/HomeBanner.astro'
 import siteConfig from '../site.config'
+import TagsSection from '@components/TagsSection.astro'
 
 const home = await getCollection('home')
 let HomeContent
@@ -19,7 +20,7 @@ if (home.length > 0) {
   homeAvatarImage = homeEntry.data.avatarImage
   homeGithubCalendar = homeEntry.data.githubCalendar
 }
-const posts = (await getSortedPosts()).slice(0, siteConfig.pageSize)
+const sortedPosts = await getSortedPosts()
 ---
 
 <Layout>
@@ -30,8 +31,10 @@ const posts = (await getSortedPosts()).slice(0, siteConfig.pageSize)
       </HomeBanner>
     )
   }
+  <BlockHeader>Tags</BlockHeader>
+  <TagsSection posts={sortedPosts}/>
   <BlockHeader>Latest Posts</BlockHeader>
-  {posts.map((post) => <PostPreview post={post} />)}
+  {sortedPosts.slice(0, siteConfig.pageSize).map((post) => <PostPreview post={post} />)}
   <Pagination nextLink={url('posts')} nextText="Archive" />
 </Layout>
 
