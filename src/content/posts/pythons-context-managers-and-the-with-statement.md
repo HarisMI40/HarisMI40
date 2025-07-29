@@ -2,8 +2,8 @@
 title: "Python's Context Managers and the with Statement"
 published: 2025-07-15
 draft: false
-description: "Learn how to use context managers and the with statement in Python for resource management."
-tags: ["python"]
+description: 'Learn how to use context managers and the with statement in Python for resource management.'
+tags: ['python']
 ---
 
 Context managers in Python are used to manage resources efficiently. Here's an example:

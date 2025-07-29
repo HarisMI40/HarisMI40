@@ -2,8 +2,8 @@
 title: "Python's Generators and Yield"
 published: 2025-07-11
 draft: false
-description: "Learn how to use generators and the yield keyword in Python for efficient iteration."
-tags: ["python"]
+description: 'Learn how to use generators and the yield keyword in Python for efficient iteration.'
+tags: ['python']
 ---
 
 Generators in Python are a way to create iterators using the `yield` keyword. Here's an example:

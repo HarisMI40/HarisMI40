@@ -1,9 +1,9 @@
 ---
-title: "Error Handling in Go"
+title: 'Error Handling in Go'
 published: 2025-07-08
 draft: false
-description: "Understand how to handle errors effectively in Go."
-tags: ["go"]
+description: 'Understand how to handle errors effectively in Go.'
+tags: ['go']
 ---
 
 Go uses a simple and explicit approach to error handling. Here's an example:

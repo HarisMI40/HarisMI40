@@ -1,11 +1,11 @@
 ---
-title: "Showing Off Blog Features"
+title: 'Showing Off Blog Features'
 published: 2025-07-20
 draft: false
 tags: ['astro']
 coverImage:
-    src: "./cover.jpg"
-    alt: "A person with short, thick hair and prescription glasses sits at an organized workstation, using a magnification app to navigate a webpage. Their posture is proper and relaxed. On the desk: a computer, a mouse, a large desk lamp and a small notebook."
+  src: './cover.jpg'
+  alt: 'A person with short, thick hair and prescription glasses sits at an organized workstation, using a magnification app to navigate a webpage. Their posture is proper and relaxed. On the desk: a computer, a mouse, a large desk lamp and a small notebook.'
 ---
 
 Since the post does not have a description in the frontmatter, the first paragraph is used.
@@ -44,17 +44,18 @@ hello_world()
 python hello.py
 ```
 
-Also some inline code: `1 + 2 = 3`. Or maybe even `(= (+ 1 2) 3)`. 
+Also some inline code: `1 + 2 = 3`. Or maybe even `(= (+ 1 2) 3)`.
 
 See the [Expressive Code Docs](https://expressive-code.com/key-features/syntax-highlighting/) for more information on available features like wrapping text, line highlighting, diffs, etc.
 
 ## Basic Markdown Elements
+
 - List item 1
 - List item 2
 
 **Bold text**
 
-*Italic text*
+_Italic text_
 
 ~~Strikethrough text~~
 
@@ -62,32 +63,32 @@ See the [Expressive Code Docs](https://expressive-code.com/key-features/syntax-h
 
 > In life, as in art, some endings are bittersweet. Especially when it comes to love. Sometimes fate throws two lovers together only to rip them apart. Sometimes the hero finally makes the right choice but the timing is all wrong. And, as they say, timing is everything.
 >
->\- Gossip Girl
+> \- Gossip Girl
 
-| Name      | Age | City         |
-|-----------|-----|--------------|
-| Alice     | 30  | New York     |
-| Bob       | 25  | Los Angeles  |
-| Charlie   | 35  | Chicago      |
+| Name    | Age | City        |
+| ------- | --- | ----------- |
+| Alice   | 30  | New York    |
+| Bob     | 25  | Los Angeles |
+| Charlie | 35  | Chicago     |
 
-___
+---
 
 ## Images
 
 Images can include a title string after the URL to render as a `<figure>` with a `<figcaption>`.
 
-![Pixel art of a tree](./PixelatedGreenTreeSide.png "Pixel art renders poorly without proper CSS")
+![Pixel art of a tree](./PixelatedGreenTreeSide.png 'Pixel art renders poorly without proper CSS')
 
 ```md title="Pixel art markdown" wrap
-![Pixel art of a tree](./PixelatedGreenTreeSide.png "Pixel art renders poorly without proper CSS")
+![Pixel art of a tree](./PixelatedGreenTreeSide.png 'Pixel art renders poorly without proper CSS')
 ```
 
 I've also added a special tag for pixel art that adds the correct CSS to render properly. Just add `#pixelated` to the very end of the alt string.
 
-![Pixel art of a tree #pixelated](./PixelatedGreenTreeSide.png "But adding #pixelated to the end of the alt string fixes this")
+![Pixel art of a tree #pixelated](./PixelatedGreenTreeSide.png 'But adding #pixelated to the end of the alt string fixes this')
 
 ```md title="Pixel art markdown with #pixelated" wrap
-![Pixel art of a tree #pixelated](./PixelatedGreenTreeSide.png "But adding #pixelated to the end of the alt string fixes this")
+![Pixel art of a tree #pixelated](./PixelatedGreenTreeSide.png 'But adding #pixelated to the end of the alt string fixes this')
 ```
 
 ## Admonitions
@@ -129,12 +130,15 @@ Good morning! :sleeping: :coffee: :pancakes:
 Good morning! :sleeping: :coffee: :pancakes:
 
 > All emojis \(both literal and shortcoded\) are made more accessible by wrapping them in a `span` tag like this:
+>
 > ```html
 > <span role="img" aria-label="coffee">☕️</span>
 > ```
+>
 > At the time of writing, [emoji v16](https://emojipedia.org/emoji-16.0) is not supported yet. These emojis can be included literally but they do not have shortcodes and will not be wrapped.
 
 ## LaTeX/KaTeX Math Support
+
 You can also display inline math via [remark-math and rehype-katex](https://github.com/remarkjs/remark-math).
 
 ```txt title="Rendering pretty math with KaTeX"
