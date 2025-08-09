@@ -125,6 +125,9 @@ article img {
 
       &.has-title,
       &.is-terminal {
+        span.title {
+          @apply !px-15;
+        }
         --button-spacing: 30px !important;
       }
 
