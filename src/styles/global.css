@@ -200,7 +200,7 @@ article img {
   }
 
   h1 {
-    @apply text-2xl text-[var(--theme-h1)];
+    @apply text-[1.75rem] text-[var(--theme-h1)] mt-8;
 
     &::before {
       @apply mr-2 content-['#'];
@@ -212,7 +212,7 @@ article img {
   }
 
   h2 {
-    @apply text-2xl text-[var(--theme-h2)];
+    @apply text-[1.6rem] text-[var(--theme-h2)] mt-12;
 
     &::before {
       @apply mr-2 content-['##'];
@@ -224,7 +224,7 @@ article img {
   }
 
   h3 {
-    @apply text-xl text-[var(--theme-h3)];
+    @apply text-2xl text-[var(--theme-h3)] mt-10;
 
     &::before {
       @apply mr-2 content-['###'];
@@ -236,7 +236,7 @@ article img {
   }
 
   h4 {
-    @apply text-xl text-[var(--theme-h4)];
+    @apply text-2xl text-[var(--theme-h4)] mt-8;
 
     &::before {
       @apply mr-2 content-['####'];
