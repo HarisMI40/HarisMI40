@@ -17,13 +17,13 @@ const createCss = (styles: ColorStyles) => {
   }
   const foreground = styles.foreground
   const background = styles.background
-  const a = styles.a
+  const link = styles.link
   const accent = styles.accent
   const comment = styles.comment
   const constant = styles.foreground
   const entity = styles.entity
   const storageModifierImport = foreground
-  const entityTag = styles.entityTag
+  const tag = styles.tag
   const keyword = styles.keyword
   const string = styles.string
   const variable = styles.variable
@@ -57,7 +57,7 @@ main {
   --color-prettylights-syntax-constant: ${constant};
   --color-prettylights-syntax-entity: ${entity};
   --color-prettylights-syntax-storage-modifier-import: ${storageModifierImport};
-  --color-prettylights-syntax-entity-tag: ${entityTag};
+  --color-prettylights-syntax-entity-tag: ${tag};
   --color-prettylights-syntax-keyword: ${keyword};
   --color-prettylights-syntax-string: ${string};
   --color-prettylights-syntax-variable: ${variable};
@@ -109,7 +109,7 @@ main {
   --color-border-default: ${muted(foreground, 20)};
   --color-border-muted: ${muted(foreground, 10)};
   --color-neutral-muted: ${altBackground};
-  --color-accent-fg: ${a};
+  --color-accent-fg: ${link};
   --color-accent-emphasis: ${muted(accent, 70)};
   --color-accent-muted: var(--color-border-default);
   --color-accent-subtle: ${altBackground};

@@ -46,49 +46,49 @@ const unresolvedStyles: TextmateStyles = {
     'markup.heading',
     'editor.foreground',
   ],
-  h1: [
+  heading1: [
     'heading.1.markdown entity.name',
     'heading.1.markdown',
     'markup.heading.markdown',
     'markup.heading',
     'editor.foreground',
   ],
-  h2: [
+  heading2: [
     'heading.2.markdown entity.name',
     'heading.2.markdown',
     'markup.heading.markdown',
     'markup.heading',
     'editor.foreground',
   ],
-  h3: [
+  heading3: [
     'heading.3.markdown entity.name',
     'heading.3.markdown',
     'markup.heading.markdown',
     'markup.heading',
     'editor.foreground',
   ],
-  h4: [
+  heading4: [
     'heading.4.markdown entity.name',
     'heading.4.markdown',
     'markup.heading.markdown',
     'markup.heading',
     'editor.foreground',
   ],
-  h5: [
+  heading5: [
     'heading.5.markdown entity.name',
     'heading.5.markdown',
     'markup.heading.markdown',
     'markup.heading',
     'editor.foreground',
   ],
-  h6: [
+  heading6: [
     'heading.6.markdown entity.name',
     'heading.6.markdown',
     'markup.heading.markdown',
     'markup.heading',
     'editor.foreground',
   ],
-  li: [
+  list: [
     'markup.list.bullet',
     'punctuation.definition.list.begin.markdown',
     'editor.foreground',
@@ -99,8 +99,8 @@ const unresolvedStyles: TextmateStyles = {
     'punctuation.definition.italic.markdown',
     'editor.foreground',
   ],
-  a: ['string.other.link.title.markdown', 'markup.link', 'editor.foreground'],
-  hr: ['meta.separator.markdown', 'meta.separator', 'editor.foreground'],
+  link: ['string.other.link.title.markdown', 'markup.link', 'editor.foreground'],
+  separator: ['meta.separator.markdown', 'meta.separator', 'editor.foreground'],
   blue: ['terminal.ansiBlue', 'terminal.ansiBrightBlue'],
   green: ['terminal.ansiGreen', 'terminal.ansiBrightGreen'],
   red: ['terminal.ansiRed', 'terminal.ansiBrightRed'],
@@ -111,7 +111,7 @@ const unresolvedStyles: TextmateStyles = {
   comment: ['comment', 'punctuation.definition.comment', 'foreground'],
   constant: ['constant.language.boolean', 'constant.language', 'foreground'],
   entity: ['entity.name.function', 'support.function', 'function', 'foreground'],
-  entityTag: [
+  tag: [
     'entity.name.tag',
     'punctuation.definition.tag',
     'punctuation.definition.tag.html',

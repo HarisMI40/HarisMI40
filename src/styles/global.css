@@ -18,6 +18,15 @@
   --color-accent: var(--theme-accent);
   --color-foreground: var(--theme-foreground);
   --color-background: var(--theme-background);
+  --color-heading1: var(--theme-heading1);
+  --color-heading2: var(--theme-heading2);
+  --color-heading3: var(--theme-heading3);
+  --color-heading4: var(--theme-heading4);
+  --color-heading5: var(--theme-heading5);
+  --color-heading6: var(--theme-heading6);
+  --color-list: var(--theme-list);
+  --color-link: var(--theme-link);
+  --color-separator: var(--theme-separator);
   --color-blue: var(--theme-blue);
   --color-green: var(--theme-green);
   --color-red: var(--theme-red);
@@ -200,7 +209,7 @@ article img {
   }
 
   h1 {
-    @apply text-[1.75rem] text-[var(--theme-h1)] mt-8;
+    @apply text-[1.75rem] text-heading1 mt-8;
 
     &::before {
       @apply mr-2 content-['#'];
@@ -212,7 +221,7 @@ article img {
   }
 
   h2 {
-    @apply text-[1.6rem] text-[var(--theme-h2)] mt-12;
+    @apply text-[1.6rem] text-heading2 mt-12;
 
     &::before {
       @apply mr-2 content-['##'];
@@ -224,7 +233,7 @@ article img {
   }
 
   h3 {
-    @apply text-2xl text-[var(--theme-h3)] mt-10;
+    @apply text-2xl text-heading3 mt-10;
 
     &::before {
       @apply mr-2 content-['###'];
@@ -236,7 +245,7 @@ article img {
   }
 
   h4 {
-    @apply text-2xl text-[var(--theme-h4)] mt-8;
+    @apply text-2xl text-heading4 mt-8;
 
     &::before {
       @apply mr-2 content-['####'];
@@ -248,7 +257,7 @@ article img {
   }
 
   h5 {
-    @apply text-lg text-[var(--theme-h5)];
+    @apply text-lg text-heading5;
 
     &::before {
       @apply mr-2 content-['#####'];
@@ -260,7 +269,7 @@ article img {
   }
 
   h6 {
-    @apply text-lg text-[var(--theme-h6)];
+    @apply text-lg text-heading6;
 
     &::before {
       @apply mr-2 content-['######'];
@@ -292,7 +301,7 @@ article img {
   }
 
   a {
-    @apply text-[var(--theme-a)] underline hover:underline;
+    @apply text-link underline hover:underline;
 
     &.heading-anchor {
       text-decoration: none;
@@ -322,7 +331,7 @@ article img {
   }
 
   li {
-    @apply pl-2 my-4 marker:text-[var(--theme-li)] marker:-left-5;
+    @apply pl-2 my-4 marker:text-list marker:-left-5;
   }
 
   ul li {
@@ -334,7 +343,7 @@ article img {
   }
 
   hr {
-    @apply h-0.5 my-16 bg-[var(--theme-hr)] border-none rounded-xl;
+    @apply h-0.5 my-16 bg-separator border-none rounded-xl;
   }
 
   blockquote,
