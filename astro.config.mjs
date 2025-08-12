@@ -68,6 +68,9 @@ export default defineConfig({
       rehypeKatex,
     ],
   },
+  image: {
+    responsiveStyles: true,
+  },
   vite: {
     plugins: [tailwindcss()],
   },

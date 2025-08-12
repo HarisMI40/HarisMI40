@@ -52,6 +52,8 @@ if (addendum.length > 0) {
     {
       postData.coverImage && (
         <Image
+          priority
+          layout="constrained"
           src={postData.coverImage.src}
           alt={postData.coverImage.alt}
           class="w-full rounded-xl mb-5"
