@@ -1,4 +1,4 @@
-import type { TextmateStyles, ThemesWithColorStyles, ThemeKey } from '@types'
+import type { TextmateStyles, ThemesWithColorStyles, ThemeKey } from '~/types'
 import {
   loadShikiTheme,
   type BundledShikiTheme,

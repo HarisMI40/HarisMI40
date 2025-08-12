@@ -1,5 +1,5 @@
 ---
-import siteConfig from '../site.config'
+import siteConfig from '~/site.config'
 // This will be localhost during development, site URL in prod
 const origin = Astro.url.origin
 const giscusConfig = siteConfig.giscus
@@ -36,7 +36,15 @@ const reactionsEnabled = giscusConfig.reactionsEnabled ? '1' : '0'
     const categoryId = giscusDiv.getAttribute('data-category-id')
     const reactionsEnabled = giscusDiv.getAttribute('data-reactions-enabled')
     const theme = document.documentElement.getAttribute('data-theme')
-    if (!origin || !repo || !repoId || !category || !categoryId || !reactionsEnabled || !theme) {
+    if (
+      !origin ||
+      !repo ||
+      !repoId ||
+      !category ||
+      !categoryId ||
+      !reactionsEnabled ||
+      !theme
+    ) {
       throw new Error('Giscus configuration missing in the Giscus div.')
     }
     const script = document.createElement('script')

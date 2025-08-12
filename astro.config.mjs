@@ -8,12 +8,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import expressiveCode from 'astro-expressive-code'
 import siteConfig from './src/site.config'
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
-import icon from 'astro-icon'
-import {
-  remarkDescription,
-  remarkReadingTime,
-  rehypeTitleFigure,
-} from './src/settings-utils'
+import { remarkDescription, remarkReadingTime, rehypeTitleFigure } from './src/settings-utils'
 import { remarkGithubCard } from './src/plugins/remark-github-card'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import rehypeExternalLinks from 'rehype-external-links'
@@ -86,7 +81,6 @@ export default defineConfig({
       plugins: [pluginLineNumbers()],
     }), // Must come after expressive-code integration
     mdx(),
-    icon(),
   ],
   experimental: {
     contentIntellisense: true,

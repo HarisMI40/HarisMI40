@@ -1,13 +1,13 @@
 ---
-import Layout from '@layouts/Layout.astro'
-import { getSortedPosts } from '@utils'
+import Layout from '~/layouts/Layout.astro'
+import { getSortedPosts } from '~/utils'
 import { getCollection, render } from 'astro:content'
-import PostPreview from '@components/PostPreview.astro'
-import Pagination from '@components/Pagination.astro'
-import BlockHeader from '@components/BlockHeader.astro'
-import HomeBanner from '@components/HomeBanner.astro'
-import siteConfig from '../site.config'
-import TagsSection from '@components/TagsSection.astro'
+import PostPreview from '~/components/PostPreview.astro'
+import Pagination from '~/components/Pagination.astro'
+import BlockHeader from '~/components/BlockHeader.astro'
+import HomeBanner from '~/components/HomeBanner.astro'
+import siteConfig from '~/site.config'
+import TagsSection from '~/components/TagsSection.astro'
 
 const home = await getCollection('home')
 let HomeContent

@@ -1,9 +1,9 @@
 import { type BundledShikiTheme } from 'astro-expressive-code'
-import siteConfig from '../../site.config'
+import siteConfig from '~/site.config'
 import type { APIContext } from 'astro'
-import { resolveThemeColorStyles } from '@utils'
+import { resolveThemeColorStyles } from '~/utils'
 import Color from 'color'
-import type { ColorStyles, ThemeKey } from '@types'
+import type { ColorStyles } from '~/types'
 
 interface Props {
   theme: BundledShikiTheme
