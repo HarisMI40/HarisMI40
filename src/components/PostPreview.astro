@@ -1,6 +1,5 @@
 ---
-import { dateString } from '@utils'
-import { Icon } from 'astro-icon/components'
+import IconChevronsRight from '@icons/chevrons-right.svg'
 import type { CollectionEntry } from 'astro:content'
 import { render } from 'astro:content'
 import Tags from '@components/Tags.astro'
@@ -32,7 +31,7 @@ const description = remarkPluginFrontmatter.description || post.data.description
   <div>
     <a class="button flex items-center" href={`/posts/${post.id}`}>
       Read
-      <Icon name="chevrons-right" class="size-5 ml-2" />
+      <IconChevronsRight class="size-5 ml-2" />
     </a>
   </div>
 </article>

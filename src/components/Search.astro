@@ -1,6 +1,7 @@
 ---
 import '@pagefind/default-ui/css/ui.css'
-import { Icon } from 'astro-icon/components'
+import IconCircleX from '@icons/circle-x.svg'
+import IconSearch from '@icons/search.svg'
 ---
 
 <site-search class="ms-auto" id="search">
@@ -10,7 +11,7 @@ import { Icon } from 'astro-icon/components'
     data-open-modal
     disabled
   >
-    <Icon name="search" class="size-6 text-accent" />
+    <IconSearch class="size-6 text-accent" />
     <span class="sr-only">Open Search</span>
   </button>
   <dialog
@@ -19,7 +20,7 @@ import { Icon } from 'astro-icon/components'
   >
     <div class="dialog-frame flex grow flex-col gap-4 p-6 pt-6 max-w-full">
       <button class="cursor-pointer fixed top-2 right-2 rounded-full" data-close-modal>
-        <Icon name="circle-x" class="size-6 text-accent/50" />
+        <IconCircleX class="size-6 text-accent/50" />
       </button>
       {
         import.meta.env.DEV ? (

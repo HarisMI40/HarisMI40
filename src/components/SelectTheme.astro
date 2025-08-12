@@ -1,6 +1,7 @@
 ---
 import '@pagefind/default-ui/css/ui.css'
-import { Icon } from 'astro-icon/components'
+import IconPalette from '@icons/palette.svg'
+import IconCircleX from '@icons/circle-x.svg'
 import siteConfig from '../site.config'
 
 function kebabToTitleCase(str: string): string {
@@ -18,7 +19,7 @@ function kebabToTitleCase(str: string): string {
     data-open-modal
     disabled
   >
-    <Icon name="palette" class="size-6 text-accent" />
+    <IconPalette class="size-6 text-accent" />
     <span class="sr-only">Select Theme</span>
   </button>
   <dialog
@@ -31,7 +32,7 @@ function kebabToTitleCase(str: string): string {
         class="cursor-pointer fixed top-2 right-2 rounded-full"
         data-close-modal
       >
-        <Icon name="circle-x" class="size-6 text-accent/50" />
+        <IconCircleX class="size-6 text-accent/50" />
       </button>
       <ul
         id="theme-change-list"

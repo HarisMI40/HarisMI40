@@ -1,6 +1,8 @@
 ---
-import { Icon } from 'astro-icon/components'
-import siteConfig from '../site.config'
+import IconSun from '@icons/sun.svg'
+import IconMoon from '@icons/moon.svg'
+import IconSunMoon from '@icons/sun-moon.svg'
+import siteConfig from '@site.config'
 let lightTheme = siteConfig.themes.include[0]
 let darkTheme = siteConfig.themes.include[1]
 ---
@@ -11,9 +13,9 @@ let darkTheme = siteConfig.themes.include[1]
   data-light={lightTheme}
   data-dark={darkTheme}
 >
-  <Icon name="sun" id="icon-light" class="hidden size-6 text-[var(--theme-accent)]" />
-  <Icon name="moon" id="icon-dark" class="hidden size-6 text-[var(--theme-accent)]" />
-  <Icon name="sun-moon" id="icon-auto" class="hidden size-6 text-[var(--theme-accent)]" />
+  <IconSun id="icon-light" class="hidden size-6 text-[var(--theme-accent)]" />
+  <IconMoon id="icon-dark" class="hidden size-6 text-[var(--theme-accent)]" />
+  <IconSunMoon id="icon-auto" class="hidden size-6 text-[var(--theme-accent)]" />
 </button>
 
 <script>

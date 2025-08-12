@@ -1,5 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components'
+import IconChevronsLeft from '@icons/chevrons-left.svg'
+import IconChevronsRight from '@icons/chevrons-right.svg'
 
 interface Props {
   prevLink?: string
@@ -19,7 +20,7 @@ const { prevLink, prevText, nextLink, nextText } = Astro.props
         aria-label="Previous Page"
         class="button flex-row items-center justify-center w-full sm:w-min"
       >
-        <Icon name="chevrons-left" class="mr-2 text-xl" />
+        <IconChevronsLeft class="mr-2 text-xl" />
         {prevText || 'Previous'}
       </a>
     )
@@ -35,7 +36,7 @@ const { prevLink, prevText, nextLink, nextText } = Astro.props
         ]}
       >
         {nextText || 'Next'}
-        <Icon name="chevrons-right" class="ml-2 text-xl" />
+        <IconChevronsRight class="ml-2 text-xl" />
       </a>
     )
   }
