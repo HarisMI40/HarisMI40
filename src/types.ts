@@ -56,6 +56,7 @@ export const themeKeys = [
   'foreground',
   'background',
   'accent',
+  // Markdown styles
   'heading1',
   'heading2',
   'heading3',
@@ -66,13 +67,13 @@ export const themeKeys = [
   'separator',
   'italic',
   'link',
-  'blue',
-  'green',
-  'red',
-  'yellow',
-  'magenta',
-  'cyan',
-  // For Giscus syntax highlighting
+  // For admonition styling
+  'note',
+  'tip',
+  'important',
+  'caution',
+  'warning',
+  // For Giscus syntax highlighting only
   'comment',
   'constant',
   'entity',
@@ -81,6 +82,13 @@ export const themeKeys = [
   'string',
   'variable',
   'regexp',
+  // Terminal colors for user customization only, not used by default
+  'blue',
+  'green',
+  'red',
+  'yellow',
+  'magenta',
+  'cyan',
 ] as const
 
 export type ThemeKey = (typeof themeKeys)[number]

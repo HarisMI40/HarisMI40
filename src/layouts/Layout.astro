@@ -71,7 +71,10 @@ const themeHash = crypto
   .digest('hex')
   .slice(0, 8) // Truncate to the first 8 characters
 
-const resolvedThemes = await resolveThemeColorStyles(siteConfig.themes.include, siteConfig.themes.overrides)
+const resolvedThemes = await resolveThemeColorStyles(
+  siteConfig.themes.include,
+  siteConfig.themes.overrides,
+)
 
 let cssLines: string[] = []
 for (const [themeId, themeStyles] of Object.entries(resolvedThemes)) {
@@ -89,6 +92,11 @@ for (const [themeId, themeStyles] of Object.entries(resolvedThemes)) {
     'italic',
     'link',
     'separator',
+    'note',
+    'tip',
+    'important',
+    'caution',
+    'warning',
     'blue',
     'green',
     'red',
