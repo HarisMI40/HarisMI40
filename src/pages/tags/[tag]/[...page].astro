@@ -2,10 +2,10 @@
 import type { GetStaticPaths } from 'astro'
 import Layout from '~/layouts/Layout.astro'
 import { getSortedPosts } from '~/utils'
-import PostPreviewsWithYear from '~/components/PostPreviewsWithYear.astro'
 import Pagination from '~/components/Pagination.astro'
 import BlockHeader from '~/components/BlockHeader.astro'
 import siteConfig from '~/site.config'
+import PostPreview from '~/components/PostPreview.astro'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
@@ -27,12 +27,14 @@ const title = `Tag: ${tag}`
 ---
 
 <Layout title={title} description={`All posts tagged with ${tag}`}>
-  <BlockHeader>{title}</BlockHeader>
-  <PostPreviewsWithYear posts={page.data} />
-  <Pagination
-    prevLink={page.url.prev ? encodeURI(page.url.prev) : undefined}
-    prevText="Newer Posts"
-    nextLink={page.url.next ? encodeURI(page.url.next) : undefined}
-    nextText="Older Posts"
-  />
+  <div class="mt-2 sm:mt-0">
+    <BlockHeader>{title}</BlockHeader>
+    {page.data.map((post) => <PostPreview post={post} />)}
+    <Pagination
+      prevLink={page.url.prev ? encodeURI(page.url.prev) : undefined}
+      prevText="Newer Posts"
+      nextLink={page.url.next ? encodeURI(page.url.next) : undefined}
+      nextText="Older Posts"
+    />
+  </div>
 </Layout>
