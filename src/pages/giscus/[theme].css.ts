@@ -206,7 +206,10 @@ export async function GET(context: APIContext) {
 }
 
 export async function getStaticPaths() {
-  const resolvedColorStyles = await resolveThemeColorStyles(siteConfig.themes.include)
+  const resolvedColorStyles = await resolveThemeColorStyles(
+    siteConfig.themes.include,
+    siteConfig.themes.overrides,
+  )
   return siteConfig.themes.include.map((theme) => {
     return {
       params: { theme },

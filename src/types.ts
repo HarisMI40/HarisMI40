@@ -52,7 +52,7 @@ export type NavLink = {
 
 export type AdmonitionType = 'tip' | 'note' | 'important' | 'caution' | 'warning'
 
-const themeKeys = [
+export const themeKeys = [
   'foreground',
   'background',
   'accent',
@@ -83,8 +83,6 @@ const themeKeys = [
   'regexp',
 ] as const
 
-console.log
-
 export type ThemeKey = (typeof themeKeys)[number]
 
 // const example: TextmateStyles = {
@@ -110,11 +108,13 @@ export type ColorStyles = {
 //   },
 // }
 export type ThemesWithColorStyles = Partial<Record<BundledShikiTheme, ColorStyles>>
+export type ThemeOverrides = Partial<Record<BundledShikiTheme, Partial<ColorStyles>>>
 
 export interface ThemesConfig {
   default: BundledShikiTheme | 'auto'
   mode: 'single' | 'light-dark-auto' | 'select'
   include: BundledShikiTheme[]
+  overrides?: ThemeOverrides
 }
 
 export type SocialLinks = {

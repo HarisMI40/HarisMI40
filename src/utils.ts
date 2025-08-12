@@ -1,10 +1,17 @@
-import type { TextmateStyles, ThemesWithColorStyles, ThemeKey } from '~/types'
+import {
+  type TextmateStyles,
+  type ThemesWithColorStyles,
+  type ThemeKey,
+  themeKeys,
+  type ThemeOverrides,
+} from '~/types'
 import {
   loadShikiTheme,
   type BundledShikiTheme,
   type ExpressiveCodeTheme,
 } from 'astro-expressive-code'
 import { getCollection } from 'astro:content'
+import Color from 'color'
 
 export function dateString(date: Date) {
   return date.toISOString().split('T')[0]
@@ -143,21 +150,51 @@ const unresolvedStyles: TextmateStyles = {
 
 export async function resolveThemeColorStyles(
   themes: BundledShikiTheme[],
-  overrides?: ThemesWithColorStyles,
+  overrides?: ThemeOverrides,
 ): Promise<ThemesWithColorStyles> {
+  const validateColor = (color: string) => {
+    // Check if the color is a valid hex, rgb, or hsl color via regex
+    const colorRegex = /^(#|rgb|hsl)/i
+    if (!colorRegex.test(color)) return undefined
+    try {
+      return new Color(color).hex()
+    } catch {
+      return undefined
+    }
+  }
   const resolvedThemes = themes.map(async (theme) => {
     const loadedTheme = await loadShikiTheme(theme)
     const flattenedTheme = flattenThemeColors(loadedTheme)
     const result = {} as { [key in ThemeKey]: string }
-    for (const el of Object.keys(unresolvedStyles) as ThemeKey[]) {
-      if (overrides?.[theme]?.[el]) {
-        result[el] = overrides[theme][el]
-      } else {
-        for (const group of unresolvedStyles[el]) {
-          if (flattenedTheme[group]) {
-            result[el] = flattenedTheme[group]
-            break
+    for (const themeKey of Object.keys(unresolvedStyles) as ThemeKey[]) {
+      if (overrides?.[theme]?.[themeKey]) {
+        const override = overrides[theme][themeKey]
+        const overrideColor = validateColor(override)
+        if (overrideColor) {
+          result[themeKey] = override
+          continue
+        }
+        // If the override is not a valid color, try to resolve it as a highlight group
+        if (themeKeys.includes(override as ThemeKey)) {
+          for (const textmateGroup of unresolvedStyles[override as ThemeKey]) {
+            if (flattenedTheme[textmateGroup]) {
+              result[themeKey] = flattenedTheme[textmateGroup]
+              break
+            }
           }
+        }
+        if (result[themeKey]) {
+          continue
+        } else {
+          console.warn(
+            `Theme "${theme}" has an override for "${themeKey}" with value "${override}", but it is neither a theme key nor valid color.`,
+          )
+        }
+      }
+      for (const textmateGroup of unresolvedStyles[themeKey]) {
+        if (flattenedTheme[textmateGroup]) {
+          result[themeKey] = flattenedTheme[textmateGroup]
+          break
         }
       }
     }

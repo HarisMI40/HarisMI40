@@ -118,6 +118,31 @@ const config: SiteConfig = {
       'vitesse-dark',
       'vitesse-light',
     ],
+    // Optional overrides for specific themes to customize colors.
+    // Their values can be either a literal color (hex, rgb, hsl) or another theme key.
+    // See themeKeys list in src/types.ts for available keys to override and reference.
+    overrides: {
+      // Soften the contrast for aurora-x theme
+      // 'aurora-x': {
+      //   background: '#292929FF',
+      //   foreground: '#DDDDDDFF',
+      //   red: '#FF7570FF',
+      //   magenta: '#FF98FFFF',
+      //   blue: '#83AEFFFF',
+      // },
+      // Make the GitHub dark theme a little cuter
+      // 'github-light': {
+      //   accent: 'magenta',
+      //   heading1: 'magenta',
+      //   heading2: 'magenta',
+      //   heading3: 'magenta',
+      //   heading4: 'magenta',
+      //   heading5: 'magenta',
+      //   heading6: 'magenta',
+      //   separator: 'magenta',
+      //   link: 'list',
+      // },
+    },
   },
   // Social links to display in the footer.
   socialLinks: {
