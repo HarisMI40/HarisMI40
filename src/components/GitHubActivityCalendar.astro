@@ -48,10 +48,9 @@ async function fetchData(
   const apiUrl = 'https://github-contributions-api.jogruber.de/v4/'
   const response = await fetch(`${apiUrl}${username}?y=${String(year)}`)
   const data = (await response.json()) as GitHubActivityApiResponse
-  if (!response.ok && data.error) {
-    throw Error(
-      `Fetching GitHub contribution data for "${username}" failed: ${data.error}`,
-    )
+  if (!response.ok) {
+    const message = data.error || 'Unknown error'
+    throw Error(`Fetching GitHub contribution data for "${username}" failed: ${message}`)
   }
 
   validateActivities(data.contributions)
