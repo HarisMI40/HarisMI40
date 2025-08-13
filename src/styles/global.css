@@ -141,8 +141,7 @@ article img {
       @apply border-2 border-foreground/8 !rounded-xl;
       box-shadow: none !important;
 
-      &.has-title,
-      &.is-terminal {
+      &.has-title.is-terminal {
         span.title {
           @apply !px-15;
         }
@@ -518,25 +517,6 @@ article img {
       .gh-language,
       .gh-region {
         @apply ms-auto;
-      }
-    }
-
-    &.gh-loading {
-      .gh-title .gh-avatar,
-      .gh-description,
-      .gh-chips span {
-        @apply bg-foreground/50 animate-pulse rounded-xl text-transparent;
-      }
-      .gh-chips span:before {
-        @apply bg-transparent;
-      }
-    }
-
-    &.gh-error {
-      .gh-avatar,
-      .gh-description,
-      .gh-chips {
-        @apply hidden;
       }
     }
   }
