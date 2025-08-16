@@ -4,7 +4,7 @@ import Layout from '~/layouts/Layout.astro'
 import { SeriesGroup, TagsGroup, getSortedPosts } from '~/utils'
 import PostPreview from '~/components/PostPreview.astro'
 import DividerText from '~/components/DividerText.astro'
-import { getCollection, render } from 'astro:content'
+import { getCollection, render, type CollectionEntry } from 'astro:content'
 import PostAddendum from '~/components/PostAddendum.astro'
 import TableOfContents from '~/components/TableOfContents.astro'
 import { Image } from 'astro:assets'
@@ -14,6 +14,7 @@ import Tags from '~/components/Tags.astro'
 import PostInfo from '~/components/PostInfo.astro'
 import ScrollUpButton from '~/components/ScrollUpButton.astro'
 import type { Collation } from '~/types'
+import ChevronsRight from '~/icons/chevrons-right.svg'
 
 export const getStaticPaths = (async () => {
   const posts = await getSortedPosts()
@@ -46,9 +47,18 @@ const sortedPosts = await getSortedPosts()
 
 // Get series posts if this post is part of a series
 let series: Collation<'posts'> | undefined
+let nextPostInSeries: CollectionEntry<'posts'> | undefined
 if (postData.series) {
   const seriesGroup = await SeriesGroup.build(sortedPosts)
   series = seriesGroup.match(postData.series)
+  if (!series) {
+    // This should not happen if series data is correct
+    throw new Error(`Series "${postData.series}" not found`)
+  }
+  const index = series.entries.findIndex((entry) => entry.id === post.id)
+  if (index >= 0 && index <= series.entries.length - 2) {
+    nextPostInSeries = series.entries[index + 1]
+  }
 }
 const showSeries = series && series.entries.length > 1
 
@@ -100,7 +110,17 @@ if (postData.tags && postData.tags.length > 0) {
       </div>
     </div>
   </article>
-  <div class="article-end-marker" aria-hidden="true"></div>
+  {
+    nextPostInSeries && (
+      <a
+        href={`/posts/${nextPostInSeries.id}`}
+        class="button justify-center -mt-8 mb-8 !whitespace-normal text-center flex gap-2 sm:gap-3 items-center"
+      >
+        <span>Next: {nextPostInSeries.data.title}</span>
+        <ChevronsRight class="size-5 hidden sm:block" />
+      </a>
+    )
+  }
   {
     AddendumContent && (
       <PostAddendum avatarImage={addendumAvatarImage}>
