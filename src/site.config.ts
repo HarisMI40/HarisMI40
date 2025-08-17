@@ -22,6 +22,10 @@ const config: SiteConfig = {
   // For pagination, the number of posts to display per page.
   // The homepage will display half this number in the "Latest Posts" section.
   pageSize: 6,
+  // Whether Astro should resolve trailing slashes in URLs or not.
+  // This value is used in the astro.config.mjs file and in the "Search" component to make sure pagefind links match this setting.
+  // It is not recommended to change this, since most links existing in the site currently do not have trailing slashes.
+  trailingSlashes: false,
   // The navigation links to display in the header.
   navLinks: [
     {

@@ -31,7 +31,10 @@ const defaultTheme =
     ? siteConfig.themes.include[0]
     : siteConfig.themes.default
 
-const themeStyles = await resolveThemeColorStyles([defaultTheme], siteConfig.themes.overrides)
+const themeStyles = await resolveThemeColorStyles(
+  [defaultTheme],
+  siteConfig.themes.overrides,
+)
 const bg = themeStyles[defaultTheme]?.background
 const fg = themeStyles[defaultTheme]?.foreground
 const accent = themeStyles[defaultTheme]?.accent
