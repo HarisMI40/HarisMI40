@@ -20,7 +20,7 @@ const selectTheme =
       {siteConfig.title}
     </a>
     <div class="flex items-center gap-3 sm:mr-3">
-      <Search />
+      <Search trailingSlashes={siteConfig.trailingSlashes} />
       {lightDarkAutoTheme && <LightDarkAutoButton />}
       {selectTheme && <SelectTheme />}
       <nav id="nav-mobile" aria-label="Menu" class="p-0 text-accent sm:hidden">
