@@ -339,11 +339,11 @@ article img {
   }
 
   li {
-    @apply pl-2 my-4 marker:text-list marker:-left-5;
+    @apply pl-2 my-4 marker:text-list;
   }
 
   ul li {
-    @apply marker:content-['-'];
+    list-style-type: "-";
   }
 
   ol li {
