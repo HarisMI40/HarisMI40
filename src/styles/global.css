@@ -116,7 +116,7 @@ article img {
   @apply text-base/7;
 
   code:not(.expressive-code code) {
-    @apply text-sm font-mono text-foreground/90 bg-foreground/5 px-2.5 py-1 rounded-lg;
+    @apply text-sm font-mono text-foreground/90 bg-foreground/5 px-2.5 py-1 rounded-lg whitespace-nowrap;
   }
 
   & > *:not(div.expressive-code, img, figure, video, hr, blockquote, aside),
