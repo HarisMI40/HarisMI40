@@ -76,3 +76,6 @@ This project is licensed under the [MIT License](LICENSE).
 ## 🩷 Sponsor
 
 Consider [buying me a coffee](https://ko-fi.com/stelclementine) to keep me caffeinated while I work on open source projects like this one!
+
+
+[![Star History Chart](https://api.star-history.com/svg?repos=stelcodes/multiterm-astro&type=Date)](https://www.star-history.com/#stelcodes/multiterm-astro&Date)
