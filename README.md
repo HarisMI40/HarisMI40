@@ -66,7 +66,7 @@ To add your own content, check out the `src/content` directory. Feel free to rem
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE.txt).
 
 ## Inspiration
 
