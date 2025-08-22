@@ -3,4 +3,6 @@ layout: '~/layouts/MarkdownLayout.astro'
 title: About Me
 ---
 
-The laughing kookaburra (Dacelo novaeguineae) is a bird in the kingfisher subfamily Halcyoninae. It is a large robust kingfisher with a whitish head and a brown eye-stripe. The upperparts are mostly dark brown but there is a mottled light-blue patch on the wing coverts. The underparts are cream-white and the tail is barred with rufous and black. The plumage of the male and female birds is similar. The territorial call is a distinctive laugh that is often delivered by several birds at the same time, and is widely used as a stock sound effect in situations that involve a jungle setting.
+Hello, I'm Haris Maulana Ikhsan.  My professional journey began with a passion for logic and problem-solving, leading me straight into the world of software development. I spent my early career turning complex ideas into functional code and user-friendly web applications.
+
+My path took an exciting turn when I discovered a deep-seated passion for sharing knowledge, which led me to the classroom. As an educator, I found a unique opportunity to bridge my two worlds. I realized that designing a compelling lesson plan shares a core philosophy with architecting software: both demand a deep empathy for the end-user (the student), clear objectives, and a structured path to a successful outcome.
