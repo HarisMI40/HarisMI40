@@ -5,4 +5,6 @@ avatarImage:
 githubCalendar: 'HarisMI40'
 ---
 
-Halo, saya Haris Maulana Ikhsan. Perjalanan profesional saya dimulai di depan kelas, dengan spidol di tangan dan semangat untuk menginspirasi. Selama bertahun-tahun mengajar, saya menyadari satu hal: tantangan terbesar dalam pendidikan seringkali bersifat sistemik dan repetitif. Saya bertanya-tanya, "Bisakah teknologi membantu?"
+I design learning experiences and build digital solutions.
+
+I believe code and curriculum are two languages that can be used to solve problems.
