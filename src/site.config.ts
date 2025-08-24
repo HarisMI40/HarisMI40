@@ -7,11 +7,11 @@ const config: SiteConfig = {
   title: 'Portfolio',
   // The description of your site, used for SEO and RSS feed.
   description:
-    'A coder-ready Astro blog theme with 59 of your favorite color schemes to choose from',
+    'This Is Portfolio from Haris Maulana Ikhsan to show skill and My work',
   // The author of the site, used in the footer, SEO, and RSS feed.
   author: 'Haris Maulana',
   // Keywords for SEO, used in the meta tags.
-  tags: ['Astro', 'Terminal', 'Theme', 'MultiTerm', 'stelcodes'],
+  tags: ['Astro', 'Terminal', 'Theme', 'MultiTerm', 'harismaulana', 'portfolio'],
   // Path to the image used for generating social media previews.
   // Needs to be a square JPEG file due to limitations of the social card generator.
   // Try https://squoosh.app/ to easily convert images to JPEG.
@@ -42,7 +42,7 @@ const config: SiteConfig = {
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/stelcodes/multiterm-astro',
+      url: 'https://github.com/HarisMI40',
       external: true,
     },
   ],
@@ -163,13 +163,15 @@ const config: SiteConfig = {
   // You'll need a GitHub repository with discussions enabled and the Giscus app installed.
   // Take the values from the generated script tag at https://giscus.app and fill them in here.
   // If you don't want to use Giscus, set this to undefined.
-  giscus: {
-    repo: 'stelcodes/multiterm-astro',
-    repoId: 'R_kgDOPNnBig',
-    category: 'Giscus',
-    categoryId: 'DIC_kwDOPNnBis4CteOc',
-    reactionsEnabled: true, // Enable reactions on post itself
-  },
+
+  giscus: undefined,
+  // giscus: {
+  //   repo: 'stelcodes/multiterm-astro',
+  //   repoId: 'R_kgDOPNnBig',
+  //   category: 'Giscus',
+  //   categoryId: 'DIC_kwDOPNnBis4CteOc',
+  //   reactionsEnabled: true, // Enable reactions on post itself
+  // },
   // These are characters available for the character chat feature.
   // To add your own character, add an image file to the top-level `/public` directory
   // Make sure to compress the image to a web-friendly size (<100kb)
