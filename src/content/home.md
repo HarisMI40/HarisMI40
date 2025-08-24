@@ -5,6 +5,6 @@ avatarImage:
 githubCalendar: 'HarisMI40'
 ---
 
-I design learning experiences and build digital solutions.
+Full-stack developer by trade, educator by heart.   
+I bring programming goodness into the classroom.
 
-I believe code and curriculum are two languages that can be used to solve problems.
