@@ -9,21 +9,19 @@ interface Props {
 const { posts } = Astro.props
 
 const seriesGroup = await SeriesGroup.build(posts)
+
+const skills = ['HTML5 & CSS3', 'JavaScript', 'PHP', 'Laravel', 'React.js', 'Next Js', 'MySQL', 'Git & Github']
 ---
 
 <ul class="flex flex-wrap gap-x-3 gap-y-4 my-5">
   {
-    seriesGroup.sortCollationsMostRecent().map((series) => (
+    skills.map((series, index) => (
       <li>
-        <a
-          href={series.url}
+        <div
           class="flex items-start gap-2.5 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
         >
-          {series.title}
-          <span class="rounded-full bg-foreground/7 text-foreground/90 px-2 py-1 text-xs font-semibold">
-            {series.entries.length}
-          </span>
-        </a>
+          {series}
+        </div>
       </li>
     ))
   }
