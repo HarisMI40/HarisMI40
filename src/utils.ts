@@ -223,6 +223,16 @@ export async function getSortedPosts() {
   return sortedPosts
 }
 
+export async function getSortedPortfolios() {
+  const allPosts = await getCollection('portfolios', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true
+  })
+  const sortedPortfolios = allPosts.sort((a, b) => {
+    return a.data.published < b.data.published ? -1 : 1
+  })
+  return sortedPortfolios
+}
+
 abstract class PostsCollationGroup implements CollationGroup<'posts'> {
   title: string
   url: string

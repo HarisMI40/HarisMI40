@@ -1,13 +1,12 @@
 ---
 import Layout from '~/layouts/Layout.astro'
-import { getSortedPosts } from '~/utils'
+import { getSortedPortfolios, getSortedPosts } from '~/utils'
 import { getCollection, render } from 'astro:content'
-import PostPreview from '~/components/PostPreview.astro'
+import PortfolioPreview from '~/components/PortfolioPreview.astro'
 import Pagination from '~/components/Pagination.astro'
 import BlockHeader from '~/components/BlockHeader.astro'
 import HomeBanner from '~/components/HomeBanner.astro'
 import siteConfig from '~/site.config'
-import TagsSection from '~/components/TagsSection.astro'
 import SeriesSection from '~/components/SeriesSection.astro'
 
 const home = await getCollection('home')
@@ -21,12 +20,9 @@ if (home.length > 0) {
   homeAvatarImage = homeEntry.data.avatarImage
   homeGithubCalendar = homeEntry.data.githubCalendar
 }
-const sortedPosts = await getSortedPosts()
-const postsHaveTags = sortedPosts.some(
-  (post) => post.data.tags && post.data.tags.length > 0,
-)
 
-const postsHaveSeries = sortedPosts.some((post) => post.data.series)
+const sortedPortfolios = await getSortedPortfolios()
+
 ---
 
 <Layout>
@@ -38,25 +34,29 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
     )
   }
   {
-    postsHaveSeries && (
       <section>
         <BlockHeader>Technical Skills (Development)</BlockHeader>
-        <SeriesSection posts={sortedPosts} />
+        <SeriesSection />
       </section>
-    )
 
   }
   {
-    sortedPosts.length > 0 && (
+    sortedPortfolios.length > 0 && (
       <section>
         <BlockHeader>Portfolio Of Works</BlockHeader>
-        {sortedPosts
+        {sortedPortfolios
           .reverse()
           .slice(0, Math.floor(siteConfig.pageSize / 2))
           .map((post) => (
-            <PostPreview post={post} />
+            <PortfolioPreview portfolio={post} />
           ))}
-        <Pagination nextLink="/posts" nextText="Archive" />
+
+        {
+          sortedPortfolios.length > 3 && (
+            <Pagination nextLink="/posts" nextText="Archive" />
+          )
+        }
+
       </section>
     )
   }

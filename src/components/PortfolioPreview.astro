@@ -1,0 +1,60 @@
+---
+import IconChevronsRight from '~/icons/chevrons-right.svg'
+import type { CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
+import Tags from '~/components/Tags.astro'
+import PostInfo from '~/components/PostInfo.astro'
+import type { Collation } from '~/types'
+import { TagsGroup } from '~/utils'
+import { Image } from 'astro:assets'
+
+interface Props {
+  portfolio: CollectionEntry<'portfolios'>
+}
+
+const { portfolio } = Astro.props
+
+const { remarkPluginFrontmatter } = await render(portfolio)
+const description = remarkPluginFrontmatter.description || portfolio.data.description
+let tags: Collation<'posts'>[] | undefined
+if (portfolio.data.tags && portfolio.data.tags.length > 0) {
+  const tagsGroup = await TagsGroup.build()
+  tags = tagsGroup.matchMany(portfolio.data.tags)
+}
+const samePage = Astro.url.pathname === `/portfolios/${portfolio.id}`
+const articleLink = samePage ? `#${portfolio.id}` : `/portfolios/${portfolio.id}`
+---
+
+<article class="w-full py-5 my-1 md:my-4 border-accent/10">
+  <h1 class="mb-3 text-2xl text-heading1 font-semibold">
+    <a href={articleLink}># {portfolio.data.title}</a>
+  </h1>
+  {
+    portfolio.data.coverImage && (
+      <Image
+        priority
+        layout="constrained"
+        src={portfolio.data.coverImage.src}
+        alt={portfolio.data.coverImage.alt}
+        class="w-[400px] rounded-xl"
+        style="margin:0;"
+      />
+    )
+  }
+
+  <!-- <PostInfo post={post} class="mb-3 mt-4" /> -->
+  {description && <p class="pl-0.5 my-4 text-base/7 text-foreground">{description}</p>}
+  {
+    tags && (
+      <div class="mb-6">
+        <Tags tags={tags} />
+      </div>
+    )
+  }
+  <div>
+    <a class="button flex items-center !pl-3.5" href={articleLink}>
+      {samePage ? 'Continue' : 'Read'}
+      <IconChevronsRight class="size-5 ml-2" />
+    </a>
+  </div>
+</article>
