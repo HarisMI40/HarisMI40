@@ -1,15 +1,4 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import { SeriesGroup } from '~/utils'
-
-interface Props {
-  posts: CollectionEntry<'posts'>[]
-}
-
-const { posts } = Astro.props
-
-const seriesGroup = await SeriesGroup.build(posts)
-
 const skills = ['HTML5 & CSS3', 'JavaScript', 'PHP', 'Laravel', 'React.js', 'Next JS', 'MySQL', 'Git & Github', 'Tailwind CSS', "Wordpress"]
 ---
 
