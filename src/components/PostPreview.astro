@@ -6,6 +6,7 @@ import Tags from '~/components/Tags.astro'
 import PostInfo from '~/components/PostInfo.astro'
 import type { Collation } from '~/types'
 import { TagsGroup } from '~/utils'
+import { Image } from 'astro:assets'
 
 interface Props {
   post: CollectionEntry<'posts'>
@@ -28,6 +29,19 @@ const articleLink = samePage ? `#${post.id}` : `/posts/${post.id}`
   <h1 class="mb-3 text-2xl text-heading1 font-semibold">
     <a href={articleLink}># {post.data.title}</a>
   </h1>
+  {
+    post.data.coverImage && (
+      <Image
+        priority
+        layout="constrained"
+        src={post.data.coverImage.src}
+        alt={post.data.coverImage.alt}
+        class="w-[400px] rounded-xl"
+        style="margin:0;"
+      />
+    )
+  }
+
   <PostInfo post={post} class="mb-3 mt-4" />
   {description && <p class="pl-0.5 my-4 text-base/7 text-foreground">{description}</p>}
   {
