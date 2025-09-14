@@ -20,15 +20,21 @@ const { avatarImage, githubCalendar } = Astro.props
           priority
           src={avatarImage.src}
           alt={avatarImage.alt}
-          class="rounded-full border-8 border-accent/15 size-40 aspect-square"
+          class="rounded-full border-8 border-accent/15 size-44 aspect-square"
           height={400}
           width={400}
         />
       )
     }
     <div>
-      <div class:list={['m-4 max-w-full prose']}>
+      <div class:list={['m-4 max-w-full']}>
+        <div class="ml-2">
+          <h1 class="text-accent text-3xl font-bold"># Hi I'm <span class="ml-1 bg-accent text-background px-2">Haris Maulana</span> </h1>
+          <h2 class="mt-3 text-sm text-accent/65">Educator & Full Stack Developer</h2>
+        </div>
+        <div class:list={['prose']}>
         <slot />
+      </div>
       </div>
     </div>
   </div>

@@ -9,40 +9,40 @@ import { TagsGroup } from '~/utils'
 import { Image } from 'astro:assets'
 
 interface Props {
-  post: CollectionEntry<'posts'>
+  portfolio: CollectionEntry<'portfolios'>
 }
 
-const { post } = Astro.props
+const { portfolio } = Astro.props
 
-const { remarkPluginFrontmatter } = await render(post)
-const description = remarkPluginFrontmatter.description || post.data.description
+const { remarkPluginFrontmatter } = await render(portfolio)
+const description = remarkPluginFrontmatter.description || portfolio.data.description
 let tags: Collation<'posts'>[] | undefined
-if (post.data.tags && post.data.tags.length > 0) {
+if (portfolio.data.tags && portfolio.data.tags.length > 0) {
   const tagsGroup = await TagsGroup.build()
-  tags = tagsGroup.matchMany(post.data.tags)
+  tags = tagsGroup.matchMany(portfolio.data.tags)
 }
-const samePage = Astro.url.pathname === `/posts/${post.id}`
-const articleLink = samePage ? `#${post.id}` : `/posts/${post.id}`
+const samePage = Astro.url.pathname === `/portfolios/${portfolio.id}`
+const articleLink = samePage ? `#${portfolio.id}` : `/portfolios/${portfolio.id}`
 ---
 
 <article class="w-full py-5 my-1 md:my-4 border-accent/10">
   <h1 class="mb-3 text-2xl text-heading1 font-semibold">
-    <a href={articleLink}># {post.data.title}</a>
+    <a href={articleLink}># {portfolio.data.title}</a>
   </h1>
   {
-    post.data.coverImage && (
+    portfolio.data.coverImage && (
       <Image
         priority
         layout="constrained"
-        src={post.data.coverImage.src}
-        alt={post.data.coverImage.alt}
+        src={portfolio.data.coverImage.src}
+        alt={portfolio.data.coverImage.alt}
         class="w-[400px] rounded-xl"
         style="margin:0;"
       />
     )
   }
 
-  <PostInfo post={post} class="mb-3 mt-4" />
+  <!-- <PostInfo post={post} class="mb-3 mt-4" /> -->
   {description && <p class="pl-0.5 my-4 text-base/7 text-foreground">{description}</p>}
   {
     tags && (

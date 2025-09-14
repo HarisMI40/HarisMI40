@@ -1,6 +1,29 @@
 import { defineCollection, z } from 'astro:content'
 import { glob } from 'astro/loaders'
 
+const portfoliosCollection = defineCollection({
+  loader: glob({ pattern: ['**/*.md', '**/*.mdx'], base: './src/content/portfolios' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      published: z.coerce.date(),
+      // updated: z.coerce.date().optional(),
+      draft: z.boolean().optional().default(false),
+      description: z.string().optional(),
+      author: z.string().optional(),
+      series: z.string().optional(),
+      tags: z.array(z.string()).optional().default([]),
+      link_demo: z.string(),
+      coverImage: z
+        .strictObject({
+          src: image(),
+          alt: z.string(),
+        })
+        .optional(),
+      toc: z.boolean().optional().default(true),
+    }),
+})
+
 const postsCollection = defineCollection({
   loader: glob({ pattern: ['**/*.md', '**/*.mdx'], base: './src/content/posts' }),
   schema: ({ image }) =>
@@ -51,6 +74,7 @@ const addendumCollection = defineCollection({
 })
 
 export const collections = {
+  portfolios: portfoliosCollection,
   posts: postsCollection,
   home: homeCollection,
   addendum: addendumCollection,

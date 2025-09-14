@@ -6,6 +6,7 @@ import IconTwitter from '~/icons/twitter.svg'
 import IconLinkedin from '~/icons/linkedin.svg'
 import IconBluesky from '~/icons/bluesky.svg'
 import IconEmail from '~/icons/email.svg'
+import IconMedium from '~/icons/medium.svg'
 import IconRss from '~/icons/rss.svg'
 
 interface Props {
@@ -91,6 +92,20 @@ const { socialLinks } = Astro.props
       >
         <span class="sr-only">Email</span>
         <IconEmail class="size-7" />
+      </a>
+    )
+  }
+
+  {
+    socialLinks.medium && (
+      <a
+        href={socialLinks.medium}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <span class="sr-only">Medium</span>
+        <IconMedium class="size-7" />
       </a>
     )
   }

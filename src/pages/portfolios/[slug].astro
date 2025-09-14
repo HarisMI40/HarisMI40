@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro'
 import Layout from '~/layouts/Layout.astro'
-import { SeriesGroup, TagsGroup, getSortedPosts } from '~/utils'
+import { SeriesGroup, TagsGroup, getSortedPortfolios } from '~/utils'
 import PostPreview from '~/components/PostPreview.astro'
 import DividerText from '~/components/DividerText.astro'
 import { getCollection, render, type CollectionEntry } from 'astro:content'
@@ -19,7 +19,7 @@ import { getPostSequenceContext } from '~/utils'
 import IconLinkEksternal from '~/icons/link-external-svgrepo-com.svg'
 
 export const getStaticPaths = (async () => {
-  const posts = await getSortedPosts()
+  const posts = await getSortedPortfolios()
   return posts.map((post) => {
     // Get sequence context for the post
     const { prev, next } = getPostSequenceContext(post, posts)
@@ -43,7 +43,7 @@ if (addendum.length > 0) {
   addendumAvatarImage = addendumEntry.data.avatarImage
 }
 
-const sortedPosts = await getSortedPosts()
+const sortedPosts = await getSortedPortfolios()
 
 // Get series posts if this post is part of a series
 let series: Collation<'posts'> | undefined
