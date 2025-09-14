@@ -1,17 +1,139 @@
 ---
-const skills = ['HTML5 & CSS3', 'JavaScript', 'PHP', 'Laravel', 'React.js', 'Next JS', 'MySQL', 'Git & Github', 'Tailwind CSS', "Wordpress"]
+import Html5 from '~/icons/html5.svg'
+import Css from '~/icons/css3.svg'
+import Tailwind from '~/icons/tailwind.svg'
+import Typescript from '~/icons/typescript.svg'
+import Nextjs from '~/icons/nextjs.svg'
+import Database from '~/icons/database.svg'
+import React from '~/icons/react.svg'
+import Laravel from '~/icons/laravel.svg'
+import Wordpress from '~/icons/wordpress.svg'
+import Javascript from '~/icons/js.svg'
+import Php from '~/icons/php.svg'
+
+// const skills = ['HTML5 & CSS3', 'JavaScript', 'PHP', 'Laravel', 'React.js', 'Next JS', 'MySQL', 'Git & Github', 'Tailwind CSS', "Wordpress"]
+
+const skills = [
+  { title: 'HTML5', icon: "Html5" },
+  { title: 'CSS', icon:"CSS" },
+  { title: 'JavaScript', icon: "" },
+  { title: 'PHP', icon: "" },
+  { title: 'Laravel', icon: "" },
+  { title: 'React.js', icon: "" },
+  { title: 'Next JS', icon: "" },
+  { title: 'MySQL', icon: "" },
+  { title: 'Git & Github', icon: "" },
+  { title: 'Tailwind CSS', icon: "" },
+  { title: 'Wordpress', icon: "" }
+]
 ---
 
 <ul class="flex flex-wrap gap-x-3 gap-y-4 my-5">
   {
-    skills.map((series, index) => (
       <li>
         <div
-          class="flex items-start gap-2.5 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
         >
-          {series}
+          <Html5 class="size-6"/>
+          <div>HTML</div>
         </div>
       </li>
-    ))
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <Css class="size-6"/>
+          <div>CSS</div>
+        </div>
+      </li>
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <Javascript class="size-6"/>
+          <div>Javascript</div>
+        </div>
+      </li>
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <Typescript class="size-6"/>
+          <div>Typescript</div>
+        </div>
+      </li>
+
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <Php class="size-6"/>
+          <div>PHP</div>
+        </div>
+      </li>
+
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <Tailwind class="size-6"/>
+          <div>Tailwind</div>
+        </div>
+      </li>
+
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <React class="size-6"/>
+          <div>React</div>
+        </div>
+      </li>
+
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <Laravel class="size-6"/>
+          <div>Laravel</div>
+        </div>
+      </li>
+
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <Nextjs class="size-6"/>
+          <div>Next Js</div>
+        </div>
+      </li>
+
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <Wordpress class="size-6"/>
+          <div>Wordpress</div>
+        </div>
+      </li>
+
+
+      <li>
+        <div
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+        >
+          <Database class="size-6"/>
+          <div>MySQL</div>
+        </div>
+      </li>
   }
 </ul>
