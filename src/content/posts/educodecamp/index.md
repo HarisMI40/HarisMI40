@@ -2,7 +2,7 @@
 title: 'Educodecamp'
 published: 2025-07-20
 draft: false
-tags: ['Next JS', 'Laravel', 'Tailwind Css']
+tags: ['Next Js', 'TypeScript', 'MySQL', 'NextAuth.js', 'Tailwind CSS', 'Shadcn UI']
 toc: true
 link_demo: 'https://lms.harismi.com'
 coverImage:
