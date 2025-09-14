@@ -1,5 +1,5 @@
 ---
-title: 'Mutu Bazar - Integrated Event & Marketplace Platform'
+title: 'Mutu Bazar'
 published: 2025-07-20
 draft: false
 tags: ['Next Js', 'TypeScript', 'Prisma', 'MySQL', 'NextAuth.js', 'Tailwind CSS', 'Shadcn UI']

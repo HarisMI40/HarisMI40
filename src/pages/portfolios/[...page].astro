@@ -1,11 +1,10 @@
 ---
 import type { GetStaticPaths } from 'astro'
 import Layout from '~/layouts/Layout.astro'
-import { getSortedPosts } from '~/utils'
-import Pagination from '~/components/Pagination.astro'
+import { getSortedPortfolios, getSortedPosts } from '~/utils'
 import siteConfig from '~/site.config'
-import PostPreview from '~/components/PostPreview.astro'
 import PageHeader from '~/components/PageHeader.astro'
+import PortfolioPreviewCard from '~/components/PortfolioPreviewCard.astro'
 
 // Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
@@ -15,17 +14,19 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page } = Astro.props
 const pageTitle = 'Archive' + (page.currentPage > 1 ? ` - Page ${page.currentPage}` : '')
+const sortedPortfolios = await getSortedPortfolios()
 ---
 
 <Layout title={pageTitle} description="All posts in the archive">
   <div class="mt-2 sm:mt-0">
     <PageHeader />
-    {page.data.map((post) => <PostPreview post={post} />)}
-    <Pagination
-      prevLink={page.url.prev ? page.url.prev : undefined}
-      prevText="Newer Posts"
-      nextLink={page.url.next ? page.url.next : undefined}
-      nextText="Older Posts"
-    />
+    
+    <div class="grid grid:cols-1 lg:grid-cols-2 gap-3">
+      {
+        sortedPortfolios.length > 0 &&
+        sortedPortfolios
+        .map((post) => <PortfolioPreviewCard portfolio={post} />)
+      }
+    </div>
   </div>
 </Layout>
