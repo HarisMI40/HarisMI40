@@ -4,6 +4,7 @@ published: 2025-07-20
 draft: false
 tags: ['Next JS', 'Laravel', 'Tailwind Css']
 toc: true
+link_demo: 'https://lms.harismi.com'
 coverImage:
   src: './cover.png'
   alt: 'Educodecamp'

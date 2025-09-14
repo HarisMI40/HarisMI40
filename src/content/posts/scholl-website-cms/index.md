@@ -4,6 +4,7 @@ published: 2025-07-20
 draft: false
 tags: ['Wordpress', 'PHP', 'CMS']
 toc: true
+link_demo: 'https://www.smkmutucikampek.sch.id'
 coverImage:
   src: './cover.png'
   alt: 'School Website CMS'

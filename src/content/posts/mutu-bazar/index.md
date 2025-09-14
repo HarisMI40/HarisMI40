@@ -1,21 +1,22 @@
 ---
-title: 'Mutu Bazar'
+title: 'Mutu Bazar - Integrated Event & Marketplace Platform'
 published: 2025-07-20
 draft: false
-tags: ['Wordpress', 'PHP', 'CMS']
+tags: ['Next Js', 'TypeScript', 'Prisma', 'MySQL', 'NextAuth.js', 'Tailwind CSS', 'Shadcn UI']
 toc: true
+link_demo: '#'
 coverImage:
   src: './cover.jpg'
   alt: 'School Website CMS'
 ---
 
-A modern, easy-to-manage website for a vocational high school using WordPress.
+An integrated platform for managing events and their associated vendor marketplaces.
 
 ## The Challenge
-The school lacked a professional and centralized online presence, making it difficult to effectively communicate with prospective students, parents, and the wider community. Information about admissions, school programs, and news was not easily accessible, and there was no simple way for non-technical staff to post updates.
+Event organizers often rely on manual, disconnected processes (like forms and spreadsheets) to manage vendors and their products, leading to administrative overhead. Vendors, in turn, lack a dedicated digital channel to promote their goods to a captive event audience, while attendees have limited visibility into what the event's marketplace has to offer before they arrive.
 
 ## The Solution
-I developed a comprehensive and user-friendly school website on the WordPress platform. The new site features a clean, responsive design and provides intuitive access to key information. By leveraging the power of the WordPress CMS, I empowered the school's administrative staff to manage and update content—such as news, events, and announcements—independently, ensuring the information remains current without requiring technical assistance.
+Mutu Bazar provides a unified ecosystem where organizers can seamlessly create and promote events. Vendors can easily register (using Google OAuth), create a profile, and list their products under a specific event's marketplace. This gives attendees a digital catalog to browse items, effectively bridging the gap between the physical event and a modern e-commerce experience. The platform is built on a modern, scalable tech stack to ensure high performance and an excellent user interface.
 
 ## My Role
-My role was to lead the project from consultation to launch. This included gathering requirements from the school, selecting and customizing a suitable WordPress theme, structuring the site's content architecture, and providing training to the administrative staff on how to effectively use the CMS.
+As the project initiator and technical lead, I guided a team of students through the development of this application, turning it into a project-based learning experience. I defined the project's vision, scope, and MVP while mentoring the team. My hands-on technical contributions focused on core architectural components: I integrated the database using Prisma, implemented secure user authentication with NextAuth.js, and designed the primary page layouts.
