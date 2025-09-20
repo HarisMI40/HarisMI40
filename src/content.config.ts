@@ -14,6 +14,7 @@ const portfoliosCollection = defineCollection({
       series: z.string().optional(),
       tags: z.array(z.string()).optional().default([]),
       link_demo: z.string(),
+      link_github: z.string().optional(),
       coverImage: z
         .strictObject({
           src: image(),
