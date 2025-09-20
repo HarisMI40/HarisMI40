@@ -10,114 +10,33 @@ import Laravel from '~/icons/laravel.svg'
 import Wordpress from '~/icons/wordpress.svg'
 import Javascript from '~/icons/js.svg'
 import Php from '~/icons/php.svg'
+
+const skills = [
+  { icon: Html5, name: 'HTML' },
+  { icon: Css, name: 'CSS' },
+  { icon: Javascript, name: 'Javascript' },
+  { icon: Typescript, name: 'Typescript' },
+  { icon: Php, name: 'PHP' },
+  { icon: Tailwind, name: 'Tailwind' },
+  { icon: React, name: 'React' },
+  { icon: Laravel, name: 'Laravel' },
+  { icon: Nextjs, name: 'Next Js' },
+  { icon: Wordpress, name: 'Wordpress' },
+  { icon: Database, name: 'MySQL' },
+]
 ---
 
 <ul class="flex flex-wrap gap-x-3 gap-y-4 my-5">
   {
+    skills.map(({ icon: Icon, name }) => (
       <li>
         <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
+          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/30 hover:bg-accent/3 border-1 text-foreground/90 hover:cursor-pointer"
         >
-          <Html5 class="size-6"/>
-          <div>HTML</div>
+          <Icon class="size-6"/>
+          <div>{name}</div>
         </div>
       </li>
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <Css class="size-6"/>
-          <div>CSS</div>
-        </div>
-      </li>
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <Javascript class="size-6"/>
-          <div>Javascript</div>
-        </div>
-      </li>
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <Typescript class="size-6"/>
-          <div>Typescript</div>
-        </div>
-      </li>
-
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <Php class="size-6"/>
-          <div>PHP</div>
-        </div>
-      </li>
-
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <Tailwind class="size-6"/>
-          <div>Tailwind</div>
-        </div>
-      </li>
-
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <React class="size-6"/>
-          <div>React</div>
-        </div>
-      </li>
-
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <Laravel class="size-6"/>
-          <div>Laravel</div>
-        </div>
-      </li>
-
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <Nextjs class="size-6"/>
-          <div>Next Js</div>
-        </div>
-      </li>
-
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <Wordpress class="size-6"/>
-          <div>Wordpress</div>
-        </div>
-      </li>
-
-
-      <li>
-        <div
-          class="flex items-start gap-1 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90 hover:cursor-pointer"
-        >
-          <Database class="size-6"/>
-          <div>MySQL</div>
-        </div>
-      </li>
+    ))
   }
 </ul>
