@@ -5,6 +5,7 @@ draft: false
 tags: ['Next Js', 'TypeScript', 'Prisma', 'MySQL', 'NextAuth.js', 'Tailwind CSS', 'Shadcn UI']
 toc: true
 link_demo: '#'
+link_github: "https://github.com/HarisMI40/mutu-bazar"
 coverImage:
   src: './cover.jpg'
   alt: 'School Website CMS'
