@@ -17,6 +17,7 @@ import type { Collation } from '~/types'
 import ChevronsRight from '~/icons/chevrons-right.svg'
 import { getPostSequenceContext } from '~/utils'
 import IconLinkEksternal from '~/icons/link-external-svgrepo-com.svg'
+import IconGithub from '~/icons/github.svg'
 
 export const getStaticPaths = (async () => {
   const posts = await getSortedPortfolios()
@@ -101,10 +102,16 @@ if (postData.tags && postData.tags.length > 0) {
         }
 
         <h1 class="mt-8">Project Links</h1>
-        <div class="mt-4">
+        <div class="mt-4 flex gap-4 flex-col lg:flex-col">
           <a href={ postData.link_demo } target="_blank" class="py-1 flex items-center gap-3 w-max px-3 bg-accent/1 hover:bg-accent/8 border-1 border-accent/20 text-accent/90 rounded-2xl transition-colors">
             Live Demo <IconLinkEksternal class="size-5 text-white" />
           </a>
+          
+          {postData.link_github && (
+            <a href={ postData.link_github } target="_blank" class="py-1 flex items-center gap-3 w-max px-3 bg-accent/1 hover:bg-accent/8 border-1 border-accent/20 text-accent/90 rounded-2xl transition-colors">
+              <IconGithub class="size-5" /> Link Github <IconLinkEksternal class="size-5 text-white" />
+            </a>
+          )}
         </div>
 
 
